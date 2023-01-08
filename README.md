@@ -1,16 +1,19 @@
-### Hi there 👋
+### Hi 👋 I'm Kevin, a software engineer with a background mechanical engineering
+---
+
+📚 learning:  full-stack development, p5js, developing context free grammar
+
+✨ interests: music production, bread baking, glass flameworking, audio story telling, biking
+
+💡 creative projects: [portfolio](https://kevin-lam.netlify.app/)
+
+✉️ reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
+
+<br>
+<br>
+
+![](https://komarev.com/ghpvc/?username=kevin-lambda&color=green)
 
 <!--
-**kevin-lambda/kevin-lambda** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+🖥️ software development projects: [portfolio](///////////////////)
 -->

@@ -1,4 +1,4 @@
-### Hi 👋 I'm Kevin, software engineer with a background mechanical engineering
+### Hi 👋 I'm Kevin, software engineer with a background in mechanical engineering
 ---
 
 📚 learning:  full-stack development, p5js, developing context free grammar

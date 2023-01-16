@@ -5,6 +5,8 @@
 
 ✨ interests: music production, bread baking, glass flameworking, audio story telling, biking
 
+🖥️ software development projects: [portfolio](https://kevin-lambda.github.io/)
+
 💡 creative projects: [portfolio](https://kevin-lam.netlify.app/)
 
 ✉️ reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
@@ -13,7 +15,3 @@
 <br>
 
 ![](https://komarev.com/ghpvc/?username=kevin-lambda&color=green)
-
-<!--
-🖥️ software development projects: [portfolio](///////////////////)
--->

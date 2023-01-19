@@ -32,9 +32,9 @@
 1. [Dakine Ipsum Project](#project-dakine-ipsum)  
 
 ### Misc Journal
-1. [Jan 16 2023: Starting Again](#Journal-1/16/2023)
-1. [placeholder](#Journal-1/16/2023)
-1. [placeholder](#Journal-1/16/2023)
+1. [Jan 16 2023: Starting Again](#journal-16-jan-2023)
+1. [placeholder](#journal-16jan2023)
+1. [placeholder](#journal-16jan2023)
 
 ## 📖 ENTRIES
 
@@ -50,7 +50,7 @@
 #### Dev learnings
 **Reviewed:** useState, map, passing props, form, input, sumbit, handle event, ternary operator  
 
-**To look into:** spread operator
+**To look into:** spread operator, named/default import/export and require
 
 **CRA single page app with react router on github pages:** Single page apps, or a react app using react router will not work with github pages by default. Something about server vs client side path/file/rendering.
 
@@ -94,7 +94,7 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 
 **Named import/export, default import/export and require:** Still looking into how _exactly_ these all work.
 
-## Journal 1/16/2023 
+## Journal 16 Jan 2023
 - 1/3 of a project is figuring out how to connect technologies together. This is the least fun.
 - 1/3 is actually planning outline and coding. This is fun.
 - 1/3 is fixing everything. This is the most challenging, and then most rewarding.

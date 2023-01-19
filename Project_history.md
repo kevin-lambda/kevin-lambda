@@ -14,6 +14,15 @@ issues getting cra spa working on github pages
 - need to add homepage definition in package json, and predeploy, deploy scripts.
 - need to add a base subdomain to Router tag. basename="/subdomainName". aka https://mainDomain.com/subdomainName
 
+
+- needed this: https://github.com/rafgraph/spa-github-pages to allow spa on gh pages
+- my config.
+- copied 404.html to public
+- b/c this is a project repo, and not a user account repo. set pathSegmentsToKeep = 1
+- copied the index.html script to my index.html. I put it in the head tag. I think it would work in the body too.
+- added  <script src="/dakine-ipsum/build/bundle.js"></script> to the body, where dakine-ipsum is the repo name
+
+
 note
 -  cra builds from the build folder. upon production build, all the js is bundled, then the index.html includes a script tag to read that bundled js file
 

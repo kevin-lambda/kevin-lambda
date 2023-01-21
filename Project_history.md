@@ -36,8 +36,11 @@
 1. [placeholder](#journal-16jan2023)
 1. [placeholder](#journal-16jan2023)
 
-## 📖 ENTRIES
+### Tech and skills used
+- Jan 16 2023 ; Basic html, css, javascript ; [Portfolio Version 2](#project-portfolio-v2)
+- Jan 20 2023 ; CFG generation, React : [Dakine Ipsum Project](#project-dakine-ipsum)  
 
+## 📖 ENTRIES
 
 ## Project Dakine Ipsum
 

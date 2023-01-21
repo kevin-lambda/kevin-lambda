@@ -145,4 +145,4 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 
 
 #### Flagnotes
-[1] If using react router or making a single page application, these steps alone will NOT work. See [Dakine Ipsum Project](#dakine-ipsum)
+[1] If using react router or making a single page application, these steps alone will NOT work. See [Dakine Ipsum Project](#project-dakine-ipsum)  

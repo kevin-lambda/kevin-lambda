@@ -23,9 +23,7 @@
 - a
 --->
 
-# Dev diary
-
-## 📚 CONTENTS
+# 📚 CONTENTS
 
 ### Projects
 1. [Portfolio Version 2](#project-portfolio-v2)  
@@ -40,7 +38,7 @@
 - Jan 16 2023 ; Basic html, css, javascript ; [Portfolio Version 2](#project-portfolio-v2)
 - Jan 20 2023 ; CFG generation, React : [Dakine Ipsum Project](#project-dakine-ipsum)  
 
-## 📖 ENTRIES
+# 📖 ENTRIES
 
 ## Project Dakine Ipsum
 

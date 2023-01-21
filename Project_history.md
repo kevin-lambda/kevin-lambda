@@ -18,6 +18,8 @@
 
 #### Flagnotes
 [1] I
+
+[⬆️ Back To Contents](#-contents)
 ======================================================================
 ## Journal 1/16/2023 
 - a
@@ -38,6 +40,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 ### Tech and skills used
 - Jan 16 2023 ; Basic html, css, javascript ; [Portfolio Version 2](#project-portfolio-v2)
 - Jan 20 2023 ; CFG generation, React : [Dakine Ipsum Project](#project-dakine-ipsum)  
+
 
 # 📖 ENTRIES
 
@@ -96,11 +99,14 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 
 **Named import/export, default import/export and require:** Still looking into how _exactly_ these all work.
 
+[⬆️ Back To Contents](#-contents)
+
 ## Journal 16 Jan 2023
 - 1/3 of a project is figuring out how to connect technologies together. This is the least fun.
 - 1/3 is actually planning outline and coding. This is fun.
 - 1/3 is fixing everything. This is the most challenging, and then most rewarding.
 
+[⬆️ Back To Contents](#-contents)
 
 ## Project Portfolio v2
 **Date:** 01/19/2023  
@@ -145,3 +151,5 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 
 #### Flagnotes
 [1] If using react router or making a single page application, these steps alone will NOT work. See [Dakine Ipsum Project](#project-dakine-ipsum)  
+
+[⬆️ Back To Contents](#-contents)

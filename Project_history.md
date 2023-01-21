@@ -24,6 +24,7 @@
 --->
 
 # 📚 CONTENTS
+This is a journal of my projects, lessons learned and thoughts during my coding journey.
 
 ### Projects
 1. [Portfolio Version 2](#project-portfolio-v2)  

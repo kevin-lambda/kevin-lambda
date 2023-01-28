@@ -39,8 +39,8 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 
 ### Tech and skills used
 - Jan 16 2023 ; Basic html, css, javascript ; [Portfolio Version 2](#project-portfolio-v2)
-- Jan 20 2023 ; CFG generation, React : [Dakine Ipsum Project](#project-dakine-ipsum)  
-
+- Jan 20 2023 ; CFG generation, React ; [Dakine Ipsum Project](#project-dakine-ipsum)  
+- Jan 27 2023 ; api, fs, require, image quantization ; [Project Retired. Jan 27 2023: 2.75/3](#journal-27-jan-2023)
 
 # 📖 ENTRIES
 

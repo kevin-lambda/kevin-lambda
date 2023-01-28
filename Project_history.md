@@ -34,7 +34,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 
 ### Misc Journal
 1. [Jan 16 2023: Starting Again](#journal-16-jan-2023)
-1. [placeholder](#journal-16jan2023)
+1. [Jan 27 2023: 2.75/3](#journal-27jan2023)
 1. [placeholder](#journal-16jan2023)
 
 ### Tech and skills used
@@ -43,6 +43,21 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 
 
 # 📖 ENTRIES
+
+## Journal 27 Jan 2023
+2.75/3 of a project is figuring out how to connect technologies together. This is the least fun.
+
+- First project put on indefinite hiatus. Was trying to use an api to grab an image and then create a color palette from that image using another api.
+- Ran into MANY roadblocks
+    - Trying to connect to an api from the frontend can cause CORS erros. Which apparently react components constitutes the front end.
+        - CORS errors is a browser based technology and is when one domain is trying to access resources from another domain. Domains trying to access data is a front end thing. 
+        - There are a ton of suggestions to solve this. I've found that are mainly two that seem "reasonable". 1. Use a proxy service, which routes your domain asking for data to something else that pretends to be a server. api and cors are apparently fine with server to server interactions. However, this is not a robust solution, but it __can be__ a quick temporary solution. You just put another domain in front of the URL you are trying to connect to. 2. Create a backend server to connect to the api to use it there. This sounds like a lot of work just to grab a random image of coffee.
+    - Trying to use fs in the frontend. It seems like it was not meant to be used there. Work arounds seem janky. It looks like it is best to use it in the backend.
+    - Trying to use fs in the backend and then trying to run a build. An error something about polyfill... didn't look into that. Related to webpack most likely
+
+Was able to run image quantization, connect to image api, connect to palette api. But couldn't link everything together.
+
+[⬆️ Back To Contents](#-contents)
 
 ## Project Dakine Ipsum
 

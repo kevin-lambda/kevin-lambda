@@ -34,8 +34,8 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 
 ### Misc Journal
 1. [Jan 16 2023: Starting Again](#journal-16-jan-2023)
-1. [Jan 27 2023: 2.75/3](#journal-27jan2023)
-1. [placeholder](#journal-16jan2023)
+1. [Jan 27 2023: 2.75/3](#journal-27-jan-2023)
+1. [placeholder](#journal-16-jan-2023)
 
 ### Tech and skills used
 - Jan 16 2023 ; Basic html, css, javascript ; [Portfolio Version 2](#project-portfolio-v2)

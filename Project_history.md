@@ -146,7 +146,8 @@ Github pages will have trouble finding the correct paths for files to run. You'l
  - Now we have a build version of the app, and want to deploy it on github pages. However, as mentioned above, github pages is looking for the index.html in the root directory.  But our production index.html is in the build folder.
 - **Github pages:** Following the [gh-pages github](https://github.com/gitname/react-gh-pages) repo instructions, these were the steps I took to use gh-pages. Which enables CRA to deploy on github pages. 
  - Added `"homepage": "https://<github-username-here>.github.io"` to the top level `package.json` object. This seems to tell the app that any paths defined as `/` will use the `homepage` value as it's base.
- - Added deployment scripts  `"predeploy": "npm run build"` and `"deploy": "gh-pages -d build"`to `package.json`.
+     - The above works for non regular repo projects. If it is a regular repo, instead add ` "homepage": "https://GITHUB_USERNAME_HERE.github.io/REPO_NAME_HERE",`
+ - Added deployment scripts  `"predeploy": "npm run build", "deploy": "gh-pages -d build"`to `package.json`.
  - Deploy site to github pages & push a gh-pages build version to a gh-pages branch with `npm run deploy`. This command does two things. 
  - One, pushes a special configured version of the CRA build folder to a gh-pages branch (it creates the branch if it does not already exist). This special branch puts, from the CRA production build, the index.html (and other public files) into the root directory. This allows github pages to correctly find and read the files to deploy.
  - Two, it reads the special gh-pages branch, and deploys the site to github pages. This can take a few minutes and you will see a ✔️ next to the commit log once the deploy is successful.

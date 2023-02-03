@@ -31,6 +31,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 ### Projects
 1. [Portfolio Version 2](#project-portfolio-v2)  
 1. [Dakine Ipsum Project](#project-dakine-ipsum)  
+1. [NPS Stamps](#project-nps-stamps)  
 
 ### Misc Journal
 1. [Jan 16 2023: Starting Again](#journal-16-jan-2023)
@@ -43,6 +44,106 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 - Jan 27 2023 ; api, fs, require, image quantization ; [Project Retired. Jan 27 2023: 2.75/3](#journal-27-jan-2023)
 
 # 📖 ENTRIES
+
+## Project NPS stamps
+
+**Date:** 02/02/2023  
+**Description:** Finds national park service passport stamps. 
+**Link:** [https://kevin-lambda.github.io/nat-park-stamps/](https://kevin-lambda.github.io/nat-park-stamps/)  
+**Notable Technologies:** [NPS API](https://www.nps.gov/subjects/developer/api-documentation.htm), [pico](https://picocss.com/) minimalist css framework.  
+**Learning focus:** Using an api on the front end and implementing a css framework.
+
+#### Dev learnings
+**Reviewed:** api data handling, import, useEffect dependencies, react forms, fetch.then.catch, JSON data parsing, api url syntax, html tables
+
+**To look into:** async promises interaction with state and non state variables, how to make multiple calls to api within the same render cycle for fetched data
+
+**API access:** 
+
+- Getting a CORS allowed API, since this is a front end, client side application (aka did not set up a backend server with routes and databases to store data), will need a CORS allowed API for easiest integration.
+- Getting an API key, just signed up, gave a purpose of use and got an api key immediately
+- Testing calls to api: It was useful to use the api key and make queries to the api to check json data format and the syntax of how to access the api
+- Before making any commits with the API key, stored it as an environment variable file, using this [method](https://dev.to/anuradhasivasubramanian/5-things-to-remember-when-using-an-env-file-to-store-you-api-key-in-a-react-app-4f2o). 
+    - Note. This method is not super secure, the key can still be found. For better security, the api key should be in a backend.
+
+
+**API code integration:** 
+
+- To call the API, I used async await try catch axios. There are other methods such as fetch .then .catch. async await try catch axios seems to be a good modern approach.
+- Implementation
+    - `npm i axios`
+    - `import axios from “axios”`
+    - Create an async function. 
+    ```
+    const getData = async () => {
+    }
+    ```
+    - Create a try catch block
+    ```
+    const getData = async () => {
+        try {
+        } catch (error) {
+            console.log("error in axios get nps: ", error)
+        }
+    }
+    ```
+    - Call the api url in an await axios.get(URL)
+    ```
+    const getData = async () => {
+        try {
+            const fetchedData = await axios.get(`${API_NPS_URL}`)
+        } catch (error) {
+            console.log("error in axios get nps: ", error)
+        }
+     }
+    ```
+    - Still within the try block Parse the return data as needed, and set it to a state variable. It seems to be not ideal to set promise type returns to a normal non state variable if it needs to be parsed or processed. It’s hard to get that variable out the of async function without promise sync clashes.
+    ```
+    const getData = async () => {
+        try {
+            const fetchedData = await axios.get(`${API_NPS_URL}`)
+            parseStampData(fetchedData)
+        } catch (error) {
+            console.log("error in axios get nps: ", error)
+        }
+    }
+    ```
+    - Call that async function in a useEffect
+        - To call api only on first render leave the dependency array empty.
+        - To call api based on change, put a STATE type variable in the array.
+    ```
+    useEffect(() => {
+        getData()
+    }, [])
+    ```
+    ```
+    useEffect(() => {
+        getData()
+    }, [userState, checkBoxFlag])
+    ```
+
+**API code integration:** Aside from integrating the api call, parsing the return data was the most work. I ended up creating a bunch of new state data to manage it all. Messy. Could be written better.
+
+**Pico css:** Pico css is a minimalist, highly opinionated css framework. It comes with predefined css styles that apply to html tags automatically. Default styles can be customized or overwritten.
+- To implement: `npm i @picocss/pico` then `import "@picocss/pico"` at the APP level of the application. Where the routes are, before attaching to the html root element.
+- How to use: Once integrated, just write html like normal and css styles will work.
+- To customize: You can customize the themes that pico comes with. I don't know how to do this. Alternatively, you can overwrite or add on to styles by writing css like normal.
+    - Have a style.css in the public folder
+    - link that css file in the html header like normal `<link rel="stylesheet" href="%PUBLIC_URL%/style.css" />`
+    - Give your target html classes, ids, etc. Then write css in your css file. Styles in your css will overwrite/add to the existing css from pico.
+
+**Github pages deploy notes, once more:**
+- `npm i gh-pages`
+- In package.json, have `"homepage": "https://GITHUB_USER_NAME.github.io/REPO_NAME",` and the scripts `"predeploy": "npm run build",    "deploy": "gh-pages -d build",`
+- Make sure the repo on github is not private
+- `npm run deploy`
+
+
+**ISSUE - Multiple Calls to API within the same render cycle:** 
+- An extension I tried was to call the api again to get additional data on the items from the first call. This became an issue when trying to run it all in one render cycle. 
+- Also, running an api call on each item from the first api call sounds like O(n<sup>2</sup>). - Implications include calling api magnitude 10 times per page load. Probably not good.
+
+[⬆️ Back To Contents](#-contents)
 
 ## Journal 27 Jan 2023
 2.75/3 of a project is figuring out how to connect technologies together. This is the least fun.

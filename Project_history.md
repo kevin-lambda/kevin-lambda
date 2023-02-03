@@ -53,6 +53,8 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 **Notable Technologies:** [NPS API](https://www.nps.gov/subjects/developer/api-documentation.htm), [pico](https://picocss.com/) minimalist css framework.  
 **Learning focus:** Using an api on the front end and implementing a css framework.
 
+Finds national park passport stamps for you based on your state. Due to the implementation of the API, returned data for a state includes parks, trails, places that can span across the entire US. Thus data filtering was required to show the most relevant information. The API is also not the most accurate source of data for the stamp locations. That can be found [here](https://americasnationalparks.org/passport-to-your-national-parks/passport-cancellation-locations/)
+
 #### Dev learnings
 **Reviewed:** api data handling, import, useEffect dependencies, react forms, fetch.then.catch, JSON data parsing, api url syntax, html tables
 

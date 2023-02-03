@@ -48,8 +48,8 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 ## Project NPS stamps
 
 **Date:** 02/02/2023  
-**Description:** Finds national park service passport stamps. 
-**Link:** [https://kevin-lambda.github.io/nat-park-stamps/](https://kevin-lambda.github.io/nat-park-stamps/)  
+**Description:** Finds national park service passport stamps.   
+**Link:** [https://kevin-lambda.github.io/nat-park-stamps/](https://kevin-lambda.github.io/nat-park-stamps/)    
 **Notable Technologies:** [NPS API](https://www.nps.gov/subjects/developer/api-documentation.htm), [pico](https://picocss.com/) minimalist css framework.  
 **Learning focus:** Using an api on the front end and implementing a css framework.
 

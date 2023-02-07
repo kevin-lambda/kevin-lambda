@@ -1,7 +1,7 @@
 ### Hi 👋 I'm Kevin, software engineer with a background in mechanical engineering
 ---
 
-📚 learning:  full-stack development, p5js, api integration
+📚 learning:  full-stack development, p5js, api integration, next.js
 
 ✨ interests: music production, bread baking, glass flameworking, audio story telling, biking
 

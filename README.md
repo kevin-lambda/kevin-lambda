@@ -7,9 +7,9 @@
 
 🖥️ software development projects: [portfolio](https://kevin-lambda.github.io/)
 
-💡 creative projects: [portfolio](https://kevin-lam.netlify.app/)
+✍️ dev lessons learned: [journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/dev_log.md)
 
-✍️ dev lessons learned: [journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/Project_history.md)
+💡 creative projects: [portfolio](https://kevin-lam.netlify.app/)
 
 ✉️ reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
 

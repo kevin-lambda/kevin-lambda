@@ -52,24 +52,30 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 Takehome assessment - P
 
 - Code sandbox
+  
   First experience with code sandbox. It's a good streamlined tool for development. Default settings are comfortable. Installing dependencies is really easy to do.
 
 - MUI
+  
   First time using MUI. A highly opinionated component library. Unless using the totally stock stylings, its tricky to work with MUI before even know what the default styling will look like. Then customizing it is a challenging as the docs are mysteriously scant on the details given how big material UI is in the current design paradigm.
 
   - Popover
+    
     I learned there are lots of different types of pop, not just popup. For the task of having a card appear upon table row click, I chose popover as the method. That ended up being challenging to work with positioning later. I didn't know any better at the time. Popover is designed for tooltips.
   - Typeography, Chip, Rating, Table
     Working with these components were more straightforward. Pretty much plug and play. Very useful.
 
 - react-chart-js-2, bar charts
+  
   First time using react-chart-js-2. This chart library is helpful but also more challenging to work with. The rev history on major version change on this library moves fast, and thus a lot of old breaking syntax is still floating around. That made charts hard to work with, as the docs are also very scant on detailed examples. Why do they do this? Make a whole library and provide just one simple example.
 
 - json data parsing, for UI
+  
   Data parsing is kinda fun. I think the best part, seeing what data is available, and thinking about how to present it. Then think about how to manipulate that data to get it in a format that will feed into the presentation. +1
 
 - UI styling
-  UI styling isn't second nature to me yet, so it was difficult to come up with a design on the spot. I don't have e institutional knowledge of design practices to just make it up as I go along. I'll have to dedicate time to learning the basic implemented design patterns for a heuristic check.
+  
+  UI styling isn't second nature to me yet, so it was difficult to come up with a design on the spot. I don't have institutional knowledge of design practices to just make it up as I go along. I'll have to dedicate time to learning the basic implemented design patterns for a heuristic check.
 
 ![Card 1](./assets/15Feb2023_p_takehome1.png)
 ![Card 2](./assets/15Feb2023_p_takehome2.png)

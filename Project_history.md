@@ -51,7 +51,7 @@ Service migration
 Made my first service migration from Panelbear to Cronitor. Panelbear was aquired by Cronitor and is suspending it's service, to be replaced by Cronitor. 
 
 
-In this case, migration was a simple 2 liner change. I'd guess things like this are where developer knowledge and experience with a codebase is key. It would have been a non-trivial task to migrate a service, without having done it myself.
+In this case, migration was a simple 2 liner change. I'd guess things like this are where developer knowledge and experience with a codebase is key. It would have been a non-trivial task to migrate a service, without originally having done it myself.
 
 [⬆️ Back To Contents](#-contents)
 

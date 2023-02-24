@@ -245,7 +245,7 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
   - DATABASE MODEL DEFINITION - model.js: Defines a table model and the attributes it can have.
   - SEED FILE - seed.js: A seed data file for development, which has dummy data and forces a db.sync.
 
-  <img src="./public/assets/backend_logic.jpg" alt="Backend logic"
+  <img src="./assets/backend_logic.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;

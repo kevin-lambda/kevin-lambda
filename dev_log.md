@@ -412,41 +412,51 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
 
 #### **Deploying on Render**
 
-**DATABASE: connecting to postgres**
+- **DATABASE: connecting to postgres**
 
-- A database needs to live somewhere.
-- Render (the platform as a service) website features a hosted postgres database. After creating a postgres database on Render, it will be accessable by a URL. This URL is a secret.
+    - A database needs to live somewhere.
+    - Render (the platform as a service) website features a hosted postgres database. After creating a postgres database on Render, it will be accessable by a URL. This URL is a secret.
 
-  - In the same way we had the localhost as the connection URL for sequelize i our backend to connect to `postgres://localhost:5432/${DATABASE_NAME}`
-  - Render provides a connection URL for the database.
+      - In the same way we had the localhost as the connection URL for sequelize i our backend to connect to `postgres://localhost:5432/${DATABASE_NAME}`
+      - Render provides a connection URL for the database.
 
-- However, if we are also using Render to host (we are) our backend (as a web service), we should use Render's web service environment variables. So, don't do anything with the secret database url key yet.
+    - However, if we are also using Render to host (we are) our backend (as a web service), we should use Render's web service environment variables. So, don't do anything with the secret database url key yet.
 
-**DATABASE: checking connection**
+- **DATABASE: checking connection**
 
-- We may want to check that the Render postgres database is able to be connected to and is working. And may want to use something like postbird to check that.
-  - However, in the case of postbird, it won't accept the render url by itself. It wants ssl security. To do that just append `ssl=true` to the end of the database url
-  - `postgres://user:pass@host:port/database?ssl=true`
+    - We may want to check that the Render postgres database is able to be connected to and is working. And may want to use something like postbird to check that.
+      - However, in the case of postbird, it won't accept the render url by itself. It wants ssl security. To do that just append `ssl=true` to the end of the database url
+      - `postgres://user:pass@host:port/database?ssl=true`
 
-**BACKEND: Hosting the server aka web service**
+- **BACKEND: Hosting the server aka web service**
 
-- The server (api) that handles and listens for requests needs to live and be on somewhere. It is also called a web service.
-- On Render, it asks for two things a build command and start command. Render acts like how we were running commands before our localhost was able run the server. It needs libraries, the entry point for the app. It works the same way, so we need to let it know what commands to run.
-  - Build command, typically `npm install`
-  - Start command, whatever the server entry point is `node server/index.js`
+    - The server (api) that handles and listens for requests needs to live and be on somewhere. It is also called a web service.
+    - On Render, it asks for two things a build command and start command. Render acts like how we were running commands before our localhost was able run the server. It needs libraries, the entry point for the app. It works the same way, so we need to let it know what commands to run.
+      - Build command, typically `npm install`
+      - Start command, whatever the server entry point is `node server/index.js`
 
-**BACKEND: Deployed enviroment variables**
+- **BACKEND: Deployed enviroment variables**
 
-- Just like how the local machine has environment variables, the hosting platform can hold environment variables for the hosted server application to access.
-- This is where we grab the database connection secret url and input it into Render's platform.
-- Just like local .env, we make a variable key and enter the secret url.
-- Then, when the deployed application runs, it searches the environment of the hosting platform, in this case, Render. And will be able to access the environment variable we input. Using the same syntax `process.env.VARIABLE_NAME`
+    - Just like how the local machine has environment variables, the hosting platform can hold environment variables for the hosted server application to access.
+    - This is where we grab the database connection secret url and input it into Render's platform.
+    - Just like local .env, we make a variable key and enter the secret url.
+    - Then, when the deployed application runs, it searches the environment of the hosting platform, in this case, Render. And will be able to access the environment variable we input. Using the same syntax `process.env.VARIABLE_NAME`
 
-**Deploy Cache**
+- **Deploy Cache**
 
-- Sometimes, we need to deploy with the option that says to delete the build cache to see updates on the live site. Not sure if this is 100% true.
+    - Sometimes, we need to deploy with the option that says to delete the build cache to see updates on the live site. Not sure if this is 100% true.
 
-**FRONTEND**
+- **Dependency Error**
+  -  For a deploy, the hosting site needs to run build or installation. This can cause errors in some cases.
+  -  For this case, `fsevents` was causing an installation error, even though the local host run worked.
+    - To solve this, add the optional dependencies to `package.json`
+    ```javascript
+     "optionalDependencies": {
+        "fsevents": "2.1.2"
+      },
+    ```
+
+- **FRONTEND**
 
 - Similarly to the web service, Render will ask for two things. Build command, and publish directory.
   - Build Command, just like regular `npm run build`

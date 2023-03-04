@@ -292,7 +292,7 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
   - Apparently express doesn't care or need to know what the domain of the api path we are setting up to handle. It just cares about the path.
     - `http://www.domain.com/path1/path2`
     - protocol = http://
-    - domain = www.domain.com
+    - domain = `www.domain.com`
     - path = /path1/path2
   - Once deployed, express server should still be okay.
 

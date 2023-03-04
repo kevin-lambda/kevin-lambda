@@ -251,7 +251,7 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 75%;">
+  width: 50%;">
 
 - **Express**
 
@@ -355,6 +355,9 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
   - `app.use(express.static('build'))` OR `app.use(express.static('public'))`
   - If the file is located >>> `[project root]/public/assets/picture.jpg`
     - Access it with `<img src="/assets/picture.jpg"`
+
+- **User Input Filter API**
+  - Used Pugomalum API to filter user input. Very easy RESTful method.
 
 #### **Build Tooling**
 

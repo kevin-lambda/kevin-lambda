@@ -45,7 +45,7 @@ On a project building a small business webpage for H, I delved heavily into ui a
 
 For my approach, Steve Krug's essential web usability book says it all in the title, _Don't Make Me think_.
 
-From that design philosophy, I decided to use the most basic, consistent, uniform, expected, comfortable webpage design. Here's the drawn up wireframes in whole, and in detail.
+From that design philosophy, I decided to use the most basic, consistent, uniform, expected, comfortable webpage design. Here's the drawn up low fidelity wireframes in whole, and in detail.
 
 <img src="./assets/21mar2023_uxui_basicBusiness.jpg" alt="Backend logic"
   style="display: block;

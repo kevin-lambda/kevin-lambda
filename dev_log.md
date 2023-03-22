@@ -47,6 +47,13 @@ For my approach, Steve Krug's essential web usability book says it all in the ti
 
 From that design philosophy, I decided to use the most basic, consistent, uniform, expected, comfortable webpage design. Here's the drawn up low fidelity wireframes in whole, and in detail.
 
+**Whosa what now? the story / user journey:** 
+For the user journey, the approach is to focus on showing the user the story of WHO, WHAT and WHY to drive conversions. The home page tells the story twice. Once condensed in the hero section, and then again as it follows condensed versions of the who we are, what we do, and why choose us. Finally, a call to action is at the end of the journey.
+
+The website as a whole also tells the story, About tells the who, services, tells the what, contact tells a brief why followed by a call to action.
+
+Repeat and layer the stories.
+
 <img src="./assets/21mar2023_uxui_basicBusiness.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;

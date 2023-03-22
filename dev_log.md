@@ -32,9 +32,58 @@ Mar 13 2023 - [Medium: jr dev asks why would I want to publish a personal npm pa
 [Feb 14 2023: First Migration](#journal-14-feb-2023)  
 [Feb 15 2023: First Takehome](#journal-15-feb-2023)  
 [Feb 26 2023: A search history](#journal-26-feb-2023)  
-[Mar 13 2023: Does it scale?](#journal-13-mar-2023)
+[Mar 13 2023: Does it scale?](#journal-13-mar-2023)  
+[Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)
 
 # 📖 ENTRIES
+
+## Journal 21 Mar 2023
+
+UX/UI Don't make me think! A basic business page
+
+On a project building a small business webpage for H, I delved heavily into ui and design.
+
+For my approach, Steve Krug's essential web usability book says it all in the title, _Don't Make Me think_.
+
+From that design philosophy, I decided to use the most basic, consistent, uniform, expected, comfortable webpage design. Here's the drawn up wireframes in whole, and in detail.
+
+<img src="./assets/21mar2023_uxui_basicBusiness.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;">
+<img src="./assets/21mar2023_uxui_basicBusiness_home.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;">
+<img src="./assets/21mar2023_uxui_basicBusiness_about.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;">
+<img src="./assets/21mar2023_uxui_basicBusiness_services.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;">
+<img src="./assets/21mar2023_uxui_basicBusiness_contact.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;">
+
+[⬆️ Back To Contents](#-contents)
 
 ## Journal 13 Mar 2023
 

@@ -133,7 +133,7 @@ _Anyway_, abstracting functions out to a npm package takes a step towards brevit
 [⬆️ Back To Contents](#-contents)
 
 ## Journal 26 Feb 2023
-
+A search history
 - what react framework to try
 - what is next.js
 - what is server vs client side rendering

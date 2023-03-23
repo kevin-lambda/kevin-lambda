@@ -23,7 +23,10 @@ Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)
 
 ### Articles Published
 
-Mar 13 2023 - [Medium: jr dev asks why would I want to publish a personal npm package](https://kevin-lambda.medium.com/jr-dev-asks-why-would-i-want-to-publish-a-personal-npm-package-8d27afd42ca5)
+Mar 13 2023 - [Medium: Jr dev asks — Why would I want to publish a personal npm package](https://kevin-lambda.medium.com/jr-dev-asks-why-would-i-want-to-publish-a-personal-npm-package-8d27afd42ca5)  
+Mar 23 2023 - [Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)  
+Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)
+
 
 ### Journal
 

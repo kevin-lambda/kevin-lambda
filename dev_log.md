@@ -44,6 +44,10 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 
 UX/UI Don't make me think! A basic business page
 
+**Articles**  
+[Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)    
+[Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)  
+
 On a project building a small business webpage for H, I delved heavily into ui and design.
 
 For my approach, Steve Krug's essential web usability book says it all in the title, _Don't Make Me think_.
@@ -120,6 +124,9 @@ Repeat and layer the stories.
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;">
+
+
+
 
 [⬆️ Back To Contents](#-contents)
 

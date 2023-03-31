@@ -27,7 +27,6 @@ Mar 13 2023 - [Medium: Jr dev asks — Why would I want to publish a personal np
 Mar 23 2023 - [Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)  
 Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)
 
-
 ### Journal
 
 [Jan 16 2023: Starting Again](#journal-16-jan-2023)  
@@ -37,16 +36,31 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Feb 26 2023: A search history](#journal-26-feb-2023)  
 [Mar 13 2023: Does it scale?](#journal-13-mar-2023)  
 [Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)
+[Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)
 
 # 📖 ENTRIES
+
+## Journal 31 Mar 2023
+
+Two things at once, three times as slow
+
+I'm currently learning nextjs 13, which recently released it's 13.2 version. When I ran `npx create-next-app@latest --experimental-app` I decided to also turn on typescript.
+
+I have no experience with typescript.
+
+So now, I'm learning two new things at once. It feels three times as slow.
+
+If it can be helped, maybe just learn one new thing at a time.
+
+[⬆️ Back To Contents](#-contents)
 
 ## Journal 21 Mar 2023
 
 UX/UI Don't make me think! A basic business page
 
 **Articles**  
-[Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)    
-[Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)  
+[Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)  
+[Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)
 
 On a project building a small business webpage for H, I delved heavily into ui and design.
 
@@ -124,9 +138,6 @@ Repeat and layer the stories.
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 100%;">
-
-
-
 
 [⬆️ Back To Contents](#-contents)
 

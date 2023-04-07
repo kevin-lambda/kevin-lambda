@@ -37,8 +37,23 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Mar 13 2023: Does it scale?](#journal-13-mar-2023)  
 [Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)
 [Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)
+[Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
 
 # 📖 ENTRIES
+
+## Journal 07 Apr 2023
+
+Don't use it like that!
+
+I interacted with the [This Page Belongs To](#this-page-belongs-to) project in a way I hadn't before. And it broke it.
+
+I accessed the live hosted database via postbird to modify some data. I hadn't done this before since deploying the site. This caused new POSTs to the database to order themseves in a weird way. This broke my functionality of showing the current owner.
+
+I had to refresh my knowledge of the dev environment to work on this project. Luckily (or rather making my own luck), I left myself clear steps of how to do just that. I got back in the dev environment and a little bit of bug fixing later it works!
+
+The hints I leave for future self are paying off!
+
+[⬆️ Back To Contents](#-contents)
 
 ## Journal 31 Mar 2023
 

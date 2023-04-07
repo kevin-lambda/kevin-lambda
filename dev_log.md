@@ -36,7 +36,7 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Feb 26 2023: A search history](#journal-26-feb-2023)  
 [Mar 13 2023: Does it scale?](#journal-13-mar-2023)  
 [Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)  
-[Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)
+[Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)  
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
 
 # 📖 ENTRIES

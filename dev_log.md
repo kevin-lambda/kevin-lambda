@@ -162,60 +162,60 @@ Next.js, use client, next useRouter, next link, router.refresh, Prisma, Prisma f
 
 For this project, I focused on making a checklist of major tasks to build a CRUD app.
 
-**SETUP**
-[] create project npx
-[] create psql database for project. createdb
+**SETUP**  
+[] create project npx  
+[] create psql database for project. createdb  
 [] install dependencies. prisma, @prisma/client, ts-node
 
-**DB CONFIGURE CONNECTION**
-[] configure prisma ORM, to connect to the database URL, via .env if needed
-[] make schemas
-[] sync prisma schema to postgres via `npx prisma migrate dev --name init` command
+**DB CONFIGURE CONNECTION**  
+[] configure prisma ORM, to connect to the database URL, via .env if needed  
+[] make schemas  
+[] sync prisma schema to postgres via `npx prisma migrate dev --name init` command  
 [] adjust script to ensure schemas are sync in deploy build `"build": prisma generate && next build`
 
-**DB SEED**
-[] adjust package to make a prisma seed command ` "prisma": { "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts" },`
-[] make a seed file in /prisma
+**DB SEED**  
+[] adjust package to make a prisma seed command ` "prisma": { "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts" },`  
+[] make a seed file in /prisma  
 [] run the seed command with `npx prisma db seed`
 
-**DB INSTANCE**
+**DB INSTANCE**  
 [] make the single prisma instance in a file in /lib
 
-**API ROUTE HANDLING**
-[] create folder structure in /app. /api /schema and /[id]. create route.ts for each folder
+**API ROUTE HANDLING**  
+[] create folder structure in /app. /api /schema and /[id]. create route.ts for each folder  
 [] get ready to make GET, POST in /api/schema. GET single, PUT, DELETE in /api/schema/[id]
 
-**API ROUTES**
-[] import prisma and NextResponse as needed
-[] GET all (request){}. prisma.schema.findMany()
-[] POST(request){}. prisma.schema.create({data:{ ..... }}), body = await request.json()
-[] GET single (request, {params}){}. prisma.schema.findUnique({where:{.... }}), params 2nd from GET
-[] PUT (request,{params}){}. prisma.schema.update({where:{ ... }},data:{ ... }), params from PUT , body from request
+**API ROUTES**  
+[] import prisma and NextResponse as needed  
+[] GET all (request){}. prisma.schema.findMany()  
+[] POST(request){}. prisma.schema.create({data:{ ..... }}), body = await request.json()  
+[] GET single (request, {params}){}. prisma.schema.findUnique({where:{.... }}), params 2nd from GET  
+[] PUT (request,{params}){}. prisma.schema.update({where:{ ... }},data:{ ... }), params from PUT , body from request  
 [] DELETE (request,{params}){}. prisma.user.delete({where:{ ... }}), params from PUT
 
 **API FETCH FUNCTION CALLS**
-[] get all - fetch(url,{method:"GET", cache:"no-store"})
-[] get one - fetch(url/${id},{method:"GET", cache:"no-store"})
-[] post    - fetch(url,{method:"POST", body:JSON.stringify(body)})
-[] put     - fetch(url/${id},{method:"PUT", body:JSON.stringify(body)})
+[] get all - fetch(url,{method:"GET", cache:"no-store"})  
+[] get one - fetch(url/${id},{method:"GET", cache:"no-store"})  
+[] post    - fetch(url,{method:"POST", body:JSON.stringify(body)})  
+[] put     - fetch(url/${id},{method:"PUT", body:JSON.stringify(body)})  
 [] delete - fetch(url/${id},{method:"DELETE"})
 
-**FRONTEND ROUTING**
-[] home page, with all users, edit, delete, add `/app/page.tsx`
+**FRONTEND ROUTING**  
+[] home page, with all users, edit, delete, add `/app/page.tsx`  
 [] single user page `/app/users/[id]/page.tsx`
 
-**FRONTEND USING FETCH FUNCTIONS**
-[] get all - const users = await getAllUsers()
-[] get one - const fetchedData = await getOneUser(params.id)
-[] post - await postUser(body)
-[] put - putUser(editBody, user.id)
+**FRONTEND USING FETCH FUNCTIONS**  
+[] get all - const users = await getAllUsers()  
+[] get one - const fetchedData = await getOneUser(params.id)  
+[] post - await postUser(body)  
+[] put - putUser(editBody, user.id)  
 [] delete - deleteUser(user.id)
 
-**DEPLOYING: DATABASE**
-[] make new cloud db instance and get connection url
+**DEPLOYING: DATABASE**  
+[] make new cloud db instance and get connection url  
 [] sync local prisma config to cloud db by running `prisma db push` ? or maybe `prisma migrate deploy`
 
-**DEPLOYING: WEBSITE**
+**DEPLOYING: WEBSITE**  
 [] deployed on vercel with environment variables to Database and base domain url
 
 X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app with nextjs was acheived.

@@ -9,6 +9,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [NPS Stamps](#project-nps-stamps)
 1. [This Page Belongs To](#this-page-belongs-to)
 1. [npm @kevin-lambda/kindly](#npm-kindly)
+1. [next CRUD](#next-crud)
 
 ### Tech and skills used
 
@@ -20,6 +21,7 @@ Feb 14 2023 ; Panelbear, Cronitor RUM ; [Feb 14 2023: First Migration](#journal-
 Feb 15 2023 ; code sandbox, MUI, react-chart-js-2 ; [Feb 15 2023: First Takehome](#journal-15-feb-2023)  
 Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [This Page Belongs To](#this-page-belongs-to)  
 Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)
+Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)
 
 ### Articles Published
 
@@ -40,6 +42,266 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
 
 # 📖 ENTRIES
+
+## Next CRUD
+
+**Date:** 04/12/2023  
+**Description:** CRUD application showcasing Next.js React framework and Prisma ORM  
+**Link:** n/a  
+**Notable Technologies:** Next.js, Prisma, Vercel, Typescript  
+**Learning focus:** Build CRUD functionality with Next.js and Prisma ORM
+
+This is a basic Create Read Update Delete functionality demonstration.
+
+#### **Reviewed:**
+
+Next.js, use client, next useRouter, next link, router.refresh, Prisma, Prisma findMany, Create, findUnique ,update ,delete, Typescript, fetch, fetch method, fetch body, JSON.stringify(body) npx, schema, db sync, db migration, app directory routing, params routing
+
+#### **Extensions:**
+
+- Deploy the site. Try after app directory routing and fetch are stable.
+
+<img src="./assets/12apr23_home.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+<img src="./assets/12apr23_single.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **Next.js**
+
+- **Routing**
+
+  - Next.js 13.2 uses a directory based routing with a directory called app
+    - Pages are routed by creating a page file in directories
+    - URL '/' = `/app/page.tsx`
+    - URL '/users' = `/app/users/page`
+    - URL '/users/:id' = `/app/users/[id]/page`
+  - This applies to api routes as well
+
+- **Where to put other files**
+
+  - Other files like components can be in other directories in the root folder. They can be accessed like normal
+
+- **Server vs client components and rendering**
+
+  - Mainly for performance reasons, Next.js has a special way of rendering files based on if it is a server or client component.
+  - Server components are limited to **NON-INTERACTIVE ELEMENTS**.
+  - Client components can contain interactive elements such as buttons, forms
+
+  - Next.js treats components as **SERVER** components by **DEFAULT**
+  - When making interactive elements, we need to use `"use-client"` to mark the file as a client component
+
+  - In summary, you need to consider if a component is interactive or not, and define it as such.
+
+  <img src="./assets/12apr23_components.jpg" alt="Backend logic"  style="display: block;  margin-left: auto;  margin-right: auto;  margin-top: 1rem;  margin-bottom: 1rem;  width: 50%;">
+
+- **Rendering techniques**
+
+  - Server components stay entirely on the server, are prerendered, cached (saved), and send a "finished" file to the browser. So the browser doesn't need to think to render a server component.
+  - Client components kind of can prerender half of itself on the server (HTML skeleton), is sent to the client, then the client finishes rendering the rest of the interactive elements (hydration).
+  - Both server and client components can be rendered in any of the below ways, with some difference in method. But similar in rendering strategy.
+
+  - All of the below basically says _when_ to do a full fresh render (which gets fresh data). Never, sometimes, or always.
+  - **STATIC RENDERING** For both SERVER and CLIENT components. After the first render which caches the finished result, by default any future requests are served the cached version, so it saves work by not having to rerender. Use this if data is not changing.
+  - **REVALIDATION** For certain functions like fetch, there is an option to define how often the cache will refresh. "no-cache" means, do not save a render and always freshly render something aka dynamic rendering. "60" can mean every 60 seconds do a fresh render and refresh the data at that interval.
+  - **DYNAMIC RENDERING** If using a function or fetch that is dynamic, such as useSearchParams() or fetch cache: 'no-store', the component (client or server) will become dynamically rendered. This means the component will be rendered freshly, and won't send a saved (cached) version. Basically, it is **IMPORTANT** to use this for data that is frequently changing.
+
+  - In summary, next.js requires you to think about how frequently data may be changing and define it.
+
+- **File types**
+
+  - Next.js file routing via app directory has certain file names reserved that do things, including:
+  - page makes a page
+  - layout makes a layout that the page lives in
+  - error will send that error page upon an error
+  - route, this is usually for api endpoint routes
+
+- **SUMMARY**
+  - use directories as the page routing system
+  - consider if a component has interactive elements or not, then designate it as client if needed
+  - consider how often data might change, then designate it as fully dynamic or set a revalidation interval
+
+#### **Prisma**
+
+- Prisma is a ORM similar to sequelize. It is **NOT** a database type. It _handles_ the talking to the database. Postgresql is a database type.
+
+- **Configuration**
+
+  - Similar to sequelize (prisma is way easier a word to type), you need to set up certain things.
+  - Database url (how to connect to the database), schema (tables), syncing method (send the instructions we wrote in prisma to the actual database to set up the schema)
+  - seeding is optional but usually done
+  - Data syncing is called _migration_
+  - Before a build (for production deployment), database needs to be synced. This is important.
+
+- **Seeding**
+
+  - Currently, seeding needs to be done/adjusted with a special script. Dunno what this is about.
+  - Otherwise, after script adjustment seed with `npx prisma db seed`
+
+- **Migration**
+
+  - With initial migration (sync written prisma commands to sync db with schema), we can use `npx prisma migrate dev --name init`
+  - For deployment, this works... `prisma db push` or maybe `prisma migrate deploy`
+
+- **Instances**
+  - Like sequelize, we only want one connection instance to the database from our app at a time. Once we get a prisma instance, we then export and do all of our operations (api crud) on it.
+
+#### **CRUD nextjs prisma checklist**
+
+For this project, I focused on making a checklist of major tasks to build a CRUD app.
+
+**SETUP**
+[] create project npx
+[] create psql database for project. createdb
+[] install dependencies. prisma, @prisma/client, ts-node
+
+**DB CONFIGURE CONNECTION**
+[] configure prisma ORM, to connect to the database URL, via .env if needed
+[] make schemas
+[] sync prisma schema to postgres via `npx prisma migrate dev --name init` command
+[] adjust script to ensure schemas are sync in deploy build `"build": prisma generate && next build`
+
+**DB SEED**
+[] adjust package to make a prisma seed command ` "prisma": { "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts" },`
+[] make a seed file in /prisma
+[] run the seed command with `npx prisma db seed`
+
+**DB INSTANCE**
+[] make the single prisma instance in a file in /lib
+
+**API ROUTE HANDLING**
+[] create folder structure in /app. /api /schema and /[id]. create route.ts for each folder
+[] get ready to make GET, POST in /api/schema. GET single, PUT, DELETE in /api/schema/[id]
+
+**API ROUTES**
+[] import prisma and NextResponse as needed
+[] GET all (request){}. prisma.schema.findMany()
+[] POST(request){}. prisma.schema.create({data:{ ..... }}), body = await request.json()
+[] GET single (request, {params}){}. prisma.schema.findUnique({where:{.... }}), params 2nd from GET
+[] PUT (request,{params}){}. prisma.schema.update({where:{ ... }},data:{ ... }), params from PUT , body from request
+[] DELETE (request,{params}){}. prisma.user.delete({where:{ ... }}), params from PUT
+
+**API FETCH FUNCTION CALLS**
+[] get all - fetch(url,{method:"GET", cache:"no-store"})
+[] get one - fetch(url/${id},{method:"GET", cache:"no-store"})
+[] post    - fetch(url,{method:"POST", body:JSON.stringify(body)})
+[] put     - fetch(url/${id},{method:"PUT", body:JSON.stringify(body)})
+[] delete - fetch(url/${id},{method:"DELETE"})
+
+**FRONTEND ROUTING**
+[] home page, with all users, edit, delete, add `/app/page.tsx`
+[] single user page `/app/users/[id]/page.tsx`
+
+**FRONTEND USING FETCH FUNCTIONS**
+[] get all - const users = await getAllUsers()
+[] get one - const fetchedData = await getOneUser(params.id)
+[] post - await postUser(body)
+[] put - putUser(editBody, user.id)
+[] delete - deleteUser(user.id)
+
+**DEPLOYING: DATABASE**
+[] make new cloud db instance and get connection url
+[] sync local prisma config to cloud db by running `prisma db push` ? or maybe `prisma migrate deploy`
+
+**DEPLOYING: WEBSITE**
+[] deployed on vercel with environment variables to Database and base domain url
+
+X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app with nextjs was acheived.
+
+#### **Detailed steps and gotchas**
+
+- **psql**
+
+  - I messed up psql because prisma required a password to access postgres. now psql has a password for default user postgres. It's confusing.
+  - Anyway, to access psql do this:
+    1. `psql -h localhost -U postgres -d <anyDatabase> -W`
+    1. `postgres`
+  - postbird wants a password too
+  - maybe check out this link to fix issue later. https://dba.stackexchange.com/questions/83164/postgresql-remove-password-requirement-for-user-postgres
+  - create the database with the command `createdb <name of db>`. Make sure postbird or db tool is closed.
+
+- **Prisma set up**
+
+  - `npm i prisma --save-dev`
+  - `npm i @prisma/client`
+  - `npx prisma init`
+  - check schema.prisma .env file, input database url
+  - to sync to db `npx prisma migrate dev --name init`
+  - adjust json.package with `"build": prisma generate && next build`
+  - and config seeding in json.package with
+    ```
+      "prisma": {
+        "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+      },
+    ```
+  - make a seed file `seed.ts`
+  - finally run `npx prisma db seed`
+
+- **Backend API**
+
+  - Import prisma
+  - In Next.js functions named after RESTful (GET, PUT, POST, DELETE) come with certain things like request for the body, or params. I don't know if this is limited to the api directory or route file.
+
+    - `export async function GET(request){}`
+    - `export async function POST(request){}`
+    - `export async function GET(request,{params}){}`
+    - `export async function PUT(request,{params}){}`
+    - `export async function DELETE(request,{params}){}`
+
+  - For GET request, also need a current workaround thing called NextResponse in order to return json data nicely. import `{NextResponse} from 'next/server'`
+  - GET `const users = await prisma.user.findMany()` prisma gets the db connection instance, user is the schema/table, findMany(), finds all
+    - ` return NextResponse.json({ users })` NextResponse is nextjs's way of sending a response. we need to put .json to return a json object. then we send whatever object in the return
+  - POST ` const makeUser = await prisma.user.create({DATA_OBJ_HERE})`, create expects an object
+  - GET single `const getInt = +params.id` `prisma.user.findUnique({where:{id: ___ }})`
+    - `params.id` turns a string into a number. findUnique,where,id expects a number
+  - PUT `prisma.user.update({where:{},data:{}})`
+    - update,where expects a number id
+    - update, data expects a data object matching the schema
+  - DELETE `prisma.user.delete({where:{}})`
+
+    - delete,where expects a number id
+
+  - **Fetching Function**
+
+    - get all. fetch(url,{method:"GET", cache:"no-store"}) // DYNAMIC RENDERING
+    - get one. fetch(url/${id},{method:"GET", cache:"no-store"}) // DYNAMIC RENDERING
+    - post . fetch(url,{method:"POST", body:JSON.stringify(body)}) //STATIC
+    - put . fetch(url/${id},{method:"PUT", body:JSON.stringify(body)}) //STATIC
+    - delete . fetch(url/${id},{method:"DELETE"}) //STATIC
+
+  - **Frontend caling fetch function**
+
+    - GET
+
+      - get all - const users = await getAllUsers()
+      - get one - const fetchedData = await getOneUser(params.id)
+
+    - POST, PUT
+
+      - UI is form, label, input, onChange, value pattern
+      - onChanges are setting states
+      - onChange handlers include preventDefault, body with state object, fetch function, setState clearing, router.refresh from next/navigation
+      - router.refresh updates the fetches, kinda like useEffect
+
+      - post - await postUser(body)
+      - put - putUser(editBody, user.id)
+
+    - DELETE
+      - delete - deleteUser(user.id)
+
+[⬆️ Back To Contents](#-contents)
 
 ## Journal 07 Apr 2023
 

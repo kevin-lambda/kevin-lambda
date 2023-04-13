@@ -20,8 +20,8 @@ Feb 02 2023 ; api CORS, pico css ; [NPS Stamps](#project-nps-stamps)
 Feb 14 2023 ; Panelbear, Cronitor RUM ; [Feb 14 2023: First Migration](#journal-14-feb-2023)  
 Feb 15 2023 ; code sandbox, MUI, react-chart-js-2 ; [Feb 15 2023: First Takehome](#journal-15-feb-2023)  
 Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [This Page Belongs To](#this-page-belongs-to)  
-Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)
-Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)
+Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)  
+Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
 
 ### Articles Published
 

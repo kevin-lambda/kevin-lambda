@@ -57,7 +57,7 @@ This is a mock up exercise for a small business with an app that generates meal 
 
 #### **Reviewed:**
 
-nextjs routing, next/link, next/image, file organization, globals css with bulma/pico css library interaction, website layout design, copy, hero responsive banner image sizing css, fontawesome
+Nextjs routing, next/link, next/image, file organization, globals css with bulma/pico css library interaction, website layout design, copy, hero responsive banner image sizing css, fontawesome
 
 #### **To look into:**
 

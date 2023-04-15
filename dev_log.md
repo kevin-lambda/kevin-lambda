@@ -10,6 +10,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [This Page Belongs To](#this-page-belongs-to)
 1. [npm @kevin-lambda/kindly](#npm-kindly)
 1. [next CRUD](#next-crud)
+1. [Bowlerator](#bowlerator)
 
 ### Tech and skills used
 
@@ -20,8 +21,9 @@ Feb 02 2023 ; api CORS, pico css ; [NPS Stamps](#project-nps-stamps)
 Feb 14 2023 ; Panelbear, Cronitor RUM ; [Feb 14 2023: First Migration](#journal-14-feb-2023)  
 Feb 15 2023 ; code sandbox, MUI, react-chart-js-2 ; [Feb 15 2023: First Takehome](#journal-15-feb-2023)  
 Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [This Page Belongs To](#this-page-belongs-to)  
-Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)
-Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)
+Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)  
+Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
+Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)
 
 ### Articles Published
 
@@ -42,6 +44,92 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
 
 # 📖 ENTRIES
+
+## Bowlerator
+
+**Date:** 04/14/2023  
+**Description:** A basic small business site with a bowl meal idea generator  
+**Link:** [https://bowlerator.vercel.app/](https://bowlerator.vercel.app/)  
+**Notable Technologies:** next.js, bulma css, pico css, vercel  
+**Learning focus:** Practice basic webpage layout design and copy
+
+This is a mock up exercise for a small business with an app that generates meal bowl ideas.
+
+#### **Reviewed:**
+
+nextjs routing, next/link, next/image, file organization, globals css with bulma/pico css library interaction, website layout design, copy, hero responsive banner image sizing css, fontawesome
+
+#### **To look into:**
+
+scss, typography, color theory, copy, mobile layout design
+
+#### **Extensions:**
+
+[H+] Logic for good ingredient pairings  
+[M] Bowl ingredient amounts  
+[M] Bowl cuisine selector  
+[L] More ingredients with cuisine labels
+
+<img src="./assets/14mapr2023_coverPage.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **Basic Website Layout Design**
+
+I followed my own advice as I wrote in _[Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)_. The guide I wrote was actually helpful in designing the layout. When designing, I noticed there were three main gaps in the design relating to typography,color theory, and copy. More on the design later. First, here were the implementation challenges for the layout design.
+
+**Hero background banner**
+Here is the css to do a hero background banner. Note that this method ties the image to the css. There's probably a better way, but this is one way.
+
+```
+.hero {
+  background-color: #b9a477; /* Used if the image is unavailable */
+  background-image: url("../assets/hero.jpg");
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the image */
+  height: 65vh;
+}
+```
+
+**Fully responsive design**
+The design is mildly responsive. But it is far from a polished user experience. Techniques I recall that I would like to implement in the next round are
+
+- Changing images based on viewport
+- Mobile layout design fundamentals, currently building for desktop first
+- Navbar hamburger collapse
+- Column responsive spacing management
+
+#### **Further design studies**
+
+Here's a list of study topics for design based on issues I came across when building.
+
+**Typeface choice**
+
+- What general characteristics of typefaces go well with certain designs. Fundamentals
+- Typeface pairings
+- Alignment
+
+**Color theory**
+
+- What basic colors pair well together
+- How to theme a website color wise, how many, when and where to use colors
+- Image and text pairing, what makes certain colors readable over images
+
+#### **CSS library preferences**
+
+I prefer bulma css, it isn't as heavy as tailwind, but not so minimal as pico css. I ran into issues trying to do more complex things with pico css. Before refactoring to bulma.
+
+I'll use pico css if its a non design focused app. Otherwise I'll use bulma css for my default choice.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Next CRUD
 
@@ -303,6 +391,8 @@ X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 07 Apr 2023
 
 Don't use it like that!
@@ -317,6 +407,8 @@ The hints I leave for future self are paying off!
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 31 Mar 2023
 
 Two things at once, three times as slow
@@ -330,6 +422,8 @@ So now, I'm learning two new things at once. It feels three times as slow.
 If it can be helped, maybe just learn one new thing at a time.
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 21 Mar 2023
 
@@ -418,6 +512,8 @@ Repeat and layer the stories.
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 13 Mar 2023
 
 Does it scale?
@@ -431,6 +527,8 @@ This is just a giant markdown file, as low stakes and simple as it can get. Afte
 From this experience, I forsee myself learning how to better think about correctly sized capabilities in the future.
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## npm kindly
 
@@ -465,6 +563,8 @@ _Anyway_, abstracting functions out to a npm package takes a step towards brevit
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 26 Feb 2023
 
 A search history
@@ -476,6 +576,8 @@ A search history
 - what is a script
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## This Page Belongs To
 
@@ -897,6 +999,8 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 15 Feb 2023
 
 Takehome assessment - P
@@ -933,6 +1037,8 @@ Takehome assessment - P
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 14 Feb 2023
 
 Service migration
@@ -942,6 +1048,8 @@ Made my first service migration from Panelbear to Cronitor. Panelbear was aquire
 In this case, migration was a simple 2 liner change. I'd guess things like this are where developer knowledge and experience with a codebase is key. It would have been a non-trivial task to migrate a service, without originally having done it myself.
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Project NPS stamps
 
@@ -1047,6 +1155,8 @@ Finds national park passport stamps for you based on your state. Due to the impl
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 27 Jan 2023
 
 2.75/3 of a project is figuring out how to connect technologies together. This is the least fun.
@@ -1062,6 +1172,8 @@ Finds national park passport stamps for you based on your state. Due to the impl
 Was able to run image quantization, connect to image api, connect to palette api. But couldn't link everything together.
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Project Dakine Ipsum
 
@@ -1123,6 +1235,8 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 
 [⬆️ Back To Contents](#-contents)
 
+<br><br>
+
 ## Journal 16 Jan 2023
 
 - 1/3 of a project is figuring out how to connect technologies together. This is the least fun.
@@ -1130,6 +1244,8 @@ Github pages will have trouble finding the correct paths for files to run. You'l
 - 1/3 is fixing everything. This is the most challenging, and then most rewarding.
 
 [⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Project Portfolio v2
 

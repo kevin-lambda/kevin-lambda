@@ -11,6 +11,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [npm @kevin-lambda/kindly](#npm-kindly)
 1. [next CRUD](#next-crud)
 1. [Bowlerator](#bowlerator)
+1. [How old am I](#how-old-am-i)
 
 ### Tech and skills used
 
@@ -23,7 +24,8 @@ Feb 15 2023 ; code sandbox, MUI, react-chart-js-2 ; [Feb 15 2023: First Takehome
 Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [This Page Belongs To](#this-page-belongs-to)  
 Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)  
 Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
-Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)
+Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)  
+Apr 20 2023 ; Routine website build and deployment ; [How old am I](#how-old-am-i)
 
 ### Articles Published
 
@@ -44,6 +46,38 @@ Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, wha
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
 
 # 📖 ENTRIES
+
+## How old am I
+
+**Date:** 04/20/2023  
+**Description:** A novelty website displaying my current age  
+**Link:** [https://how-old-is-kql.vercel.app/](https://how-old-is-kql.vercel.app/)  
+**Notable Technologies:** next.js, bulma css, vercel  
+**Learning focus:** Static website end to end delivery practice
+
+This is a novelty website displaying my age because I always forget my age.
+
+#### **Reviewed:**
+
+Basic website build and deployment process
+
+<img src="./assets/20apr2023.jpg" alt="age"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **How fast could I deliver a simple website **
+
+It took 1 hour, from npx to deploy. It was good practice to get the skill of deploying a simple static page to feel like a routine task.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Bowlerator
 

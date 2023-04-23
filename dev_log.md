@@ -25,7 +25,7 @@ Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [Th
 Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)  
 Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
 Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)  
-Apr 20 2023 ; Routine website build and deployment ; [How old am I](#how-old-am-i)
+Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)
 
 ### Articles Published
 

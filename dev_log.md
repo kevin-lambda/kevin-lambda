@@ -44,9 +44,58 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Mar 13 2023: Does it scale?](#journal-13-mar-2023)  
 [Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)  
 [Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)  
-[Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)
+[Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)  
+[May 01 2023: Mocha JAVA latte](#journal-01-may-2023)
 
 # 📖 ENTRIES
+
+## Journal 1 May 2023
+
+Mocha JAVA latte
+
+Today I tried a mock work experience program with java. It was from this site [the forage](https://www.theforage.com/). It was a fun experience.
+
+### Thoughts:
+
+#### General
+
+- It was somewhat refreshing to enter a completely new dev environment, where I didn't know how anything worked.
+- I got to just poke around, guess and check. See what things did what. It was a fun exploration.
+- public static void. whats up with all this boilerplate?
+
+#### Java
+
+- the intelliJ IDEA (IDE) was pretty cool. One big thing I noticed about java or at least the editor. The variables we declare are STRONGLY linked to each other. And you'll know it when at development time. Such as a class method with a double parameter better only be invoked with a double argument. Even in different files. It will know and yell at you.
+- Its cool how java specifically defines public vs private. I eventually figured this out. But it's cool the control we can have over what variables are shared and how in front of our face it is. Since we always (?) have to declare public or private
+- I haven't worked with classes since ever. It's not too bad. But it does feel like... programming programming. Whereas javascript feels loose and flexible. I can see why big enterprises might want something like java. Bigger product needs more built in checks.
+
+#### theforage
+
+- the program I did was just two tasks, create a class and some tests. It was a good intro to java, but not really helpful in gaining real world experience. I highly doubt that any real ticket is something soooo small. But maybe.
+- Felt more like a tutorial assignment than a work experience simulation.
+- I expect the longer programs to have more challenging content. Not that this wasn't challenging for me; I'd never used java before.
+
+Overall, I enjoyed it. I'll be back to try the tougher programs.
+
+<img src="./assets/1may2023program.jpg" alt="age"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 30%;">
+
+<img src="./assets/1may2023tests.jpg" alt="age"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 30%;">
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## How old am I
 

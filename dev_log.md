@@ -25,7 +25,8 @@ Feb 25 2023 ; PERN (postgresql, express, react, nodejs) stack, Render PaaS ; [Th
 Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)  
 Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
 Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)  
-Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)
+Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)  
+May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
 
 ### Articles Published
 
@@ -49,7 +50,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 # 📖 ENTRIES
 
-## Journal 1 May 2023
+## Journal 01 May 2023
 
 Mocha JAVA latte
 

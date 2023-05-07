@@ -45,11 +45,24 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Mar 21 2023: UX/UI Don't make me think! A basic business page](#journal-21-mar-2023)  
 [Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)  
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)  
-[May 01 2023: Mocha JAVA latte](#journal-01-may-2023)
+[May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
+[May 06 2023: CRUD Linked Lists](#journal-06-may-2023)
 
 # 📖 ENTRIES
 
-## Journal 1 May 2023
+## Journal 06 May 2023
+
+CRUD Linked Lists
+
+I built a singlely linked list from scratch with CRUD. It was the most effective way for me to actually get a feel for how linked lists work. Probably this is the same for most data structures. Just build it to understand it the best.
+
+[The spaghetti code for linked list crud](https://github.com/kevin-lambda/crack-code-int/blob/main/linked_lists/create-linked-list.js)
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
+
+## Journal 01 May 2023
 
 Mocha JAVA latte
 

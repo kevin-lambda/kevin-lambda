@@ -701,7 +701,7 @@ A search history
 
 #### **!!! Upkeep:**
 
-- !!!!!! MAY 21 2023. Render database will shut down because it only lasts for 90 days. Will need to either make a copy of the database... somehow. Then in render, make a new database instance, get it's internal connection URL, and use it as the key in the web service enviroment variables.
+- !!!!!! August 09 2023. Render database will shut down because it only lasts for 90 days. Will need to either make a copy of the database... somehow. Then in render, make a new database instance, get it's internal connection URL, and use it as the key in the web service enviroment variables.
 
 #### **Reviewed:**
 

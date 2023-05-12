@@ -47,9 +47,21 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Mar 31 2023: Two things at once, three times as slow](#journal-31-mar-2023)  
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)  
 [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
-[May 06 2023: CRUD Linked Lists](#journal-06-may-2023)
+[May 06 2023: CRUD Linked Lists](#journal-06-may-2023)  
+[May 11 2023: psql reminder](#journal-11-may-2023)
 
 # 📖 ENTRIES
+
+## Journal 11 May 2023
+
+Reminder to get into psql
+
+`psql -h localhost -U postgres -W`
+`postgres`
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 06 May 2023
 

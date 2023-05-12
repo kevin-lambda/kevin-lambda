@@ -56,7 +56,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 Reminder to get into psql
 
-`psql -h localhost -U postgres -W`
+`psql -h localhost -U postgres -W`  
 `postgres`
 
 [⬆️ Back To Contents](#-contents)

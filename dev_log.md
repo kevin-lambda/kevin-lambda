@@ -12,6 +12,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [next CRUD](#next-crud)
 1. [Bowlerator](#bowlerator)
 1. [How old am I](#how-old-am-i)
+1. [Solari](#solari)
 
 ### Tech and skills used
 
@@ -26,7 +27,8 @@ Mar 08 2023 ; npm package publishing ; [npm @kevin-lambda/kindly](#npm-kindly)
 Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#next-crud)  
 Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)  
 Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)  
-May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)
+May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
+May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)
 
 ### Articles Published
 
@@ -51,6 +53,123 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [May 11 2023: psql reminder](#journal-11-may-2023)
 
 # 📖 ENTRIES
+
+## Solari
+
+**Date:** 05/17/2023  
+**Description:** A solar energy analysis tool modeled with three years of data  
+**Link:** [https://solar-anywhere-data.vercel.app/](https://solar-anywhere-data.vercel.app/)  
+**Notable Technologies:** recharts, next.js, bulma css, vercel  
+**Learning focus:** Make a tool modeled on actual data presented scientifically
+
+This is a planning tool that simulates energy output of a solar energy project using historical data for 2020 to 2023 based in Inner Sunset neighborhood of San Francisco.
+
+#### **Reviewed:**
+
+Bulk data analysis, nextjs 13, bulma css, recharts, bulk props passing
+
+#### **To look into:**
+
+Ways to organize prop passing, details of setting state between components, understanding more about solar data
+
+#### **Extensions:**
+
+[M] incorporate cost effects of missed energy demand days  
+[H] add more detailed variable controls  
+[H] find a less specific question to answer
+
+<img src="./assets/17may2023main.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+<img src="./assets/17may2023bottom.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **Passing state as props**
+
+how to handle changing state from another component using inputs form
+
+For this project I intentionally wanted to work with modular code and passing props. In this case I needed a child input form component to set the state of a parent component.
+
+I did this by sending the setState as a prop to the child component. This works, but I started to need to send a lot of setStates and its on the edge of the point of not scaling well.
+<img src="./assets/18may2023props.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+Another challenge was that I needed the default values of the inputs to match the parent component state. That means I just ended up passing both the state and setstate for many variables to the child component via props. Then a third complication was I needed a another group of states for the inputs.
+
+This has lead to some unexpected behavior when using the input controls. After this experience, I understand why we would want a better way to do this.
+
+#### **Hardcoding bulk raw data**
+
+The raw data has about 1200 lines of values in an excel file. I did initial parsing into JSON format in excel. I briefly looked for a tool to do this, but it seemed faster just to do it myself.
+
+After parsing in excel, I copied all 1200 lines then tried to paste it into a vscode file. Apparently, there is a character limit for pasting. When pasting, the data just stopped 2/3s of the way. I manually copied the second half the data and pasted again.
+
+I think there must be another way to paste hardcoded bulk data into vscode.
+<img src="./assets/18may2023state.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+#### **Type errors in data calculations**
+
+This is the first project where I started to run into type errors and javascript "silently failing". Because I was doing a lot of calculations and working with floats and rounding and summing, I started to get mysterious calculation errors.
+
+Math that I know works, was suddenly not working.
+
+Then I saw that methods I was using returned strings instead of numbers. Such as `toFixed()` Even though the console log looked like numbers, it was a string.
+
+I can see why for data calculation intensive projects, a strongly typed language can be useful.
+
+#### **recharts**
+
+recharts is the most intuitive chart library I've used so far.
+
+<img src="./assets/18may2023rechart.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+The mental model I understand it with is
+
+- have a data set `array of objects`
+- choose a chart type and link it with the data `<BarChart />`
+- use child components of that chart to customize the chart `<XAxis/> <Tooltip/>`
+
+The documentation is generally very helpful and clear. I'll probably be using this again.
+
+#### **Solar data**
+
+Before I could present and calculate any solar data, I needed to understand it better.
+
+- Global Horizontal Irradiance (GHI) was one of the fields for the raw data. But there was also Dirent Normal Irradiance (DNI) and Diffuse Horizontal Irradiance (DHI). I learned that DNI and DHI are components of GHI. Therefore to get the total irradiance, the project needed to use GHI.
+- Power and Energy are different. Understanding this at a fundamental level was important in doing the correct calculations. Power is at an instant in time. Energy is that power over a period of time.
+- The main calculation in the project is solving for energy per day of a solar installation. I used the solar irradiance, applied it to the solar installation area and panel effciency over an estimated 5 hour baseline, then compared that energy to the measured energy data.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 11 May 2023
 

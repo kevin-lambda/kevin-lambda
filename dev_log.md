@@ -102,6 +102,7 @@ how to handle changing state from another component using inputs form
 For this project I intentionally wanted to work with modular code and passing props. In this case I needed a child input form component to set the state of a parent component.
 
 I did this by sending the setState as a prop to the child component. This works, but I started to need to send a lot of setStates and its on the edge of the point of not scaling well.
+
 <img src="./assets/18may2023props.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
@@ -121,6 +122,7 @@ The raw data has about 1200 lines of values in an excel file. I did initial pars
 After parsing in excel, I copied all 1200 lines then tried to paste it into a vscode file. Apparently, there is a character limit for pasting. When pasting, the data just stopped 2/3s of the way. I manually copied the second half the data and pasted again.
 
 I think there must be another way to paste hardcoded bulk data into vscode.
+
 <img src="./assets/18may2023state.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;

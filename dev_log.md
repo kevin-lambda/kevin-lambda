@@ -85,13 +85,13 @@ Ways to organize prop passing, details of setting state between components, unde
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 50%;">
-<!-- <img src="./assets/17may2023bottom.jpg" alt="Backend logic"
+<img src="./assets/17may2023bottom.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 50%;"> -->
+  width: 50%;">
 
 ### Dev learnings ========================================================
 
@@ -103,13 +103,13 @@ For this project I intentionally wanted to work with modular code and passing pr
 
 I did this by sending the setState as a prop to the child component. This works, but I started to need to send a lot of setStates and its on the edge of the point of not scaling well.
 
-<!-- <img src="./assets/18may2023props.jpg" alt="Backend logic"
+<img src="./assets/18may2023props.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 50%;"> -->
+  width: 50%;">
 
 Another challenge was that I needed the default values of the inputs to match the parent component state. That means I just ended up passing both the state and setstate for many variables to the child component via props. Then a third complication was I needed a another group of states for the inputs.
 
@@ -123,13 +123,13 @@ After parsing in excel, I copied all 1200 lines then tried to paste it into a vs
 
 I think there must be another way to paste hardcoded bulk data into vscode.
 
-<!-- <img src="./assets/18may2023state.jpg" alt="Backend logic"
+<img src="./assets/18may2023state.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 50%;"> -->
+  width: 50%;">
 
 #### **Type errors in data calculations**
 
@@ -145,13 +145,13 @@ I can see why for data calculation intensive projects, a strongly typed language
 
 recharts is the most intuitive chart library I've used so far.
 
-<!-- <img src="./assets/18may2023rechart.jpg" alt="Backend logic"
+<img src="./assets/18may2023rechart.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 50%;"> -->
+  width: 50%;">
 
 The mental model I understand it with is
 

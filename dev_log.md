@@ -85,7 +85,7 @@ Ways to organize prop passing, details of setting state between components, unde
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 50%;">
-<img src="./assets/17may2023bottom.jpg" alt="Backend logic"
+<img src="./assets/19may2023changes.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;

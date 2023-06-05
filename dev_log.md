@@ -184,8 +184,21 @@ function handleRadioChange(event) {
     <option value={"option 3"}>Option 3</option>
   </select>
 </div>
+```
 
+**onBlur**
+Blur means when the active element is no longer focused on. aka when we click off on if, if it was an input.
+When we click off of this input, onBlur is triggered
 
+```
+<input
+  type="text"
+  value={testBlur}
+  onChange={(event) => {
+    setTestBlur(event.target.value)
+  }}
+  onBlur={handleBlur}
+/>
 ```
 
 [⬆️ Back To Contents](#-contents)

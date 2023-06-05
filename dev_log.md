@@ -50,9 +50,84 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Apr 07 2023: Don't use it like that!](#journal-07-apr-2023)  
 [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
 [May 06 2023: CRUD Linked Lists](#journal-06-may-2023)  
-[May 11 2023: psql reminder](#journal-11-may-2023)
+[May 11 2023: psql reminder](#journal-11-may-2023)  
+[Jun 04 2023: React basics](#journal-04-jun-2023)
 
 # 📖 ENTRIES
+
+## Journal 04 Jun 2023
+
+### React basics in depth: onClick, useState
+
+**onClick**
+
+- In react jsx, onClick can be a property on _any_ element. Not just `<button>`.
+
+  ```
+  <button onClick={()=>setCount(1)}> reset </button>
+
+  <div    onClick={()=>setCount(1)}> reset </div>
+
+  <p      onClick={()=>setCount(1)}> reset </p>
+
+  ```
+
+- ✔️ **onClick action:** The recommended pattern to define onClick, is to use an inline arrow function, that **RETURNS** a function.  
+  The **RETURN** of the onClick defined function will activate on a click. Doing other stuff may cause unexpected behavior, such as triggering on every page render.
+
+  ```
+  // probably use these the most
+  <div onClick={() => handleClick()}> calls function on click </div>
+  <div onClick={() => setCount((count) => count + 1)}> increment state </div>
+  <div onClick={(event) => handleClick(event)}> sends event to function </div>
+
+  // alternatives
+  <div onClick={() => setCount(1)}> reset to 1 </div>
+  <div onClick={() => {return handleClick(arg)}}> sends arg to function </div>
+  <div onClick={() => setCount((count) => {return count + 1})}> increment </div>
+  ```
+
+- ❌ **onClick action:** Below are ways that can work to define the onClick action, but are not recommended. These may have unintended behavior. Most of these are not returning a function. Which is why they will run on each render.
+
+  ```
+  <div onClick={console.log("direct")}> direct statement will run on every render </div>
+  <div onClick={function testFunction(event) {console.log("test text"), event}}> won't run on every render, but not a good pattern </div>
+
+  <div onClick={testFunction}> called a function reference, won't run on every render, but not a good pattern b/c of the next.. </div>
+  <div onClick={testFunction(arg)}> will run on every render, b/c we are now invoking it </div>
+  ```
+
+- **onClick event:** the function defining an onClick will get access to `event` object as an argument. This event refers to the element that was clicked.
+
+  - Two useful properties of the event object are event.preventDefault() and event.target
+
+  ```
+  <div onClick={(event) => handleClick(event)}> sends event to function </div>
+
+  ////
+
+  function handleClick(event) {
+    console.log(event)
+  }
+
+  ```
+
+**useState: explicit vs function**
+There are two methods to do the setState of useState
+
+1. Setting state to an explicit value (not basing/updating from state).
+   ```
+   setCount(42)
+   ```
+2. Setting state that is based from state. When working with state, we should use a function to ensure expected behavior.
+   ```
+   setCount((count) => {count + 1}) // ✔️ use this
+   setCount(count++)                // ❌ not as reliable
+   ```
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Solari
 

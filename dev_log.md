@@ -57,7 +57,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 ## Journal 04 Jun 2023
 
-### React basics in depth: onClick, useState
+### React basics in depth: onClick, useState, onChange
 
 **onClick**
 
@@ -124,6 +124,69 @@ There are two methods to do the setState of useState
    setCount((count) => {count + 1}) // ✔️ use this
    setCount(count++)                // ❌ not as reliable
    ```
+
+**onChange**
+onChange is probably used with just `<input>`. It sometimes goes directly in the input tag type, sometimes it is in a parent tag.
+
+```
+// text input
+<input type="text" onChange={(event) => setInputText(event.target.value)}></input>
+<input type="text" onChange={handleInputChange}></input>
+
+// radio input no form
+<div onChange={handleRadioChange}>
+  <input type="radio" name="options" value={"option 1"}></input> one
+  <input type="radio" name="options" value={"option 2"}></input> two
+  <input type="radio" name="options" value={"option 3"}></input> three
+</div>
+
+...
+function handleRadioChange(event) {
+  setRadio(event.target.value)
+}
+
+// radio input with form
+<form onSubmit={formSubmit}>
+  <label>
+    <input
+      type="radio"
+      value={"Blue"}
+      checked={radio2 === "Blue"}
+      onChange={handleRadioChange2}
+    ></input>{" "}
+    Blue
+  </label>
+  <label>
+    <input
+      type="radio"
+      value={"Green"}
+      checked={radio2 === "Green"}
+      onChange={handleRadioChange2}
+    ></input>{" "}
+    Green
+  </label>
+  <label>
+    <input
+      type="radio"
+      value={"Red"}
+      checked={radio2 === "Red"}
+      onChange={handleRadioChange2}
+    ></input>{" "}
+    Red
+  </label>
+</form>
+
+// input select
+<div>
+  <select value={select} onChange={handleSelect}>
+    <option value={"option 1"}>Option 1</option>
+    <option value={"option 2"}>Option 2</option>
+    <option value={"option 3"}>Option 3</option>
+  </select>
+</div>
+
+
+```
 
 [⬆️ Back To Contents](#-contents)
 

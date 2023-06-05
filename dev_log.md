@@ -77,7 +77,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
   ```
   // probably use these the most
-  <div onClick={handleClick}> calls function on click, and that func has access to event </div>
+  <div onClick={handleClick}> calls function on click, and that func has access to event (event is automatically passed to the onClick function) </div>
   <div onClick={(arg) => handleClick(arg)}> calls function on click, if we want to send a specific argument, and that func has access to event </div>
   <div onClick={() => setCount((count) => count + 1)}> increment state </div>
 

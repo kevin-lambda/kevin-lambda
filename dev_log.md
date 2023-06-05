@@ -77,14 +77,16 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
   ```
   // probably use these the most
-  <div onClick={() => handleClick()}> calls function on click </div>
+  <div onClick={handleClick}> calls function on click, and that func has access to event </div>
+  <div onClick={(arg) => handleClick(arg)}> calls function on click, if we want to send a specific argument, and that func has access to event </div>
   <div onClick={() => setCount((count) => count + 1)}> increment state </div>
-  <div onClick={(event) => handleClick(event)}> sends event to function </div>
 
   // alternatives
+  <div onClick={(event) => handleClick(event)}> sends event to function </div>
   <div onClick={() => setCount(1)}> reset to 1 </div>
   <div onClick={() => {return handleClick(arg)}}> sends arg to function </div>
   <div onClick={() => setCount((count) => {return count + 1})}> increment </div>
+  <div onClick={testFunction}> called a function reference, won't run on every render. testFunction has access to event. even though we don't directly pass it.</div>
   ```
 
 - ❌ **onClick action:** Below are ways that can work to define the onClick action, but are not recommended. These may have unintended behavior. Most of these are not returning a function. Which is why they will run on each render.
@@ -92,9 +94,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
   ```
   <div onClick={console.log("direct")}> direct statement will run on every render </div>
   <div onClick={function testFunction(event) {console.log("test text"), event}}> won't run on every render, but not a good pattern </div>
-
-  <div onClick={testFunction}> called a function reference, won't run on every render, but not a good pattern b/c of the next.. </div>
-  <div onClick={testFunction(arg)}> will run on every render, b/c we are now invoking it </div>
+  <div onClick={testFunction(arg)}> DANGER. will run on every render, b/c we are now invoking it </div>
   ```
 
 - **onClick event:** the function defining an onClick will get access to `event` object as an argument. This event refers to the element that was clicked.

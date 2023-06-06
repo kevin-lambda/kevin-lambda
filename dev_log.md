@@ -1343,14 +1343,14 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
     - However, in the case of postbird, it won't accept the render url by itself. It wants ssl security. To do that just append `ssl=true` to the end of the database url
     - `postgres://user:pass@host:port/database?ssl=true`
 
-- **BACKEND: Hosting the server aka web service**
+- **BACKEND (web service): Hosting the server aka web service**
 
   - The server (api) that handles and listens for requests needs to live and be on somewhere. It is also called a web service.
   - On Render, it asks for two things a build command and start command. Render acts like how we were running commands before our localhost was able run the server. It needs libraries, the entry point for the app. It works the same way, so we need to let it know what commands to run.
     - Build command, typically `npm install`
     - Start command, whatever the server entry point is `node server/index.js`
 
-- **BACKEND: Deployed enviroment variables**
+- **BACKEND (web service): Deployed enviroment variables**
 
   - Just like how the local machine has environment variables, the hosting platform can hold environment variables for the hosted server application to access.
   - This is where we grab the database connection secret url and input it into Render's platform.
@@ -1373,8 +1373,9 @@ nodejs, postgresql, sequelize, model definition, file entry points, module.expor
     },
   ```
 
-- **FRONTEND**
+- **FRONTEND (static site)**
 
+- render calls the front end a static site
 - Similarly to the web service, Render will ask for two things. Build command, and publish directory.
   - Build Command, just like regular `npm run build`
   - Publish Directory, we know our production build is in the build folder. `./build`

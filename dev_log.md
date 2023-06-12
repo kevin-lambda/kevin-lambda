@@ -51,9 +51,31 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
 [May 06 2023: CRUD Linked Lists](#journal-06-may-2023)  
 [May 11 2023: psql reminder](#journal-11-may-2023)  
-[Jun 04 2023: React basics](#journal-04-jun-2023)
+[Jun 04 2023: React basics](#journal-04-jun-2023)  
+[Jun 12 2023: Rusty](#journal-12-jun-2023)
 
 # 📖 ENTRIES
+
+## Journal 12 Jun 2023
+
+Rusty
+
+Explored Rust recently, and learned about two new concepts that seem applicable to many programming languages.
+
+**memory management**
+In javascript, we pretty much didn't worry or think about memory management at all. zero. But in Rust, and I imagine other languages, where and when values are being stored, recalled in memory matters.
+
+Going through Rust made me think about when a value is initialized, and how long its lifetime is valid. When it will go out of scope. What is allowed to access it. Which leads to the next topic of read write (mutability) access.
+
+**mutability**
+In Rust, trying to use a variable needs to be intentional. How are we allowed to use this variable? Can we change it? are we the owner of it?
+Can we temporarily _borrow_ this variable value without owning it?
+
+I did a brief dive into these topics, and being exposed to these concepts now make me aware of this way of thinking.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 04 Jun 2023
 

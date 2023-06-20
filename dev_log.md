@@ -13,6 +13,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [Bowlerator](#bowlerator)
 1. [How old am I](#how-old-am-i)
 1. [Solari](#solari)
+1. [Bit bot](#bit-bot)
 
 ### Tech and skills used
 
@@ -28,7 +29,8 @@ Apr 12 2023 ; Nextjs, Prisma ORM, Bulma css, Typescript, Vercel ; [next CRUD](#n
 Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)  
 Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)  
 May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
-May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)
+May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)  
+Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)
 
 ### Articles Published
 
@@ -55,6 +57,153 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Jun 12 2023: Rusty](#journal-12-jun-2023)
 
 # 📖 ENTRIES
+
+## Bit bot
+
+**Date:** 06/19/2023  
+**Description:** This project is a proof of concept exploring a user interaction based context AI chatbot.  
+**Link:** [https://hello-ai-seven.vercel.app/](https://hello-ai-seven.vercel.app/)  
+**Notable Technologies:** Open AI chatgpt-3.5-turbo, NextJS, Bulma  
+**Learning focus:** Use an ai chat bot in a novel way.
+
+The goal was to use an ai chatbot in a new method. As some of the options, this project showcases ui elements including button click, hover, menu change. The ai will respond to each action and the context of the action. This type of ai chatbot application could be described as an interaction context sensitive ai chatbot. This opens a new aspect of user experience as the user interacts with the ui. Receiving feedback during the ui interactions. Instead of interaction strictly through text chat input.
+
+This web app will be disabled by default and in a debug mode. Demo available by request.
+
+#### **Reviewed:**
+
+Open AI api - chatgpt-3.5-turbo, Prompt Engineering, Nextjs 13, Bulma css, api route handling, interaction handlers, deploying env variables
+
+#### **To look into:**
+
+Response text streaming, further model fine tuning, input chat option
+
+<!-- <img src="./assets/17may2023main.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+<img src="./assets/19may2023changes.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;"> -->
+
+### Dev learnings ========================================================
+
+#### **Prompt engineering**
+
+Several prompt iterations were tested. One notable finding was strongly delineated prompt parameters (via colon per parameter) caused the responses to mirror that and also become delinated. Which broke the natural language effect of the responses. There was more successing in using natural language in the prompt to get a return of natural language.
+
+- prompt_char1 was very robotic and kept prefacing its answers with user: does action. bot: responds. It also kept playing out the entire scenario with multiple back and forths.
+- prompt_char2 is much more conversational. Not as conversational as chatgpt as time of writing, but much closer. It seems chatgpt-3.5-turbo tries to mimic that initial prompt.
+
+- Takeaway, prompt as how we want the model to respond.
+
+```js
+const prompt_char1 = `Consider the entire scenario. Then respond to the action, remarking as the count increases.
+
+  You are a friendly creature hungry for data. The user interacts with the website ui to feed you. 
+  For each interaction, your response will consider the counter, action type and effect.
+
+    counter: ${count}, counter is the number of times a user repeats action type. 
+    user action:  ${action}, user action is the interaction type
+    action property: ${effect}, action property is the effect of the action`
+```
+
+```js
+const prompt_char2 = `
+  Assume the role of a website named bit bot that is hungry to be fed data by the user.
+
+  This is the ui that the user can interact with. Button click to feed you, drop down menu to choose data feed type (bit, nibble, or btye), and image hovers of feed type.
+
+  React to the following action: User used ${action} ${count} time and ${effect} 
+  `
+```
+
+#### **NextJS api route handling**
+
+NextJS has a route handling feature which abstracts parts of the backend api endpoint making process. There are some differences or things to be mindful of as making these.
+
+x.BACKEND
+
+1.  via the **app** directory, any file named `route` will be marked as a route handler file. Whatever folder it is in will behave as the path for the route handler. Probably just make these in `app/api/xyz/route.js`
+2.  These route files have **pre-defined patterns**. We make functions to export with names of REST verbs. The functions must(?) be named these REST verbs. Then the predefined functions will come with certain arguments, such as **POST** coming with **request**.
+
+    ```js
+    export async function GET() {}
+    export async function POST(request) {}
+    ```
+
+3.  gotcha 1. for an incoming POST request (which we would expect to be sent as a body), we need to process the request via json, which is an **async** method. This is because requests (I think) come in two parts, the head, then the body. Its not just regular json! The body could be a large file, so the head comes through first. So, we must process the request, and it must be awaited. `const parseRequest = await request.json()`
+4.  At this point, `parseRequest` will contain just the "body". We can extract data as needed.
+5.  optional. If we want to access an external api, we can do so with `fetch`. Since fetch is async(it could take a long time), we have to `await` it.
+6.  optional. To use the fetched data, same thing. We have to process it. Do so with the same `await fetchedData.json()`
+7.  To finish the api endpoint, we can have a returning response. In NextJS route handler, the best practice function is called `NextResponse` this is from `import {NextResponse} from 'next/server'`
+8.  `NextResponse` can be thought of as a **general response holder**. If we want to respond with json, we have to define it as such. We usually want json response. Note that we don't need to await .json here. That's because this .json is part of NextResponse and isn't(?) processing anything. We're just saying, respond, and it will be json.
+
+        ```js
+        return NextResponse.json({ returningText: "returning text stuff" })
+        ```
+
+    x. FRONTEND
+    To hit the api endpoint from the frontend
+
+9.  Use `fetch` in an async function, with a **METHOD** and **BODY**
+
+    ```js
+    const fetchedData = await fetch("http://placeholder.com/api", {
+      method: "POST",
+      body: JSON.stringify(userContext),
+    })
+    return fetchedData.json()
+    ```
+
+10. We have to `await` the fetch (remember fetch can take a while so it is async). Remember to process the fetch data (remember fetch data needs to be processed, it comes in different parts) not sure why .json() here doesn't need to be awaited....
+11. REMEMBER that body NEEDS TO BE **_JSON.stringify()_**.
+12. REMEMBER that body NEEDS TO BE **_JSON.stringify()_**.
+13. REMEMBER that body NEEDS TO BE **_JSON.stringify()_**.
+14. if this fetch is in a helper async function, the helper async function will also need to be awaited.
+
+#### **Open AI api setup**
+
+The basic setup to access the Open ai api has 4 steps.
+
+1. configure "openai" with an api key, have an api key in env variables
+
+   ```js
+   const { Configuration, OpenAIApi } = require("openai")
+
+   const configuration = new Configuration({
+     apiKey: process.env.OPENAI_API_KEY,
+   })
+   const openai = new OpenAIApi(configuration)
+
+   export default openai
+   ```
+
+2. access openai and initiate a method, such as createChatCompletion
+3. configure the completion with at least model and messages, which will return the completion
+   ```js
+   const completion = await openai.createChatCompletion({
+     model: "gpt-3.5-turbo",
+     messages: [
+       {
+         role: "user",
+         content: prompt_char2,
+       },
+     ],
+   })
+   ```
+4. access the completion, likely with `completion.data.choices[0].message.content`
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 12 Jun 2023
 

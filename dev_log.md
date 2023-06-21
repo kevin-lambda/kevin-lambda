@@ -78,14 +78,14 @@ Open AI api - chatgpt-3.5-turbo, Prompt Engineering, Nextjs 13, Bulma css, api r
 
 Response text streaming, further model fine tuning, input chat option
 
-<img src="./assets/20jun2023p1.jpg" alt="Backend logic"
+<img src="./assets/20jun2023p2.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 50%;">
-<img src="./assets/20jun2023p2.jpg" alt="Backend logic"
+<img src="./assets/20jun2023p3.jpg" alt="Backend logic"
   style="display: block;
   margin-left: auto;
   margin-right: auto;

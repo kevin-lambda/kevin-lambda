@@ -62,7 +62,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 **Date:** 06/19/2023  
 **Description:** This project is a proof of concept exploring a user interaction based context AI chatbot.  
-**Link:** [https://hello-ai-seven.vercel.app/](https://hello-ai-seven.vercel.app/)  
+**Link:** [tbd](tbd)  
 **Notable Technologies:** Open AI chatgpt-3.5-turbo, NextJS, Bulma  
 **Learning focus:** Use an ai chat bot in a novel way.
 

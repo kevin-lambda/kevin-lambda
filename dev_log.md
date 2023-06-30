@@ -63,9 +63,9 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 ## Cash Stack
 
 **Date:** 06/29/2023  
-**Description:** This project compares what thing is taller; the height of a thing or the cost of it stacked as $1 bills.
+**Description:** This project compares what thing is taller; the height of a thing or the cost of it stacked as $1 bills.  
 **Link:** n/a  
-**Notable Technologies:** cheerio, jQuery, NextJS, Bulma, recharts
+**Notable Technologies:** cheerio, jQuery, NextJS, Bulma, recharts  
 **Learning focus:** Learn how to use jQuery to query HTML DOM for data
 
 I heard about querying websites for data in a programmatic way, and wanted to try it out. That lead me to jQuery and cheerio. I combined this with an old idea I had for comparing the physical height of a thing to its price stacked as $1 bills.

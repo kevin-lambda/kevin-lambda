@@ -14,6 +14,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [How old am I](#how-old-am-i)
 1. [Solari](#solari)
 1. [Bit bot](#bit-bot)
+1. [Cash Stack](#cash-stack)
 
 ### Tech and skills used
 
@@ -30,7 +31,8 @@ Apr 14 2023 ; Layout design, Nextjs ; [Bowlerator](#bowlerator)
 Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-old-am-i)  
 May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
 May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)  
-Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)
+Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)  
+Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)
 
 ### Articles Published
 
@@ -57,6 +59,84 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Jun 12 2023: Rusty](#journal-12-jun-2023)
 
 # 📖 ENTRIES
+
+## Cash Stack
+
+**Date:** 06/29/2023  
+**Description:** This project compares what thing is taller; the height of a thing or the cost of it stacked as $1 bills.
+**Link:** n/a  
+**Notable Technologies:** cheerio, jQuery, NextJS, Bulma, recharts
+**Learning focus:** Learn how to use jQuery to query HTML DOM for data
+
+I heard about querying websites for data in a programmatic way, and wanted to try it out. That lead me to jQuery and cheerio. I combined this with an old idea I had for comparing the physical height of a thing to its price stacked as $1 bills.
+
+#### **Reviewed:**
+
+recharts, jQuery, cheerio, api endpoints, data parsing, bulma, awesome font
+
+#### **To look into:**
+
+Headless browser like Puppeteer
+
+<img src="./assets/29jun2023cover.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **jQuery**
+
+- jQuery is a way to select elements from a HTML DOM. It pretty much uses css selectors to choose things.
+
+- first the data from a website needs to get fetched, then the data loaded as a jQuery type object(?)
+
+```js
+const { data } = await axios.get(inputUrl)
+const $ = cheerio.load(data)
+```
+
+- There are nuances to how to query. Kinda like an art. Sometimes an element is specific enough that we can just query it directly. Sometimes we need to chain a bunch of descendants or children elements.
+  - Othertimes, we can go into the element's data after a query to further select things.
+- the return from jQuery is a special array or object type.
+  - the array will return all the matches from the query
+  - the object has a lot of things, including parent, child, sibling elements. also any kind of data that element might have.
+- usually, we want the text from an element.
+- here are some examples of queries
+
+```js
+const price1 = $("div.statsValue > span").text()
+const price2raw = $("div.statsValue")
+const price2 = price2raw[0].children[0].data
+const address = $("div.street-address").text()
+const state = $("div.dp-subtext.bp-cityStateZip").text()
+const lotSizeRaw = $("div.table-row > span.table-label:contains(Lot Size)")
+const lotSize = lotSizeRaw[0].next.children[0].data
+```
+
+Overall, it can be a way to fetch data from a website.
+
+#### **Nextjs env variables**
+
+- There are TWO kinds of env variables in nextjs.
+  - The BACKEND server, route handlers
+  - The browser FRONTEND client side
+- In `.env.local` file in the root directory
+  - backend env variables: `XYZ_ANYTHING=justPutTheCharactersNoQuotes`
+  - for browser frontend side: `NEXT_PUBLIC_XYZ_ANYTHING=abcdefg`
+
+#### **querying data as local vs deployed**
+
+- warning. if you try to query websites that you do not own, this may be against the terms of service for those websites.
+  - It's possible for the website to detect querying in this way and deny the data fetch.
+- This can happen first at the local dev level or at the deployed level. The closer you get to a deployed function, the more likely you will be denied.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Bit bot
 

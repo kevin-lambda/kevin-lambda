@@ -951,7 +951,11 @@ X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app
     1. `postgres`
   - postbird wants a password too
   - maybe check out this link to fix issue later. https://dba.stackexchange.com/questions/83164/postgresql-remove-password-requirement-for-user-postgres
-  - create the database with the command `createdb <name of db>`. Make sure postbird or db tool is closed.
+
+  To create a database in postgres
+
+  - in the regular terminal create the database with the command `createdb <name of db>`. Make sure postbird or db tool is closed....
+  - OR if that doesn't work... in psql; `CREATE DATABASE <database name>;`
 
 - **Prisma set up**
 

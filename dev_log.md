@@ -947,6 +947,9 @@ X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app
 
   - I messed up psql because prisma required a password to access postgres. now psql has a password for default user postgres. It's confusing.
   - Anyway, to access psql do this:
+  - -h for hostname
+  - -U for user
+  - -W for password prompt
     1. `psql -h localhost -U postgres -W`
     1. `postgres`
   - postbird wants a password too

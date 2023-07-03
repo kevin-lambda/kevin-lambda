@@ -955,6 +955,7 @@ X - Full deployment didn't work. Retiring at this point. Goal to make a CRUD app
   To create a database in postgres
 
   - in the regular terminal create the database with the command `createdb <name of db>`. Make sure postbird or db tool is closed....
+  - OR in regular terminal `createdb -h localhost -U postgres -W <database name>`. then enter password `postgres`
   - OR if that doesn't work... in psql; `CREATE DATABASE <database name>;`
 
 - **Prisma set up**

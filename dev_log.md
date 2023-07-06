@@ -242,6 +242,10 @@ if (process.env.NODE_ENV !== "production") {
   - handlers
     - fetch body MUST BE `JSON.stringify(<data>)`
 
+**MISC**
+
+- Just leave the frontend api fetches in the same location as the data consuming component. Tried to modularize them, but separating the fetches from the data caused hydration issues. KISS.
+
 [⬆️ Back To Contents](#-contents)
 
 <br><br>

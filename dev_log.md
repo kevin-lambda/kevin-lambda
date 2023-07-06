@@ -56,9 +56,195 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [May 06 2023: CRUD Linked Lists](#journal-06-may-2023)  
 [May 11 2023: psql reminder](#journal-11-may-2023)  
 [Jun 04 2023: React basics](#journal-04-jun-2023)  
-[Jun 12 2023: Rusty](#journal-12-jun-2023)
+[Jun 12 2023: Rusty](#journal-12-jun-2023)  
+[Jul 06 2023: Crud repeat](#journal-06-jul-2023)
 
 # 📖 ENTRIES
+
+## Journal 06 Jul 2023
+
+### Crud repeat
+
+I'm doing a fullstack CRUD app over and over until I get muscle memory.
+Built with
+
+- Database: Postgres
+- ORM: Prisma
+- Framework: Nextjs (React, Typescript)
+- CSS: Tailwind
+
+#### Medium level checklist
+
+0.0 INSTALL AND SETUP
+[] Start project: npx create-next-app@latest
+[] Install Dependencies: prisma, @prisma/client, ts-node
+[] Generate prisma files: npx prisma init
+
+0.1 CONFIGURATION POSTGRES DATABASE
+[] Create Database Method 1: In terminal, `createdb -h localhost -U postgres -W <database name>`, then enter password. (self note its `postgres`)
+[] Create Database Method 2: Login to psql with `psql -h localhost -U postgres -W`, then enter password `postgres`. Then create db with `CREATE DATABASE <database name>`
+[] Check database is created in postbird/databse navigator
+
+0.2 CONFIGURATION .env DATABASE URL
+[] Include .env in gitignore
+[] In the .env, set the Database URL: `DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database_name>"` . Database url is in the form `postgresql://USER:PASSWORD@HOST:PORT/DATABASE`
+
+0.3 CONFIGURATION PRISMA ORM - SCHEMA
+[] Check prisma schema generator client: should be `provider = "prisma-client-js"`
+[] Check prisma schema datasource db: should be `provider = "postgresql"` and `url = env("DATABASE_URL")`
+[] Define prisma schema models: fieldname - type - attributes. each model should have some primary key (id).
+
+0.4 CONFIGURATION PRISMA ORM - SYNC SCHEMA & GENERATE CLIENT
+[] Sync defined schema to database: `npx prisma db push` OR `npx prisma migrate dev --name <message_name_init>`
+[] Generate prisma client (load config into prisma, still need to create and import it): `npx prisma generate`
+[] Add client generation to package json build script (so it keeps updated on build): `"build": "prisma generate && next build"`
+
+0.5 SEED DATA
+[] Make seed file: at `/prisma/seed.ts`
+[] Containing: PrismaClient import, new PrismaClient() instance, main function with prisma seed operations, main function call, then disconnect methods. See detailed code.
+[] Add seed script to package.json (from docs): as `"prisma": {"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"}`
+[] Seed script for non-nextjs: `"prisma": {"seed": "ts-node prisma/seed.ts"}`
+[] Run seed command: `npx prisma db seed` , check seeded data
+
+0.6 CREATE PRISMA CLIENT INSTANCE
+[] Make a folder and prisma file: `/lib/prisma.ts`
+[] Containing: PrismaClient import, global aliases, export prisma new PrismaClient, with if condition. See detailed code.
+
+1 BACKEND API WITH PRISMA QUERIES
+[] Set up nextjs app directory style api route handler files: `/app/api/<table_name>/route.ts` and probably dynamic route `/app/api/<table_name>/[id]/route.ts`
+[] Files include imports: `{prisma} from '@/lib/prisma.ts'` and `{NextResponse} from 'next/server'`
+[] Make nextjs style RESTful prisma query route handlers containing: `export async function METHOD(){}` , `await` parse http request (as needed), `await` prisma query, `return NextResponse.json(<RETURN_HERE>)`, within a try catch.
+
+2 FRONTEND EVENT TRIGGERS AND FETCHES
+[] Make an async getAll function: await fetch, await parse json, setState
+[] Make a useEffect for getAll
+[] Make UI forms with `input text onChange setState`, and `button onSubmit handlers`
+[] Create UI event handlers with: preventDefault(), await fetch WITH url plus config containing **_method_** and **_JSON.stringify()_** body, probably call getall at the end. All in a try catch.
+
+**PRISMA - SCHEMA MODEL**
+
+- Models are/should be? named with uppercase. `model User{}`
+- When referred to from prisma instance, it is in lower case... `prisma.user.create()`
+- Each model should have a primary key, usually an id. This is specified by the attribute `@id`. Like this ` id Int @id @default(autoincrement())`
+
+- Name fields: are camelcase, nothing much to note
+- Type: Straightforward, though the docs are messy
+- Attributes/Functions: Common ones are, `@id` makes this the primary key?, `@default(<value>)` makes this the specified value the default value, `autoincrement()` automatically increments for each row - usually use with @id and @default(), `@unique` checks that each created row will have a unique data, `@relation()` creates model relations see next point
+
+- Relations: for an example Task model with User owners, `owner User @relation(fields:[ownerId], references:[id])`
+
+  - !! the form is: `relation_name Captialized_Model_Name_To_Relate @relation(fields:[currentModelKeyToUse], references:[otherModelKeyToMatchTo])`
+  - !! on the other model, there MUST be a matching relation in the form: `relation_name MatchingModel[]`
+
+  - fields: the key to read on the **_CURRENT_** model
+  - references: the key to find and match on the **_OTHER_** model
+
+```prisma
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  task Task[]
+}
+
+model Task{
+  id Int @id @default(autoincrement())
+  taskText String
+  owner User @relation(fields:[ownerId], references:[id])
+  ownerId Int
+}
+```
+
+**PRISMA - SCHEMA SYNCING AND GENERATING CLIENT**
+
+- In syncing schema,
+  - `push` is a quick way to sync the database with the schema. It doesn't have a lot of control, like making sure no data is lost, or renaming columns, track changes.
+  - `migrate` syncs the database WITH ability to fine tune the syncing AND creates a migration file. Which... tracks or configs things?
+- In generating client, must be done anytime there is a change to schema. Prisma doesn't automatically "intake" the schema definition on save. Client must be generated to absorb the changes.
+
+**PRISMA - SEED DATA FILE**
+
+```ts
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+// prisma data create here
+const userSeed = [
+  { email: "apple@a.com" },
+  { email: "banana@a.com" },
+  { email: "carrot@a.com" },
+]
+
+const seedData = { userSeed }
+
+async function seedDb(seedData) {
+  const users = await prisma.user.createMany({
+    data: seedData.userSeed,
+  })
+  console.log({ users })
+}
+
+seedDb(seedData)
+  .then(() => prisma.$disconnect())
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit()
+  })
+```
+
+**PRISMA - CLIENT INSTANCE FILE**
+
+- Need to do this extra global stuff to work with nextjs properly. To only open up one instance.
+
+```ts
+import { PrismaClient } from "@prisma/client"
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
+export const prisma = globalForPrisma.prisma ?? new PrismaClient()
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma
+}
+```
+
+**BACKEND - API PRISMA ROUTES**
+
+- DO NOT USE THE REQUEST ARG IN DELETE METHOD. current nextjs issue
+- DO NOT USE THE REQUEST ARG IN DELETE METHOD. current nextjs issue
+- DO NOT USE THE REQUEST ARG IN DELETE METHOD. current nextjs issue
+- Remember
+  - `async function METHOD(request, {params})`
+  - `await request.json()`
+  - `await prisma.model.query()`
+  - `NextResponse.json()`
+  - `parseInt(params.id)`
+- typical prisma queries
+  - get one: `findUnique({where:{id:<value>},include:{}})`
+    - where matches to, include brings in relation data
+  - get all: `findMany()`
+  - create: `create({data: <value> })`
+  - delete: `delete({where:{id:<value>}})`
+  - update: `update({where:{id:<value>}, data:<value>})`
+
+**FRONTEND - UI EVENTS AND HANDLERS**
+
+- Remember
+
+  - event triggers onSubmit, onChange: never set an invoked function. Only function definitions.
+
+    - ✔️ `onSubmit={handleSubmit}`
+    - ✔️ `onSubmit={(event)=>{return handleSubmit(event,id)}}`
+    - ✔️ `onChange={(event) => setUpdateInput(event.target.value)}`
+
+    - ❌ `onSubmit={handleSubmit(event,id)}`
+
+  - handlers
+    - fetch body MUST BE `JSON.stringify(<data>)`
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Cash Stack
 

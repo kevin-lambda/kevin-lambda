@@ -65,7 +65,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 ### Crud repeat
 
-I'm doing a fullstack CRUD app over and over until I get muscle memory.
+I'm doing a fullstack CRUD app over and over until I build muscle memory.
 Built with
 
 - Database: Postgres

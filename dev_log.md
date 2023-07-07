@@ -63,7 +63,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 ## Journal 06 Jul 2023
 
-### Crud repeat
+### Crud repeat + typescript
 
 I'm doing a fullstack CRUD app over and over until I build muscle memory.
 Built with
@@ -120,6 +120,8 @@ Built with
 [] Make a useEffect for getAll
 [] Make UI forms with `input text onChange setState`, and `button onSubmit handlers`
 [] Create UI event handlers with: preventDefault(), await fetch WITH url plus config containing **_method_** and **_JSON.stringify()_** body, probably call getall at the end. All in a try catch.
+
+#### Details
 
 **PRISMA - SCHEMA MODEL**
 
@@ -245,6 +247,34 @@ if (process.env.NODE_ENV !== "production") {
 **MISC**
 
 - Just leave the frontend api fetches in the same location as the data consuming component. Tried to modularize them, but separating the fetches from the data caused hydration issues. KISS.
+
+#### Typescript addition
+
+**Basics**
+
+- Interface: can make to define the typing of an object
+- Where do some interfaces come from? in packages, there are a bunch of typescript files defining interfaces (types), some of these end with the `.d.ts` and that makes them globally available without the need to explicity import the interface.
+
+  - Such as the interface `Request`. its just globally available.
+
+- basic typing form `variable: Type`
+- array of objects `InterfaceType[]`
+- basic types `string, number, boolean`
+
+**What things to type**
+
+- function parameters and returns
+- object properties, as in interfaces
+- constants
+- arrays
+
+**More advanced**
+
+- To type hooks/functions, we can use generic types
+  - In the form `useState<string>()`
+- fetch responses have type `Response`
+- async function void returns have type `Promise<void>`
+- There is a style of type call generic types that uses <>. I dont get it still, just using it cuz it works for now.
 
 [⬆️ Back To Contents](#-contents)
 

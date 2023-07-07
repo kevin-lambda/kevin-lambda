@@ -75,50 +75,50 @@ Built with
 
 #### Medium level checklist
 
-0.0 INSTALL AND SETUP
-[] Start project: npx create-next-app@latest
-[] Install Dependencies: prisma, @prisma/client, ts-node
+0.0 INSTALL AND SETUP  
+[] Start project: npx create-next-app@latest  
+[] Install Dependencies: prisma, @prisma/client, ts-node  
 [] Generate prisma files: npx prisma init
 
-0.1 CONFIGURATION POSTGRES DATABASE
-[] Create Database Method 1: In terminal, `createdb -h localhost -U postgres -W <database name>`, then enter password. (self note its `postgres`)
-[] Create Database Method 2: Login to psql with `psql -h localhost -U postgres -W`, then enter password `postgres`. Then create db with `CREATE DATABASE <database name>`
+0.1 CONFIGURATION POSTGRES DATABASE  
+[] Create Database Method 1: In terminal, `createdb -h localhost -U postgres -W <database name>`, then enter password. (self note its `postgres`)  
+[] Create Database Method 2: Login to psql with `psql -h localhost -U postgres -W`, then enter password `postgres`. Then create db with `CREATE DATABASE <database name>`  
 [] Check database is created in postbird/databse navigator
 
-0.2 CONFIGURATION .env DATABASE URL
-[] Include .env in gitignore
+0.2 CONFIGURATION .env DATABASE URL  
+[] Include .env in gitignore  
 [] In the .env, set the Database URL: `DATABASE_URL="postgresql://postgres:postgres@localhost:5432/<database_name>"` . Database url is in the form `postgresql://USER:PASSWORD@HOST:PORT/DATABASE`
 
-0.3 CONFIGURATION PRISMA ORM - SCHEMA
-[] Check prisma schema generator client: should be `provider = "prisma-client-js"`
-[] Check prisma schema datasource db: should be `provider = "postgresql"` and `url = env("DATABASE_URL")`
+0.3 CONFIGURATION PRISMA ORM - SCHEMA  
+[] Check prisma schema generator client: should be `provider = "prisma-client-js"`  
+[] Check prisma schema datasource db: should be `provider = "postgresql"` and `url = env("DATABASE_URL")`  
 [] Define prisma schema models: fieldname - type - attributes. each model should have some primary key (id).
 
-0.4 CONFIGURATION PRISMA ORM - SYNC SCHEMA & GENERATE CLIENT
-[] Sync defined schema to database: `npx prisma db push` OR `npx prisma migrate dev --name <message_name_init>`
-[] Generate prisma client (load config into prisma, still need to create and import it): `npx prisma generate`
+0.4 CONFIGURATION PRISMA ORM - SYNC SCHEMA & GENERATE CLIENT  
+[] Sync defined schema to database: `npx prisma db push` OR `npx prisma migrate dev --name <message_name_init>`  
+[] Generate prisma client (load config into prisma, still need to create and import it): `npx prisma generate`  
 [] Add client generation to package json build script (so it keeps updated on build): `"build": "prisma generate && next build"`
 
-0.5 SEED DATA
-[] Make seed file: at `/prisma/seed.ts`
-[] Containing: PrismaClient import, new PrismaClient() instance, main function with prisma seed operations, main function call, then disconnect methods. See detailed code.
-[] Add seed script to package.json (from docs): as `"prisma": {"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"}`
-[] Seed script for non-nextjs: `"prisma": {"seed": "ts-node prisma/seed.ts"}`
+0.5 SEED DATA  
+[] Make seed file: at `/prisma/seed.ts`  
+[] Containing: PrismaClient import, new PrismaClient() instance, main function with prisma seed operations, main function call, then disconnect methods. See detailed code.  
+[] Add seed script to package.json (from docs): as `"prisma": {"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"}`  
+[] Seed script for non-nextjs: `"prisma": {"seed": "ts-node prisma/seed.ts"}`  
 [] Run seed command: `npx prisma db seed` , check seeded data
 
-0.6 CREATE PRISMA CLIENT INSTANCE
-[] Make a folder and prisma file: `/lib/prisma.ts`
+0.6 CREATE PRISMA CLIENT INSTANCE  
+[] Make a folder and prisma file: `/lib/prisma.ts`  
 [] Containing: PrismaClient import, global aliases, export prisma new PrismaClient, with if condition. See detailed code.
 
-1 BACKEND API WITH PRISMA QUERIES
-[] Set up nextjs app directory style api route handler files: `/app/api/<table_name>/route.ts` and probably dynamic route `/app/api/<table_name>/[id]/route.ts`
-[] Files include imports: `{prisma} from '@/lib/prisma.ts'` and `{NextResponse} from 'next/server'`
+1 BACKEND API WITH PRISMA QUERIES  
+[] Set up nextjs app directory style api route handler files: `/app/api/<table_name>/route.ts` and probably dynamic route `/app/api/<table_name>/[id]/route.ts`  
+[] Files include imports: `{prisma} from '@/lib/prisma.ts'` and `{NextResponse} from 'next/server'`  
 [] Make nextjs style RESTful prisma query route handlers containing: `export async function METHOD(){}` , `await` parse http request (as needed), `await` prisma query, `return NextResponse.json(<RETURN_HERE>)`, within a try catch.
 
-2 FRONTEND EVENT TRIGGERS AND FETCHES
-[] Make an async getAll function: await fetch, await parse json, setState
-[] Make a useEffect for getAll
-[] Make UI forms with `input text onChange setState`, and `button onSubmit handlers`
+2 FRONTEND EVENT TRIGGERS AND FETCHES  
+[] Make an async getAll function: await fetch, await parse json, setState  
+[] Make a useEffect for getAll  
+[] Make UI forms with `input text onChange setState`, and `button onSubmit handlers`  
 [] Create UI event handlers with: preventDefault(), await fetch WITH url plus config containing **_method_** and **_JSON.stringify()_** body, probably call getall at the end. All in a try catch.
 
 #### Details

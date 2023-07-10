@@ -276,6 +276,28 @@ if (process.env.NODE_ENV !== "production") {
 - async function void returns have type `Promise<void>`
 - There is a style of type call generic types that uses <>. I dont get it still, just using it cuz it works for now.
 
+#### sneaking in how to do scripts in nextjs
+
+```ts
+import Script from "next/script"
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+      <Script
+        src="https://example.com/script.js"
+        strategy="beforeInteractive"
+      />
+    </html>
+  )
+}
+```
+
 [⬆️ Back To Contents](#-contents)
 
 <br><br>

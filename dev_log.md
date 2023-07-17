@@ -216,11 +216,24 @@ if (process.env.NODE_ENV !== "production") {
 - DO NOT USE THE REQUEST ARG IN DELETE METHOD. current nextjs issue
 - DO NOT USE THE REQUEST ARG IN DELETE METHOD. current nextjs issue
 - Remember
+
+  // HTTP related
+
   - `async function METHOD(request, {params})`
   - `await request.json()`
+
+    // PRISMA related
+
   - `await prisma.model.query()`
+
+    // HTTP, next related
+
   - `NextResponse.json()`
+
+    // dynamic route
+
   - `parseInt(params.id)`
+
 - typical prisma queries
   - get one: `findUnique({where:{id:<value>},include:{}})`
     - where matches to, include brings in relation data

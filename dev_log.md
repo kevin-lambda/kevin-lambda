@@ -179,8 +179,6 @@ Used Bulma initially, however with the amount of specific styling changes I ened
 
 Because the styling was so specific for this project, Bulma wasn't the right tool. Something like Tailwind would have been better. It would have allowed for more specificity, rather than the built in stylings of Bulma.
 
-#### **UI consistent styling focus**
-
 [⬆️ Back To Contents](#-contents)
 
 <br><br>

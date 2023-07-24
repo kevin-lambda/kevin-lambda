@@ -15,6 +15,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [Solari](#solari)
 1. [Bit bot](#bit-bot)
 1. [Cash Stack](#cash-stack)
+1. [Portfolio Version 3](#project-portfolio-v3)
 
 ### Tech and skills used
 
@@ -60,6 +61,129 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Jul 06 2023: Crud repeat](#journal-06-jul-2023)
 
 # 📖 ENTRIES
+
+## Project Portfolio v3
+
+**Date:** 07/17/2023  
+**Description:** Portfolio version 3  
+**Link:** [Portfolio version 3](https://kevin-quoc-tan-lam.vercel.app/)  
+**Notable Technologies:** Nextjs, Bulma  
+**Learning focus:** UX/UI focused on succinct demonstration of skills via projects
+
+Based on feedback from my previous resume and portfolio, I wanted the portfolio to quickly and clearly show what skills I'm demonstrating. Minimizing any fluff and focusing on a consistent cohesive styling.
+
+#### **Reviewed:**
+
+build then optimize/modularize pattern, nextjs img src use, svg in images, bulma navbar function, anchor tag target blank,
+
+<img src="./assets/24jul23_portfolio.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+### Dev learnings ========================================================
+
+#### **UI consistent styling focus**
+
+- Colors: accent, main
+- Font pairing: accent, main
+- On Hover: consistent transition
+- Borders, Line thicknesses
+- @media responsivity
+
+#### **nextjs img src paths**
+
+- For the nextjs component `<Image />` it will automatically read from the **PUBLIC** folder. Like this `<Image src={"/image1.jpg"} />`. It assumes you are looking in public like this `<Image src={"public/image1.jpg"} />`.
+- For the regular img tag. It looks like it does the same **Sometimes**
+
+#### **Bulma navbar burger menu action**
+
+Bulma navbar burger doesn't come with functionality for the menu. Here's the template for a navbar burger menu.
+
+```js
+import React, { useState } from "react"
+
+export default function Navbar() {
+  const [isActive, setisActive] = useState(false)
+
+  return (
+    <nav className="navbar" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand pl-1">
+        <a href="/" className="navbar-item">
+          LOGO HERE
+        </a>
+        <a
+          onClick={() => {
+            setisActive(!isActive)
+          }}
+          role="button"
+          className={`navbar-burger ${isActive ? "is-active" : ""}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div
+        id="navbarBasicExample"
+        className={`navbar-menu ${isActive ? "is-active" : ""}`}
+      >
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <a href="/">Item 1</a>
+          </div>
+          <div className="navbar-item">
+            <a href="/">Item 2</a>
+          </div>
+          {isActive ? (
+            <div className="navbar-end">
+              <div className="navbar-item">
+                <a target="_blank" href="/">
+                  Button 1
+                </a>
+              </div>
+              <div className="navbar-item">
+                <a target="_blank" href="/">
+                  Button 2
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button is-grey-lighter" href="/">
+                  Button 1
+                </a>
+                <a className="button" href="/">
+                  <strong> Button 2</strong>
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </nav>
+  )
+}
+```
+
+#### **css development**
+
+Used Bulma initially, however with the amount of specific styling changes I eneded up needing to make most of the styling with ids. That way it would override most of the built in Bulma classes.
+
+Because the styling was so specific for this project, Bulma wasn't the right tool. Something like Tailwind would have been better. It would have allowed for more specificity, rather than the built in stylings of Bulma.
+
+#### **UI consistent styling focus**
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 06 Jul 2023
 

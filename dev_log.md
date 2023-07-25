@@ -16,6 +16,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [Bit bot](#bit-bot)
 1. [Cash Stack](#cash-stack)
 1. [Portfolio Version 3](#project-portfolio-v3)
+1. [Quality Chords](#quality-chords)
 
 ### Tech and skills used
 
@@ -33,7 +34,8 @@ Apr 20 2023 ; Routine website build and deployment, sass ; [How old am I](#how-o
 May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-may-2023)  
 May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)  
 Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)  
-Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)
+Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)  
+Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator ; [Quality Chords](#quality-chords)
 
 ### Articles Published
 
@@ -61,6 +63,473 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [Jul 06 2023: Crud repeat](#journal-06-jul-2023)
 
 # 📖 ENTRIES
+
+## Quality Chords
+
+**Date:** 07/24/2023  
+**Description:** Database of guitar chord shapes by quality  
+**Link:** [tbd]()  
+**Notable Technologies:** Nextjs, Bulma, Prisma, react-chords svg generator, forms  
+**Learning focus:** Building a fullstack larger scale CRUD project. Working with multiple schema associated models.
+
+**To look into**
+
+- a cleaner way to seed data, probably use the nested create method
+- cleaner form data
+
+**Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database
+
+<img src="./assets/24jul23_main.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+<img src="./assets/24jul23_admin.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+**CHANGE LOG**  
+_July 24 2023: version 0.1.0_  
+Features:
+
+- Render svg chord diagrams by quality, toggle by root string
+- Basic chord database ~20 chord voicings
+- Database architecture of 5 schemas prepped for implementing users, chord pages, chord by note
+- Password protected admin console with full CRUD actions over all model records
+- Basic browser window print
+
+Feature pipeline:  
+[] Supplemental pages for: Help about contact  
+[] chord page title naming
+
+[] chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
+[] chord diagram remove nut
+
+[] User authentication log in, sign up  
+[] User profile page  
+[] Save chord page to user
+
+[] Alternate same chord root voicing carousel  
+[] add alternate same chord root voicings
+
+[] Remove, reorder shown chords via drag and drop? else buttons
+
+[] Upgrade print functionality, only show chord page  
+[] Clean up admin CRUD UX/UI
+
+[] optimize functions
+[] add TS
+[] add unit tests
+
+#### STAR/lessions learned topics:
+
+STAR - written out
+
+- SCALING: FRONTEND CRUD UI, forms and useState, combine form inputs into one usestate instead of a bunch of single form input states
+- DATA: Data types vs form inputs
+
+Lessons learned - smaller
+
+- SCALING: when larger project, harder keep all the data properties, types in your head. params, model, schema, input, object property. so let typescript handle it.
+- DATA: choosing data type and where to do the formatting (EX: closer to where it is happening, not in the db api)
+- workflow pattern: go from state to function to ui
+- Build first then optimize... but know when to pause for optimizing. Because if you let it go too long, it'll accumulate too much.
+- Libraries: its best to test a library separately before adding to project. Somehow make a testing environment all ready for it.
+- api: let the api just do api and ORM query stuff. keep it simple and don't work with the data too much in there. To separate concerns. keep data parsing close to the data origination.
+
+- state management. Figure out when is the best use case for a state management tool. Although messy, I still think the admin implementation is OK. All the state only needs to be on that page and not accross other pages. Which is what I understand a state management tool like redux to be used for.
+
+- naming consistency: This is the simplest hardest thing. Trying to be consistent with all the object names and types and properties. It would make things a lot easier, but it is hard to keep it all on track when only following a loose plan.
+
+- I can see a lot of places where I know there's a better way to do it. I just don't know how exactly right now.
+
+### Dev learnings ========================================================
+
+#### Prisma
+
+**prisma modeling basics**
+
+common types:
+
+- Int
+- String
+- OtherModel
+- Boolean
+- DateTime
+- ? // optional
+- [] // list aka array
+
+common attributes:
+
+- @id
+- @unique
+- @default()
+- @relation(fields:[] , references:[] ) //field = current model value to use, references = other model value to use
+
+common functions:
+
+- autoincrement()
+- now()
+
+common patterns:
+id Int @id @default(autoincrement())  
+email String @unique  
+name String  
+createdAt DateTime @default(now())  
+updatedAt DateTime @updatedAt  
+owner User @relation(fields:[ownerId] , references:[id])  
+ownerId Int
+
+RELATIONS:
+1:1 = User{Profile} ; Profile{User @relation(fields:[], references:[])}  
+1:m = User{Post[]} ; Post{User @relation(fields:[], references:[])}  
+m:m = Post{Category[]} ; Category{Post[]}
+
+**prisma client common queries**
+
+BASIC OPERATIONS:
+
+- `findMany`
+- `findUnique`
+- `create`
+- `delete`
+- `update`
+- `upsert` //if existing record, update. if no record, create
+
+NESTED QUERIES:
+
+- `create` // creates a related record
+- `connect` // connects an existing related record by **ID** OR **UNIQUE** record
+- `delete`
+- `update`
+- `include`
+
+- create example
+
+```tsx
+const user = await prisma.user.create({
+  data: {
+    email: "alice@prisma.io",
+    profile: {
+      create: { bio: "Hello World" },
+    },
+  },
+})
+```
+
+- connect example by **ID** OR **UNIQUE** record
+
+```tsx
+const user = await prisma.profile.create({
+  data: {
+    bio: "Hello World",
+    user: {
+      connect: { email: "alice@prisma.io" },
+    },
+  },
+})
+
+const user = await prisma.profile.create({
+  data: {
+    bio: "Hello World",
+    user: {
+      connect: { id: 42 },
+    },
+  },
+})
+```
+
+**seeding data**
+
+CLI:
+
+- To do a force reset seed & sync, which REMOVES all old records use `npx prisma db push --force-reset`
+- **DO NOT** seed data with existing IDs, this will cause prisma to get confused later on.
+
+SEEDING MODEL RELATIONS:
+using an example owner and pet model for this section. `1 owner : m pets`
+
+- `1:m` or `m:m` during seeding, models with many of something else do not need to have those many something elses defined. like owners can have many pets, do not need to define.
+
+  - NO NEED
+
+  ```tsx
+  petsOwned Pet[]
+  ```
+
+- `1:1` during seeding, models belonging to a specific other model record needs to be defined. like a pet has one owner, must be defined.
+
+  - NEED
+
+  ```tsx
+  myOwner Owner @relation(fields:[ownerId], references:[id])
+  ownerId Int
+  ```
+
+- issue: seeding models with relation: if we don't seed with ids, how do we make relations with other model records if we dont know the id?
+- resolve: 1. Seed to create the owners while creating the pets as a nested create (can get tricky with all the nesting if there are a lot of interconnections), 2. or seed in the correct order using the `connect` (more tedious, will need ids, but orderly).
+
+1. Create owners and have a nested create pets at the same time.
+
+```tsx
+const newOwner = await prisma.owner.create({
+  data: {
+    name: "owner 1",
+    pets: {
+      create: {
+        petName: "cody",
+        petType: "dog",
+      },
+    },
+  },
+})
+```
+
+2. Seeding in order. Will need ids ahead of time.
+
+```tsx
+// this owner id will be 1
+const newOwner = await prisma.owner.create({
+  data: {
+    name: "owner 1",
+  },
+})
+
+const newPets = await prisma.pet.create({
+  data: {
+    petName: "cody",
+    petType: "dog",
+    petOwner: {
+      connect: [{ id: 1 }],
+    },
+  },
+})
+```
+
+#### API
+
+**API reference, from backend to frontend**
+
+BACKEND:
+
+- HTTP requests: need to be **await** & **json parsed**. `request.json()`
+- MODEL queries: need to be **await**.
+- DYNAMIC ROUTES params: need to be **parse int**.
+- HTTP RESPONSE: probably be **type json**. `NextResponse.json(data)`
+
+FRONTEND:
+
+- prevent default
+- response = **await** `fetch(url, {method: "", body: JSON.stringify( object )})`
+- parseResponse = **await** `response.json()`
+- `setstate` as needed
+- `useEffect` as needed
+
+#### STAR
+
+**STAR: DATA TYPES vs inputs**
+
+problem:
+
+- initially set a data type model as array of strings. because arrays are usually easier to work with for data with multiple things. But when it came to CRUD input for that data, how to input something as an array?
+- that made me want to change the model into a string to match the input.
+
+resolve:
+
+- but then that made me realize a method. keep the data in the database in the easiest form to work with in the database. Then parse the data as needed in the code.
+- keep database data in as "workable" format as possible. In the code format the data as needed.
+- so I kept the model type as array of strings, then parsed the string into an array of strings in the code.
+
+**STAR: SCALING FRONTEND CRUD UI**
+
+problem: state and handlers. making a crud ui with many models with many inputs. if use separate setStates and event handlers to read those inputs would have like **30 setstates and event handlers**. Needed a better **scaling** solution for input state
+
+resolve: use one input state and input event handler for each model. so **5 states** instead of **30 states**
+
+STATE:
+
+1. put the whole model object as the state initialized value. with `"" [] 0` for values as needed.
+1. use object spread syntax and object key value overwriting
+
+   - object spread syntax.
+
+   ```js
+   const obj1 = { key1: "abc", key2: 123 }
+
+   const spreadObj1 = { ...obj1 } // => {key1: "abc" , key2: 123}
+   const spreadObj2 = { ...obj1, key2: "overwrite" } // => {key1: "abc" , key2: "overwrite"}
+   ```
+
+1. With this method we can handle and update any single input change for an object. But how do we know what the key name is of the event? By giving the input element a `name` property and with `event.target.name` and `event.target.value`.
+
+   - from the input we will get the object property it is changing
+   - and the object property value it is changing
+   - `[event.target.name]:event.target.value`
+
+1. the input element will want to have these properties as well
+
+- type, to define the input type
+- **name**, this should the be `object keyname`, **exactly**
+- value, this should the the `object.keyname`, to make it a controlled component
+- placeholder, for UX
+- onChange, to trigger event
+
+```jsx
+const [input, setInput] = useState({
+  key1: 123,
+  key2: "abc",
+  key3: "xyz",
+})
+
+function handleInput(event) {
+  setInput({ ...input, [event.target.name]: event.target.value })
+}
+
+;<form>
+  <input
+    type="text"
+    name="key3"
+    value={input.name}
+    placeholder="type here"
+    onChange={handleInput}
+  ></input>
+</form>
+```
+
+1. SPECIAL CASES - UI FORMS:
+
+different UI form types will have different data. we'll need to handle the event data differently. so we cant use `event.target.value` for everything. We'll need to handle these different too, not just the UI part.
+
+common form UI types properties:
+
+- input type text - `value type name onChange`
+- select - `value name onChange`
+  - option - `value`
+- input type radio - `type value name onChange`
+- input type checkbox - `type name checked onChange`
+
+examples:
+input text
+
+```jsx
+<label>
+  name:
+  <input
+    type="text"
+    value={newChordPage.name}
+    name="name"
+    placeholder="my chord page 1"
+    onChange={handleNewChordPage}
+  ></input>
+</label>
+```
+
+select option
+
+```jsx
+<select name="ownerId" onChange={handleNewChordPage}>
+  {allUsers.map((e) => {
+    return (
+      <option value={e.id} key={e.id}>
+        {e.email}
+      </option>
+    )
+  })}
+</select>
+```
+
+radio
+
+```jsx
+<div className="control">
+  <label className="radio">
+    <input
+      type="radio"
+      value="triad"
+      name="chordSize"
+      onChange={handleInputNewChordQuality}
+    ></input>
+    Triad
+  </label>
+</div>
+```
+
+checkbox
+
+```jsx
+<label className="mx-5">
+  <input
+    type="checkbox"
+    name="isANoteOmitted"
+    onChange={handleInputNewChordQualityVoicing}
+    checked={newChordQualityVoicing.isANoteOmitted}
+  ></input>
+  isANoteOmitted
+</label>
+```
+
+1. SPECIAL CASES - handleing:
+   since we can have different event data coming in, OR data not in the right model format, we need to handle it.
+
+- we can match the input type by checking for `event.target.name`. this will tell us what kind of input we are handeling.
+- then we can set the data as needed, or format.
+
+```jsx
+function handleInput(event){
+    // input is a string, but model needs int
+    if(event.target.name === "needFormat"){
+        const parseId = parseInt(event.target.value)
+        setInput(...input, [event.target.name]: parseId)
+    // input is a checkbox, need to get target.checked, and not target.value
+    } else if(event.target.name === "needCheckValue"){
+        const getBoolean = event.target.checked
+        setInput(...input, [event.target.name]: getBoolean)
+    // otherwise, normal cases
+    } else{
+        setInput(...input, [event.target.name]: event.target.value)
+    }
+}
+```
+
+== notes - this is still kinda messy, probably could use refactoring.
+
+#### MISC
+
+**form UI select, default value for select**
+
+Use this pattern for dropdown select options
+
+- `disabled hidden` first option will show a prompt, then will be unselectable, works with onchange
+
+```js
+<select defaultValue={"OptionValue0"}>
+  <option disabled hidden value={"OptionValue0"}>
+    Prompt
+  </option>
+  <option value={"option1"}>option 1</option>
+</select>
+```
+
+**commit messages organization**
+
+feat: //feature done  
+fix: //bug fix  
+mile: //milestone
+
+**fetch: routes vs other**
+
+- it seems like `route` components dont need the full url for a fetch
+- while it seems like other components NEED the full url for a fetch
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Project Portfolio v3
 

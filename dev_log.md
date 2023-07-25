@@ -68,7 +68,7 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 
 **Date:** 07/24/2023  
 **Description:** Database of guitar chord shapes by quality  
-**Link:** [tbd]()  
+**Link:** [https://quality-chords.vercel.app/](https://quality-chords.vercel.app/)  
 **Notable Technologies:** Nextjs, Bulma, Prisma, react-chords svg generator, forms  
 **Learning focus:** Building a fullstack larger scale CRUD project. Working with multiple schema associated models.
 

@@ -1,4 +1,4 @@
-### Hi 👋 I'm Kevin, software engineer with a background in mechanical engineering
+### Hi 👋 I'm Kevin. Software engineer with a background in mechanical engineering
 
 ---
 
@@ -6,7 +6,7 @@
 ✨ interests: music production, bread baking, glass flameworking, audio story telling, biking
 
 ✍️ dev log: [journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/dev_log.md)  
-🖥️ software development projects: [portfolio](https://kevin-lambda.github.io/)  
+🖥️ software development projects: [portfolio](https://kevin-quoc-tan-lam.vercel.app/)  
 ✉️ reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
 
 ---

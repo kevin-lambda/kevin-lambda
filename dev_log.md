@@ -499,6 +499,28 @@ function handleInput(event){
 
 == notes - this is still kinda messy, probably could use refactoring.
 
+#### DEPLOY DATABASE - VERCEL: Deploying with a postgres database & Prisma (beta)
+
+MODIFIED INSTRUCTIONS
+
+1. Have static site project fully deployed, easiest on vercel for syncing database to later
+1. In vercel, in main dashboard, go to storage, create database, choose postgres, choose a region
+1. name the database. The database should now be live. We need to set up the connections now.
+1. connect project, this is the project we want to use the database with. This will send all the db environment variables to the project.
+1. Go to the database we created, and click to the .env.local tab. This holds the connection strings to the database.
+1. Show secrets and copy ALL the environment variables from vercel to the local env file.
+1. Then configure prisma to use the vercel postgres database by, going to the prisma tab in vercel
+1. copy the datasource db config. go to prisma.schema in the local project and paste the datasource db. This should tell the local project to connect to vercel db.
+1. test in postbird. There'll be some issues with the ssl security thing. but just keep trying a few times, and use the original sll method. By appending `?ssl=true` to the end of the db connection string.
+
+ORIGINAL INSTRUCTIONS INCLUDED
+
+After step 4
+
+1. `npm i -g vercel@latest` to install the vercel cli tool
+1. `vercel link` to link the local project to vercel, log in
+1. `vercel env pull .env.development.local` to pull environment variables from vercel
+
 #### MISC
 
 **form UI select, default value for select**

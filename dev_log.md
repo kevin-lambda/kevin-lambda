@@ -93,6 +93,13 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 50%;">
+<img src="./assets/3Aug2023.jpg" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
 
 **CHANGE LOG**  
 _July 24 2023: version 0.1.0_  

@@ -60,9 +60,32 @@ Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sa
 [May 11 2023: psql reminder](#journal-11-may-2023)  
 [Jun 04 2023: React basics](#journal-04-jun-2023)  
 [Jun 12 2023: Rusty](#journal-12-jun-2023)  
-[Jul 06 2023: Crud repeat](#journal-06-jul-2023)
+[Jul 06 2023: Crud repeat](#journal-06-jul-2023)  
+[Aug 07 2023: Optional Chain](#journal-08-aug-2023)
 
 # 📖 ENTRIES
+
+## Journal 08 aug 2023
+
+Optional chaining
+
+I just learned about optional chaining. It'll be so helpful, it gets it's own entry.
+
+- when drilling down into an object, sometimes an error will be thrown and crash the code. This is usually because the property doesn't exists _yet_ in the object.
+- Probably the object is state or async operation related. Then when the JSX tries to access the object property before the state or async operation is loaded. We get an crashing error.
+- So then the work around was to use a ternary checking for the existence of the object. But that gets messy.
+
+- Instead. we can just use optional chaining. It works like how we'd think it works.
+
+- `object?.prop1?.prop2?.prop3`
+
+- in object, look for prop1, but if it does not exist, return undefined. instead of throwing an error.
+
+This might not be super typesafe and secure, but it's a quick way to do things when appropriate.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Quality Chords
 

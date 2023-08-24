@@ -89,18 +89,66 @@ This might not be super typesafe and secure, but it's a quick way to do things w
 
 ## Quality Chords
 
-**Date:** 07/24/2023  
+**Date:** 07/24/2023, 8/24/2023
 **Description:** Database of guitar chord shapes by quality  
 **Link:** [https://quality-chords.vercel.app/](https://quality-chords.vercel.app/)  
-**Notable Technologies:** Nextjs, Bulma, Prisma, Postgres, Nodejs react-chords svg generator  
+**Notable Technologies:** Nextjs, Bulma, Prisma, Postgres, Nodejs react-chords svg generator, clerk user auth, cookie notification, env production/development variables  
 **Learning focus:** Building a fullstack larger scale CRUD project. Working with multiple schema associated models.
+
+**CHANGE LOG**  
+_July 24 2023: version 0.1.0_
+
+- Render svg chord diagrams by quality, toggle by root string
+- Basic chord database ~20 chord voicings
+- Database architecture of 5 schemas prepped for implementing users, chord pages, chord by note
+- Password protected admin console with full CRUD actions over all model records
+- Basic browser window print
+
+_August 24 2023: version 0.2.0_
+
+- User Authentication, login and signup
+- Guide and about pages content
+- Saved chord pages data to user
+- Custom page titles saved
+
+**ROAD MAP**  
+COMPLETED:  
+[x] 8/24 Supplemental pages for: Help about contact  
+[x] 8/24 chord page title naming
+
+[x] 8/24 User authentication log in, sign up  
+[x] 8/24 User profile page  
+[x] 8/24 Save chord page to user
+
+FEATURES:  
+[] chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
+[] chord diagram remove nut
+
+[] Alternate same chord root voicing carousel  
+[] add alternate same chord root voicings
+
+[] Upgrade print functionality, only show chord page
+
+[] dedicated signed in/out views, instead of conditional rendering >>> performance
+
+[] Remove, reorder shown chords via drag and drop? else buttons
+
+[] Clean up admin CRUD UX/UI and dynamic admin pages
+
+MISC:  
+[] add TS  
+[] add unit tests
 
 **To look into**
 
 - a cleaner way to seed data, probably use the nested create method
 - cleaner form data
+- 8/24 when to use modularized fetching
+- 8/24 api error handling, at scale
+- 8/24 how to change schema without wiping data
+- 8/24 how to architect dedicated signed in vs signed out views
 
-**Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database
+**Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database, clerk user auth, cookie notification, env production/development variables, refactoring, database migrations,
 
 <img src="./assets/24jul23_main.jpg" alt="Backend logic"
   style="display: block;
@@ -123,39 +171,6 @@ This might not be super typesafe and secure, but it's a quick way to do things w
   margin-top: 1rem;
   margin-bottom: 1rem;
   width: 50%;">
-
-**CHANGE LOG**  
-_July 24 2023: version 0.1.0_  
-Features:
-
-- Render svg chord diagrams by quality, toggle by root string
-- Basic chord database ~20 chord voicings
-- Database architecture of 5 schemas prepped for implementing users, chord pages, chord by note
-- Password protected admin console with full CRUD actions over all model records
-- Basic browser window print
-
-Feature pipeline:  
-[] Supplemental pages for: Help about contact  
-[] chord page title naming
-
-[] chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
-[] chord diagram remove nut
-
-[] User authentication log in, sign up  
-[] User profile page  
-[] Save chord page to user
-
-[] Alternate same chord root voicing carousel  
-[] add alternate same chord root voicings
-
-[] Remove, reorder shown chords via drag and drop? else buttons
-
-[] Upgrade print functionality, only show chord page  
-[] Clean up admin CRUD UX/UI
-
-[] optimize functions
-[] add TS
-[] add unit tests
 
 #### STAR/lessions learned topics:
 
@@ -180,6 +195,8 @@ Lessons learned - smaller
 - I can see a lot of places where I know there's a better way to do it. I just don't know how exactly right now.
 
 ### Dev learnings ========================================================
+
+### SPRINT 1: 7/24/2023
 
 #### Prisma
 
@@ -578,6 +595,73 @@ mile: //milestone
 
 - it seems like `route` components dont need the full url for a fetch
 - while it seems like other components NEED the full url for a fetch
+
+===============================================================================================
+
+### SPRINT 2: 8/24/2023
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+- user auth, public clerk key
+
+  - install
+  - configure on clerk.com
+  - put clerk provider in layout WITH public clerk publishable key
+  - create dynamic signin and login pages
+  - put userbutton component in navbar
+
+- env variables
+
+  - in nextjs.... it reads env variables in such order... env is default....
+  - npm run dev = dev envs ; npm run start (build first) = prod envs
+  - if using env vars on use client, NEEDS NEXT_PUBLIC
+    - may have double, public and non public versions of env vars
+  - make sure nextjs dashboard settings env also has public/non public env variables defined
+
+- cookies
+
+  - used a library to handle the basics to notify user
+  - "react-cookie-consent": "^8.0.1"
+  - import the component and used it on main page at footer area
+
+- user input page title
+
+  - UX/UI solution for an optional user input title change component
+  - css input with hidden border
+  - css show border on hover
+  - jsx onchange title setstate
+  - send title as part of api POST
+
+- db wiping
+
+  - still need to learn solution
+  - changing schema and syncing with current method wipes database.
+  - there is probably a way to do this without wiping everything. need to look into it
+  - because tried to change schema. then using migration, all data was wiped.
+  - even when using development database url. Something is wonky.
+
+- refactoring... TBD
+
+  - build first then optimize
+  - unless know exactly what and how building, its hard/not time useful to pre plan optimized code
+  - plan >>> build >>> then see pattern >>> optimize
+
+- project management. sprint, then review and document
+  - two week coding sprint seems to be a good amount of time before a reflection pause
+  - to inspect code, refactor, document learnings
 
 [⬆️ Back To Contents](#-contents)
 

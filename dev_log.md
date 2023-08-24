@@ -147,6 +147,7 @@ MISC:
 - 8/24 api error handling, at scale
 - 8/24 how to change schema without wiping data
 - 8/24 how to architect dedicated signed in vs signed out views
+- 8/24 prisma env(), how does this work? does it know .env from env.development.local?
 
 **Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database, clerk user auth, cookie notification, env production/development variables, refactoring, database migrations,
 
@@ -596,72 +597,102 @@ mile: //milestone
 - it seems like `route` components dont need the full url for a fetch
 - while it seems like other components NEED the full url for a fetch
 
-===============================================================================================
+===================================================================
 
 ### SPRINT 2: 8/24/2023
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+#### user auth & public clerk key
 
-- user auth, public clerk key
+1. Install `@clerk/nextjs`
+2. Configure on clerk.com and create an application, choose providers, get API keys for environment variables
+3. Import and put clerk provider component in layout WITH public clerk publishable key, wrapping entire app
 
-  - install
-  - configure on clerk.com
-  - put clerk provider in layout WITH public clerk publishable key
-  - create dynamic signin and login pages
-  - put userbutton component in navbar
+```jsx
+return (
+  <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  </ClerkProvider>
+)
+```
 
-- env variables
+4. Create dynamic pages with imported signin and login component
 
-  - in nextjs.... it reads env variables in such order... env is default....
-  - npm run dev = dev envs ; npm run start (build first) = prod envs
-  - if using env vars on use client, NEEDS NEXT_PUBLIC
-    - may have double, public and non public versions of env vars
-  - make sure nextjs dashboard settings env also has public/non public env variables defined
+```jsx
+function Page() {
+  return (
+    <div>
+      <SignUp />
+    </div>
+  )
+}
+```
 
-- cookies
+5. Import and put userbutton component in navbar `<UserButton />`
 
-  - used a library to handle the basics to notify user
-  - "react-cookie-consent": "^8.0.1"
-  - import the component and used it on main page at footer area
+#### Env variables in nextjs
 
-- user input page title
+The special variable `NODE_ENV` in nextjs checks for the environment the app is running in. Nextjs will automatically load the corresponding environment variables depending on the environment
 
-  - UX/UI solution for an optional user input title change component
-  - css input with hidden border
-  - css show border on hover
-  - jsx onchange title setstate
-  - send title as part of api POST
+- `npm run dev` will load development variables, such as `.env.development.local`
+- `npm run start` will load production variables, such as `.env.production.local`
 
-- db wiping
+Nextjs loads many different environment variable files, in ORDER, stopping once the variables has been found. For now, just use .env.development.local, .env.production.local, and .env.
 
-  - still need to learn solution
-  - changing schema and syncing with current method wipes database.
-  - there is probably a way to do this without wiping everything. need to look into it
-  - because tried to change schema. then using migration, all data was wiped.
-  - even when using development database url. Something is wonky.
+1. `process.env`
+1. `.env.$(NODE_ENV).local` such as `.env.development.local` or `.env.production.local`. Use these.
+1. `.env.local`
+1. `.env.$(NODE_ENV)`
+1. `.env` defines the "default" values for environment variables, since it is at the end. Use these
 
-- refactoring... TBD
+If any environment variables on used on the client side `"use client"` it **NEEDS** to have `NEXT_PUBLIC` prepended to the environment variable. If the variable is used on both client and server side, may need to have two environment variables. The environment variable file may look like this.
 
-  - build first then optimize
-  - unless know exactly what and how building, its hard/not time useful to pre plan optimized code
-  - plan >>> build >>> then see pattern >>> optimize
+```
+// .env.development.local
+NEXT_PUBLIC_DOMAIN_LINK="http://localhost:3000"
+DOMAIN_LINK="http://localhost:3000"
+```
 
-- project management. sprint, then review and document
-  - two week coding sprint seems to be a good amount of time before a reflection pause
-  - to inspect code, refactor, document learnings
+Make sure the vercel dashboard settings environment variables has the public/non public env variables defined.
+
+- for environment variables in vercel, DON'T use quotes. quotes okay for local env variables
+
+#### Cookies
+
+- Clerk authentication uses cookies. There may be a way disable cookies in clerk, but that needs to be looked into.
+- To handle cookie usage, the library `react-cookie-consent` was used to handle basic cookie use notification
+- Imported the component and used it on main page at footer area
+
+#### UX/UI for optional user input page title
+
+- CSS: input element with hidden border, show border on hover
+- JSX onchange title setstate
+- send title as part of api POST
+
+#### ISSUE: Schema change with active data, and database wiping. solution TBD
+
+- Still need to figure out solution
+- When writing out app and realizing database needs a change in the schema, there are complications when working with a live production database.
+- Changing schema and syncing to the database can wipe the data. This is because there may be data constraints, so postgres will just clear everything so the new schema can be implemented.
+- There is probably a way to do this without wiping everything. need to look into it
+
+#### DESIGN PRACTICES: Optimizing
+
+- Build first then optimize
+- Unless we know exactly what and how building, its hard and not time useful to pre plan optimized code
+- plan >>> build >>> then see pattern >>> optimize
+
+#### PROJECT MANAGEMENT: Sprint, then review and document
+
+- a two week coding sprint seems to be a good amount of time before a reflection pause to inspect code, refactor, document learnings
+
+#### MISC
+
+- map within a map works
+- `ERR_SSL_PROTOCOL_ERROR` when fetching to localhost. make sure localhost is `http` and NOT `https`
+  - ✔️ `http://localhost:3000`
+  - ❌ `https://localhost:3000`
 
 [⬆️ Back To Contents](#-contents)
 

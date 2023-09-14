@@ -89,10 +89,10 @@ This might not be super typesafe and secure, but it's a quick way to do things w
 
 ## Quality Chords
 
-**Date:** 07/24/2023, 8/24/2023
+**Date:** 07/24/2023, 8/24/2023 , 9/13/2023  
 **Description:** Database of guitar chord shapes by quality  
 **Link:** [https://quality-chords.vercel.app/](https://quality-chords.vercel.app/)  
-**Notable Technologies:** Nextjs, Bulma, Prisma, Postgres, Nodejs react-chords svg generator, clerk user auth, cookie notification, env production/development variables  
+**Notable Technologies:** Nextjs, Bulma, Prisma, Postgres, Nodejs react-chords svg generator, clerk user auth, cookie notification, env production/development variables, npm  
 **Learning focus:** Building a fullstack larger scale CRUD project. Working with multiple schema associated models.
 
 **CHANGE LOG**  
@@ -111,6 +111,12 @@ _August 24 2023: version 0.2.0_
 - Saved chord pages data to user
 - Custom page titles saved
 
+_September 13 2023: version 0.2.1_
+
+- Customized chord rendering library dependency package
+- Removed nut from chord
+- Added note labels and UI controls
+
 **ROAD MAP**  
 COMPLETED:  
 [x] 8/24 Supplemental pages for: Help about contact  
@@ -120,10 +126,10 @@ COMPLETED:
 [x] 8/24 User profile page  
 [x] 8/24 Save chord page to user
 
-FEATURES:  
-[] chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
-[] chord diagram remove nut
+[x] 9/13 chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
+[x] 9/13 chord diagram remove nut
 
+FEATURES:  
 [] Alternate same chord root voicing carousel  
 [] add alternate same chord root voicings
 
@@ -149,7 +155,7 @@ MISC:
 - 8/24 how to architect dedicated signed in vs signed out views
 - 8/24 prisma env(), how does this work? does it know .env from env.development.local?
 
-**Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database, clerk user auth, cookie notification, env production/development variables, refactoring, database migrations,
+**Reviewed:** Styling, forms, checkboxes, radio button, api endpoints, crud interfaces, ORM schema, ORM associations, ORM queries includes, seeding associated data, data parsing patterns for database, clerk user auth, cookie notification, env production/development variables, refactoring, database migrations, edit node modules packages
 
 <img src="./assets/24jul23_main.jpg" alt="Backend logic"
   style="display: block;
@@ -173,14 +179,11 @@ MISC:
   margin-bottom: 1rem;
   width: 50%;">
 
-#### STAR/lessions learned topics:
-
-STAR - written out
-
-- SCALING: FRONTEND CRUD UI, forms and useState, combine form inputs into one usestate instead of a bunch of single form input states
-- DATA: Data types vs form inputs
+#### STAR/lessions learned summary:
 
 Lessons learned - smaller
+
+8/24/2023
 
 - SCALING: when larger project, harder keep all the data properties, types in your head. params, model, schema, input, object property. so let typescript handle it.
 - DATA: choosing data type and where to do the formatting (EX: closer to where it is happening, not in the db api)
@@ -188,16 +191,18 @@ Lessons learned - smaller
 - Build first then optimize... but know when to pause for optimizing. Because if you let it go too long, it'll accumulate too much.
 - Libraries: its best to test a library separately before adding to project. Somehow make a testing environment all ready for it.
 - api: let the api just do api and ORM query stuff. keep it simple and don't work with the data too much in there. To separate concerns. keep data parsing close to the data origination.
+- State management. Figure out when is the best use case for a state management tool. Although messy, I still think the admin implementation is OK. All the state only needs to be on that page and not accross other pages. Which is what I understand a state management tool like redux to be used for.
+- Naming consistency: This is the simplest hardest thing. Trying to be consistent with all the object names and types and properties. It would make things a lot easier, but it is hard to keep it all on track when only following a loose plan.
 
-- state management. Figure out when is the best use case for a state management tool. Although messy, I still think the admin implementation is OK. All the state only needs to be on that page and not accross other pages. Which is what I understand a state management tool like redux to be used for.
+9/13/2023
 
-- naming consistency: This is the simplest hardest thing. Trying to be consistent with all the object names and types and properties. It would make things a lot easier, but it is hard to keep it all on track when only following a loose plan.
+- Build tooling knowledge: You can get away with not understanding how build tooling works.... until you can't. When you can't, it can totally stop progress, because each dev environment can be unique. Compared to trying to solve a coding issue, which is more localized.
 
 - I can see a lot of places where I know there's a better way to do it. I just don't know how exactly right now.
 
 ### Dev learnings ========================================================
 
-### SPRINT 1: 7/24/2023
+### SPRINT 1: 7/24/2023 - chord rendering and database
 
 #### Prisma
 
@@ -599,7 +604,7 @@ mile: //milestone
 
 ===================================================================
 
-### SPRINT 2: 8/24/2023
+### SPRINT 2: 8/24/2023 - user authentication, cookies
 
 #### user auth & public clerk key
 
@@ -695,6 +700,83 @@ Make sure the vercel dashboard settings environment variables has the public/non
   - ❌ `https://localhost:3000`
 
 [⬆️ Back To Contents](#-contents)
+
+===================================================================
+
+### SPRINT 3: 9/13/2023 - custom chord rendering
+
+#### How to use and modify a npm dependency, library, node modules
+
+**STEPS: Create a modified fork of the target library, have the main project point to it, and then rebuild**
+
+1. You have an existing project with the npm package installed and working already.
+1. Fork the target library to a new repo.
+1. Clone the fork to a separate project to test changes, do not npm install it. May need to do build steps in order for the package to work.
+1. Once the modified forked version is working, push it to your github repo.
+1. Install the github repo as the source of the package with `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`
+1. Check package.json and node modules that the repo is used as the source, and that the files are correctly changed.
+1. For next.js which compiles a build cache, need to delete the /.next folder.
+1. Finally, do `npm run build`
+1. Check to see changes in your main project.
+1. If the forked library needs changes, repeat the `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`, /.next folder delete, and `npm run build` steps.
+
+**Situation**
+The situation for this project was that I used a library to render svg diagrams of guitar chords. It was installed via npm package. But I wanted some small tweaks to how the library worked. A few small changes to make it fit to my custom application.
+
+Initially, I tried to directly edit the files in the node modules. I thought because that was where the files were located, I could just change those and it would work. It did not work.
+
+I learned that approach wouldn't work for many reasons.
+
+1. For my development environment in nextjs, the files in node modules aren't actively used. I think, they are used just once at build. Which compile and are cached into a form to be used. This is shown by deleting node modules, and npm run dev will still run successfully.
+1. If somehow node modules is used at runtime, it may be overwritten when npm installing.
+
+Directly modifying node modules will not work. You will need to make a separate, modified forked repo of the library.
+
+**Modifying a package**
+
+Assuming the library you are using is open source and you are allowed to fork it, do so. Fork the library repo to your own account.
+
+It might be tempting to just work with your forked version right away in your main project. But it is probably best to test with the forked library in a separate controlled project. So clone the forked library into a new project. This will allow you to more easily make and test changes. Don't install it via npm.
+
+The library may have different build tooling that what you have used. So you'll need to figure it out in order to make changes.
+
+An example may be a library with `/src` and `/lib`. In this case, its likely that the `/src` folder contains the code that you'll be editting. Then check the package.json, there'll likely be a build script that outputs files to the `/lib` folder.
+
+After this build process, then the package will be ready to be used as an dependency with npm install.
+
+**Pointing to that package**
+
+With your own forked library working, now it is ready to integrate into the main project.
+
+Do the CLI command `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`. This will install the github repo as an npm package. Because the forked library should still have the same package name (see its package.json), it'll still have the same npm name. So don't worry about it.
+
+Check your main project package.json dependencies. it should look like this `"@original_library_owner/original_library_name": "github:YOUR_GITHUB_NAME/YOUR_FORKED_REPO_NAME#YOUR_FORKED_REPO_BRANCH",`
+
+Check node modules for your new forked library and check that the files in there are changed and correct.
+
+Depending on your build environment, you may need to do these steps in order to see changes. Although the new forked library is installed. It might not in use yet. This is because some build environments, like in nextjs can cache a built version of npm packages on first install. Then it won't build it again, even if you install a new version of it.
+
+To solve this, at least in nextjs, delete the .next folder. In other environments, it may be what ever output build folder you have.
+
+Now run the build process again. You should finally see the updated forked library showing changes in your current main project.
+
+IMPORTANT NOTE: If you need to make changes to the forked library and then do so. To update the main project, you'll need to do the command `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`. `npm install` won't update it. Likely because it thinks nothing has changed when it looks at the version.
+
+#### React props short circuit evaluation
+
+There is a thing called short circuit evaluation when passing values to a prop. Or props to a component? It checks if a value is true, then passes the data.
+
+`<aComponent prop1={ifIamTruthy && thenIWillBePassedAsAProp}>`
+
+#### Working on someone else's code
+
+- Learning to read other people's code is an important skill. It really tests knowledge and problem solving. As you'll run into a lot of new syntax, technology, and just logic.
+
+- You'll learn to learn what is important to figure out.
+
+- With other people's code, you might not be able to test everything in the way you want and get direct feedback. So it will challenge your logic tracking, and how much you trust your own knowledge.
+
+- Tracking data passing is a big task, especially between your components and their code.
 
 <br><br>
 

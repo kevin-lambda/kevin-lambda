@@ -712,13 +712,22 @@ Make sure the vercel dashboard settings environment variables has the public/non
 1. You have an existing project with the npm package installed and working already.
 1. Fork the target library to a new repo.
 1. Clone the fork to a separate project to test changes, do not npm install it. May need to do build steps in order for the package to work.
-1. Once the modified forked version is working, push it to your github repo.
+1. Get the test project working.
+1. Make changes to the actual forked version, push it to your github repo.
 1. Install the github repo as the source of the package with `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`
 1. Check package.json and node modules that the repo is used as the source, and that the files are correctly changed.
 1. For next.js which compiles a build cache, need to delete the /.next folder.
 1. Finally, do `npm run build`
 1. Check to see changes in your main project.
 1. If the forked library needs changes, repeat the `npm install --save GITHUB_USERNAME/REPO_NAME#BRANCH_NAME`, /.next folder delete, and `npm run build` steps.
+
+<img src="./assets/13sep23.png" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
 
 **Situation**
 The situation for this project was that I used a library to render svg diagrams of guitar chords. It was installed via npm package. But I wanted some small tweaks to how the library worked. A few small changes to make it fit to my custom application.

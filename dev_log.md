@@ -129,11 +129,11 @@ COMPLETED:
 [x] 9/13 chord diagram tones >>> forking svg chord library, manually configuring to allow tones  
 [x] 9/13 chord diagram remove nut
 
+[x] 9/15 Upgrade print functionality, only show chord page
+
 FEATURES:  
 [] Alternate same chord root voicing carousel  
 [] add alternate same chord root voicings
-
-[] Upgrade print functionality, only show chord page
 
 [] dedicated signed in/out views, instead of conditional rendering >>> performance
 
@@ -786,6 +786,77 @@ There is a thing called short circuit evaluation when passing values to a prop. 
 - With other people's code, you might not be able to test everything in the way you want and get direct feedback. So it will challenge your logic tracking, and how much you trust your own knowledge.
 
 - Tracking data passing is a big task, especially between your components and their code.
+
+### MINI SPRINT 3.1: 9/15/2023 - Print react component & useRef
+
+#### useRef
+
+- The library react-to-print requires using the react hook useRef
+- useRef is a little bit like useState
+
+**Three things to know:**
+
+- useRef makes a state object that can store a value, object, OR a **DOM ELEMENT**. The storing of a dom element is different from useState
+- The state can be **mutable**. useRef only returns one thing, an object with the property current.
+- If the state is changed, it **DOES NOT** cause a rerender
+
+_==> It is most commonly used to target and work with dom elements_
+
+**How to use it:**
+Method 1. To store a value. Not common use case
+
+```jsx
+const storedReference = useRef(123) // creating the reference object
+storedReference.current = 1234 // updating the reference object value. This will not cause a rerender
+```
+
+Method 2. To attach a DOM element to the reference. Common use
+
+```jsx
+const willBeDomElementReference = useRef() // create the reference object with no value
+
+return (
+  <div>
+    <p ref={willBeDomElementReference}>stuff</p> // we are attaching the
+    reference to this DOM element. Any dom element (but not React Components)
+    can work in this way
+    <button
+      onClick={() => {
+        willBeDomElementReference.current.focus()
+      }}
+    ></button> // We can now do things with DOM elements, such as focus on that
+    element on button click
+  </div>
+)
+```
+
+Method 3. Attaching the reference to a React Component
+There are extra steps here. This is because if the React Component was imported, it might not be a single unique instance. VS directly ref a DOM element. Reminder, a react component looks like this `<Navbar />`
+
+- The component we want to target must be a **Functional Component** and it must be forwardRef.
+- A Functional Component is the `const iAmAFunctionalComponent = () => {return <div>abc</div>}` way of making a function.
+- We are modifying the **target** component. So this might mean working in a different file.
+- The full example looks like this. Then we can go back to the place where we want to reference an instance of this React Component.
+
+```jsx
+const Navbar = forwardRef((props, ref) => {
+  return <nav ref={ref}> content </nav>
+})
+export default Navbar
+```
+
+#### React to print
+
+React to print requires the component or dom element to be referenced. It should use either dom or component method as above.
+
+Then wherever we want the UI to be, we put the react to print component with the following attributes
+
+```jsx
+<ReactToPrint
+  trigger={() => <button>PRINT ME</button>}
+  content={() => targetComponentPrint.current}
+/>
+```
 
 <br><br>
 

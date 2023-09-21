@@ -211,9 +211,9 @@ Lessons learned - smaller
 
 ### Dev learnings ========================================================
 
-### SPRINT 1: 7/24/2023 - chord rendering and database
-
 #### 07242023S1
+
+### SPRINT 1: 7/24/2023 - chord rendering and database
 
 #### Prisma
 
@@ -615,9 +615,9 @@ mile: //milestone
 
 ===================================================================
 
-### SPRINT 2: 8/24/2023 - user authentication, cookies
-
 #### 08242023S1
+
+### SPRINT 2: 8/24/2023 - user authentication, cookies
 
 #### user auth & public clerk key
 
@@ -714,9 +714,9 @@ Make sure the vercel dashboard settings environment variables has the public/non
 
 ===================================================================
 
-### SPRINT 3: 9/13/2023 - custom chord rendering
-
 #### 09132023S1
+
+### SPRINT 3: 9/13/2023 - custom chord rendering
 
 #### How to use and modify a npm dependency, library, node modules
 
@@ -873,9 +873,9 @@ Then wherever we want the UI to be, we put the react to print component with the
 
 ===================================================================
 
-### SPRINT 4: 9/20/2023 - Alternate chords data manipulation
-
 #### 09202023S1
+
+### SPRINT 4: 9/20/2023 - Alternate chords data manipulation
 
 <img src="./assets/20sep23_dataflow.png" alt="Backend logic"
   style="display: block;

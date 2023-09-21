@@ -97,7 +97,7 @@ This might not be super typesafe and secure, but it's a quick way to do things w
 **Learning focus:** Building a fullstack larger scale CRUD project. Working with multiple schema associated models.
 
 **CHANGE LOG**  
-_July 24 2023: version 0.1.0_
+[_July 24 2023: version 0.1.0_](###-SPRINT-1:-7/24/2023---chord-rendering-and-database)
 
 - Render svg chord diagrams by quality, toggle by root string
 - Basic chord database ~20 chord voicings

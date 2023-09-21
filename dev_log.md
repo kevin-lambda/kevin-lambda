@@ -613,6 +613,8 @@ mile: //milestone
 - it seems like `route` components dont need the full url for a fetch
 - while it seems like other components NEED the full url for a fetch
 
+[⬆️ Back to section summary](#quality-chords)
+
 ===================================================================
 
 #### 08242023S1
@@ -711,6 +713,8 @@ Make sure the vercel dashboard settings environment variables has the public/non
 - `ERR_SSL_PROTOCOL_ERROR` when fetching to localhost. make sure localhost is `http` and NOT `https`
   - ✔️ `http://localhost:3000`
   - ❌ `https://localhost:3000`
+
+[⬆️ Back to section summary](#quality-chords)
 
 ===================================================================
 
@@ -871,6 +875,8 @@ Then wherever we want the UI to be, we put the react to print component with the
 />
 ```
 
+[⬆️ Back to section summary](#quality-chords)
+
 ===================================================================
 
 #### 09202023S1
@@ -933,6 +939,8 @@ TRACKING:
 - One challenge was uncovering what data the different variables in my code contained. It wasn't hard to do just console log everything. But it was hard to figure out what to look at, uncover everything, lay it all out so I could put the pieces together.
 - Once I had the function working, I added UI to control it. Then I ran into feature overload. The UI controls became cluttered. So I took time to study UI controls and how to make those design decisions. My initial UI design was minimal and straightforward. I wanted to keep that UX.
 - I made decisions about what controls were "advanced" and covered those with an advanced controls button. Which I also set default options for hidden controls as needed.
+
+[⬆️ Back to section summary](#quality-chords)
 
 [⬆️ Back To Contents](#-contents)
 

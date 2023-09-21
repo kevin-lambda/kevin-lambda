@@ -35,7 +35,7 @@ May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-
 May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)  
 Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)  
 Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)  
-Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator ; [Quality Chords](#quality-chords)
+Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator, npm package customize ; [Quality Chords](#quality-chords)
 
 ### Articles Published
 
@@ -43,6 +43,7 @@ Mar 13 2023 - [Medium: Jr dev asks — Why would I want to publish a personal np
 Mar 23 2023 - [Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)  
 Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)  
 Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sass in Next.js 13.](https://kevin-lambda.medium.com/jr-dev-asks-how-to-use-custom-bulma-variables-with-sass-in-next-js-13-830604c717d5)
+Sep 16 2023 - [Medium: Jr Dev asks — How to modify an npm package for your project](https://kevin-lambda.medium.com/jr-dev-asks-how-to-modify-an-npm-package-for-your-project-edcc8f32ff15)
 
 ### Journal
 
@@ -89,7 +90,7 @@ This might not be super typesafe and secure, but it's a quick way to do things w
 
 ## Quality Chords
 
-**Date:** 07/24/2023, 8/24/2023 , 9/13/2023  
+**Date:** 07/24/2023, 8/24/2023 , 9/13/2023 , 9/20/2023  
 **Description:** Database of guitar chord shapes by quality  
 **Link:** [https://quality-chords.vercel.app/](https://quality-chords.vercel.app/)  
 **Notable Technologies:** Nextjs, Bulma, Prisma, Postgres, Nodejs react-chords svg generator, clerk user auth, cookie notification, env production/development variables, npm  
@@ -117,6 +118,13 @@ _September 13 2023: version 0.2.1_
 - Removed nut from chord
 - Added note labels and UI controls
 
+_September 20 2023: version 0.3.0_
+
+- Alternate Chords carousel
+- Print function updated to print only chord page
+- Configured custom chord rendering library, adjusted chord grid and labels
+- Added UI controls for note labels and alternate chords toggle
+
 **ROAD MAP**  
 COMPLETED:  
 [x] 8/24 Supplemental pages for: Help about contact  
@@ -131,9 +139,10 @@ COMPLETED:
 
 [x] 9/15 Upgrade print functionality, only show chord page
 
-FEATURES:  
-[] Alternate same chord root voicing carousel  
-[] add alternate same chord root voicings
+[x] 9/20 Alternate same chord root voicing carousel  
+[x] 9/20 add alternate same chord root voicings
+
+FEATURES:
 
 [] dedicated signed in/out views, instead of conditional rendering >>> performance
 
@@ -699,8 +708,6 @@ Make sure the vercel dashboard settings environment variables has the public/non
   - ✔️ `http://localhost:3000`
   - ❌ `https://localhost:3000`
 
-[⬆️ Back To Contents](#-contents)
-
 ===================================================================
 
 ### SPRINT 3: 9/13/2023 - custom chord rendering
@@ -857,6 +864,69 @@ Then wherever we want the UI to be, we put the react to print component with the
   content={() => targetComponentPrint.current}
 />
 ```
+
+===================================================================
+
+### SPRINT 4: 9/20/2023 - Alternate chords data manipulation
+
+<img src="./assets/20sep23_dataflow.png" alt="Backend logic"
+  style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;">
+
+#### STAR: Going from an architecture for a single to multiple chord rendering
+
+**SITUATION:**
+The goal is to go from showing a single rendered chord to having a carousel to allow options for other rendered chords. The data structure is as follows:
+
+Was:
+
+- chord quality -> root string
+- EX: Major 7th -> 5th root
+- EX: Minor 7th -> 1st root
+
+Goal:
+
+- chord quality -> root string -> chord options
+- EX: Major 7th -> 5th root -> 2nd of 4th chord shape
+- EX: Minor 7th -> 1st root -> 1st of 2nd chord shape
+
+The challenge was going to another dimension of data for the chords. There are many chord qualities, each chord quality has many root strings it can be on, then each root string can have many chord shapes.
+
+**APPROACH**  
+I broke up the problem into two parts.
+
+1. DATA: How to integrate the alternate chord data to the rendering function. At the time, I only set up the data for the rendering function to handle one chord at a time.
+1. TRACKING: How to track which alternate chord is currently showing. At the time I only needed to track which chord quality, and which root strings were showing.
+
+DATA:
+
+- Starting from the data fetch from the postgres database, on first load, the app fetches _all_ available chord data. This includes any alternate chord shapes. It was a decision tradeoff I made at the start of the project, and it turned out to be helpful.
+- Before having alternate chord data, selected chords were put into a pool of chords to render. Chord qualities such as major, minor. Then the rendering function would filter for that one chord quality (because there was only one) and render it.
+- Now with many chords for one quality, I modified the rendering function to render the currently chosen **tracked** alternate chord.
+- This way, there was no need to manually "remove" an existing render and replace it. Because I used the same rendering function, which renders all the chords, it detects any changes to the data that is passed to it.
+
+TRACKING:
+
+- The data and tracking portions had to work together to get rendering feedback. So while I did the data portion first, I used dummy data to represent the **current chosen alternate chord**.
+- I thought about many different ways to track the data, but I landed on using state to track which qualities were chosen, and for each string, which option was chosen, represented by a value.
+- So when a chord quality was chosen, I went to the chordAdd function and had a setState which would add a quality to the state object.
+- The rendering function would read the state data, and render chords based on what the option values were.
+- When an alternate chord was chosen, it would update the state, which would be sent to the rendering function. Then the new chosen chords would be rendered.
+- There were edge cases to take care of such as trying to advance once reaching the end of the available options.
+
+**RESULT:**
+
+- Alternate chords render correctly and is performant.
+- Once I had the data model for current chord tracking, there was steady progress. Before that I spent a few days just thinking about what data models might work.
+- One challenge was uncovering what data the different variables in my code contained. It wasn't hard to do just console log everything. But it was hard to figure out what to look at, uncover everything, lay it all out so I could put the pieces together.
+- Once I had the function working, I added UI to control it. Then I ran into feature overload. The UI controls became cluttered. So I took time to study UI controls and how to make those design decisions. My initial UI design was minimal and straightforward. I wanted to keep that UX.
+- I made decisions about what controls were "advanced" and covered those with an advanced controls button. Which I also set default options for hidden controls as needed.
+
+[⬆️ Back To Contents](#-contents)
 
 <br><br>
 

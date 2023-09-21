@@ -105,20 +105,20 @@ This might not be super typesafe and secure, but it's a quick way to do things w
 - Password protected admin console with full CRUD actions over all model records
 - Basic browser window print
 
-_August 24 2023: version 0.2.0_
+[_August 24 2023: version 0.2.0_](#08242023S1)
 
 - User Authentication, login and signup
 - Guide and about pages content
 - Saved chord pages data to user
 - Custom page titles saved
 
-_September 13 2023: version 0.2.1_
+[_September 13 2023: version 0.2.1_](#09132023S1)
 
 - Customized chord rendering library dependency package
 - Removed nut from chord
 - Added note labels and UI controls
 
-_September 20 2023: version 0.3.0_
+[_September 20 2023: version 0.3.0_](#09202023S1)
 
 - Alternate Chords carousel
 - Print function updated to print only chord page
@@ -213,7 +213,7 @@ Lessons learned - smaller
 
 ### SPRINT 1: 7/24/2023 - chord rendering and database
 
-### 07242023S1
+#### 07242023S1
 
 #### Prisma
 
@@ -617,6 +617,8 @@ mile: //milestone
 
 ### SPRINT 2: 8/24/2023 - user authentication, cookies
 
+#### 08242023S1
+
 #### user auth & public clerk key
 
 1. Install `@clerk/nextjs`
@@ -713,6 +715,8 @@ Make sure the vercel dashboard settings environment variables has the public/non
 ===================================================================
 
 ### SPRINT 3: 9/13/2023 - custom chord rendering
+
+#### 09132023S1
 
 #### How to use and modify a npm dependency, library, node modules
 
@@ -870,6 +874,8 @@ Then wherever we want the UI to be, we put the react to print component with the
 ===================================================================
 
 ### SPRINT 4: 9/20/2023 - Alternate chords data manipulation
+
+#### 09202023S1
 
 <img src="./assets/20sep23_dataflow.png" alt="Backend logic"
   style="display: block;

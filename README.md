@@ -3,7 +3,7 @@
 ---
 
 ✍️ Developer Journal: [journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/dev_log.md)  
-🖥️ software development projects: [portfolio](https://kevin-lam.vercel.app/)  
+🖥️ Software projects: [portfolio](https://kevin-lam.vercel.app/)  
 ✉️ Reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
 
 ---

@@ -2,9 +2,9 @@
 
 ---
 
-✍️ Developer Journal: [journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/dev_log.md)  
-🖥️ Software projects: [portfolio](https://kevin-lam.vercel.app/)  
-✉️ Reach me: [linkedin](https://www.linkedin.com/in/kevin-q-lam/)
+✍️ [Developer journal](https://github.com/kevin-lambda/kevin-lambda/blob/main/dev_log.md)  
+🖥️ [Portfolio & Resume](https://kevin-lam.vercel.app/)  
+✉️ [Reach me through linkedin](https://www.linkedin.com/in/kevin-q-lam/)
 
 ---
 

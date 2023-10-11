@@ -7,5 +7,4 @@
 ✉️ [Reach me through linkedin](https://www.linkedin.com/in/kevin-q-lam/)
 
 ---
-
-![](https://komarev.com/ghpvc/?username=kevin-lambda&color=green)
+<!--- ![](https://komarev.com/ghpvc/?username=kevin-lambda&color=green) --->

@@ -97,7 +97,7 @@ Here's what studying leetcode _is_
 
 ### Thoughts
 
-- I'm diving into studying leetcode, only because the industry demands it.
+- I'm diving into studying leetcode, because the industry demands it.
 - The more I study leetcode for the interview, the more I can feel my practical software engineering knowledge and experience fading. Which is a shame because that's what I actually enjoy doing. The practical software developing work. It's _fun_ to struggle through that.
 
 [⬆️ Back To Contents](#-contents)

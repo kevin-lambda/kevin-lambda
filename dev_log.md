@@ -62,9 +62,47 @@ Sep 16 2023 - [Medium: Jr Dev asks — How to modify an npm package for your pro
 [Jun 04 2023: React basics](#journal-04-jun-2023)  
 [Jun 12 2023: Rusty](#journal-12-jun-2023)  
 [Jul 06 2023: Crud repeat](#journal-06-jul-2023)  
-[Aug 07 2023: Optional Chain](#journal-08-aug-2023)
+[Aug 07 2023: Optional Chain](#journal-08-aug-2023)  
+[Oct 17 2023: Leetcode I](#journal-17-oct-2023)
 
 # 📖 ENTRIES
+
+## Journal 17 oct 2023
+
+The Leetcode grind
+
+### Learning #1 : RECOGNIZING PATTERNS
+
+In the context of preparing for a technical software engineering interview, the goal of studying leetcode problems should be to **RECOGNIZE PATTERNS**. Beyond the most basic questions, any leetcode problem will have a general strategy (hashmap, DFS, BFS, two pointer, sliding window, etc) to use. Learning what strategy to use is the key to success.
+
+Here's what studying leetcode _is not_
+
+- It is not you spending hours on a problem to try and _invent_ the strategy to use.
+- It is not testing how _smart_ you are if you can solve every problem on the first try.
+- It is not a reflection of your ability to do real world software engineering work.
+
+Here's what studying leetcode _is_
+
+- It is recognizing a problem _pattern_, then using the appropriate strategy
+- It is practice implementing that general strategy
+- It is going to have a luck component
+
+### Learning #2 : STUDYING STRATEGY
+
+- When first learning to do leetcode problems. You should do problems of a similar pattern, with the goal of recognizing what that pattern is. If you do problems randomly, it's very hard to build the repetition of pattern recognition.
+- When doing a problem, see if you can ID what strategy to use based on the problem pattern. Try writing out the logic of the problem in psuedocode. Then add more detail. Then code it out. If you get stuck and cannot write a complete answer at any of those logic steps, that might be the time to look at the solution.
+- Check the solution, and focus on understanding the overall logic of the solution relative to the problem.
+- Understand the basis of each solving strategy, do a set of problems, then move on to the next topic.
+- Once you reach the end of the most common topics, go back and start over.
+
+### Thoughts
+
+- I'm diving into studying leetcode, only because the industry demands it.
+- The more I study leetcode for the interview, the more I can feel my practical software engineering knowledge and experience fading. Which is a shame because that's what I actually enjoy doing. The practical software developing work. It's _fun_ to struggle through that.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 08 aug 2023
 

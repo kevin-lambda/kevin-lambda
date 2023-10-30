@@ -84,7 +84,7 @@ I've applied for a role with what I think is the best chance I have at getting a
 
 It's a challenge. Learning the answers for questions that might not be asked.
 
-## Intersection
+### Intersection
 
 Sometimes success is defined as the intersection between preparation and opportunity. I'm making that opportunity line as long as possible right now. Hopefully opportunity is somewhere in its path.
 

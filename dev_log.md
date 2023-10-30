@@ -63,9 +63,34 @@ Sep 16 2023 - [Medium: Jr Dev asks — How to modify an npm package for your pro
 [Jun 12 2023: Rusty](#journal-12-jun-2023)  
 [Jul 06 2023: Crud repeat](#journal-06-jul-2023)  
 [Aug 07 2023: Optional Chain](#journal-08-aug-2023)  
-[Oct 17 2023: Leetcode I](#journal-17-oct-2023)
+[Oct 17 2023: Leetcode I](#journal-17-oct-2023)  
+[Oct 30 2023: Leetcode II](#journal-30-oct-2023)
 
 # 📖 ENTRIES
+
+## Journal 30 oct 2023
+
+The Leetcode grind part 2
+
+### I'm getting better, but for what?
+
+I'm about go the 3rd time around all the dsa topics. Arrays, strings, sliding window, two pointer, hashmap, dfs, bfs, graphs, linked list, bst, etc....
+
+On the second time around I'm starting to recognize patterns and code implementation. I'm getting better and progressing. The third time around will have even more progress. _But for what?_
+
+### No interview lined up, just hoping for an interview.
+
+I've applied for a role with what I think is the best chance I have at getting an interview. This role is specifically looking for those with my profile type. No CS degree, non-traditional SWE, career-changer. So that's why I'm studying for an interview I don't know I'll have.
+
+It's a challenge. Learning the answers for questions that might not be asked.
+
+## Intersection
+
+Sometimes success is defined as the intersection between preparation and opportunity. I'm making that opportunity line as long as possible right now. Hopefully opportunity is somewhere in its path.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 17 oct 2023
 

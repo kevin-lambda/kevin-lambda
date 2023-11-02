@@ -43,7 +43,8 @@ Mar 13 2023 - [Medium: Jr dev asks — Why would I want to publish a personal np
 Mar 23 2023 - [Medium: Jr Dev asks — What’s a basic layout design to use for a business website?](https://kevin-lambda.medium.com/jr-dev-asks-whats-a-basic-website-layout-to-use-for-a-business-35ff4a7ef700)  
 Mar 23 2023 - [Medium: Jr Dev asks — What do you put on websites? The who, what and why framework.](https://kevin-lambda.medium.com/jr-dev-asks-what-do-you-put-on-websites-the-who-what-and-why-framework-c045fb1e31b2)  
 Apr 22 2023 - [Medium: Jr Dev asks — How to use custom Bulma variables with sass in Next.js 13.](https://kevin-lambda.medium.com/jr-dev-asks-how-to-use-custom-bulma-variables-with-sass-in-next-js-13-830604c717d5)  
-Sep 16 2023 - [Medium: Jr Dev asks — How to modify an npm package for your project](https://kevin-lambda.medium.com/jr-dev-asks-how-to-modify-an-npm-package-for-your-project-edcc8f32ff15)
+Sep 16 2023 - [Medium: Jr Dev asks — How to modify an npm package for your project](https://kevin-lambda.medium.com/jr-dev-asks-how-to-modify-an-npm-package-for-your-project-edcc8f32ff15)  
+Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical interviews](https://kevin-lambda.medium.com/how-to-study-for-leetcode-dsa-technical-interviews-aca8e19ffbef)
 
 ### Journal
 

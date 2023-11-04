@@ -66,8 +66,177 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Aug 07 2023: Optional Chain](#journal-08-aug-2023)  
 [Oct 17 2023: Leetcode I](#journal-17-oct-2023)  
 [Oct 30 2023: Leetcode II](#journal-30-oct-2023)
+[Nov 03 2023: Leetcode III](#journal-03-nov-2023)
 
 # 📖 ENTRIES
+
+## Journal 03 nov 2023
+
+The Leetcode grind part 3: Frameworks & checklists
+
+These are my notes and checklists for solving DSA problems. This is gold.
+
+### QUESTION PATTERNS & SOLVING STRATEGY
+
+SOLVING STRATEGIES
+
+- Hashmap => unqiues checking, tracking uniques, dictionary
+- Two pointer => comparing, swapping, reordering.
+- Sliding window => subset, subsequence, substring
+- Breadth first search => shortest path, goal near top, operation on everything. Queue based
+- Depth first search => goal at the ends, longest path. Stack based
+- Max/min heap => get kth max/min of list
+- Memoization (Dynamic programming) => time complexity optimization needed, especially for recursive solutions
+- Tortise & Hare => finding a cycle in a graph
+
+OTHER TOPICS
+
+- Linked Lists
+- Graphs
+- Recursion
+- Binary Search
+- Big O
+
+...
+
+### HASHMAP
+
+Use to track or check for any unique things.
+
+- Check if a key is in an object `keyToCheckFor in object //returns// true/false`
+
+### TWO POINTER
+
+Use to compare two things. Or do any operation with two things.
+
+0. init result variables as needed
+1. init L pointer and R pointer. sometimes `L = 0 ; R = L + 1`
+2. loop a check or operation until a condition. `while(L < arr.length)`
+3. within the loop, do operation
+4. within the loop, increment L and or R
+5. return results
+
+### SLIDING WINDOW
+
+Use to find a subsequence of a certain condition
+
+0. init result variables as needed
+1. init L and R pointers. sometimes `L = 0 ; R = L + 1`
+2. loop a check or operation until a condition. `while(L < arr.length)`
+3. within the loop, check condition and/or do operation
+4. if pass condition, increment R
+5. if not pass, increment L and reset R
+6. return results
+
+### BREADTH FIRST SEARCH (BFS)
+
+Use to find a goal that is near the root or for an operations that need to use every node. Shortest path
+
+0. iterative queue based method
+1. init a queue with the starting root `let queue = [root]`
+2. while the queue has a node `while(queue[0])`
+3. pop and hold from the queue `let cur = queue.pop()`
+4. do operation
+5. add child elements from current element `queue.unshift(cur.child)`
+6. return as needed
+
+### DEPTH FIRST SEARCH (DFS)
+
+Use to find a goal that is at the ends, aka leaves.
+
+0. recursive stack based method
+1. make a dfs function
+2. within the dfs function make a base case for when and what will happen. return as needed. (remember these returns only happen at the base case. All other cases do not yet have a return)
+3. do operations
+4. set a result variable for the dfs recursive function call. Remember that the dfs call will RESOLVE to a single result.
+5. use that result as needed. include a return for all other non base cases.
+
+### MAX/MIN HEAP
+
+Use to find the kth of a max or min. Other languages have built in heap functions. Javascript does not.
+
+### MEMOIZATION (DYNAMIC PROGRAMMING)
+
+Use to improve the performance of a recursive function, by storing results into an object to recall from.
+
+0. solve the recursive problem normally first.
+1. add to the function a memo argument with a default of empty object `function doTask(n, memo={})`
+2. add a memo argument to the recursive calls `doTask(n-1, memo)`
+3. figure out the argument to use as the key for results in the object.
+4. add the memo base case TO THE TOP. if key in memo exist, we have a saved result. Use saved result `if(n in memo){return memo[n]}`
+5. add a line before the original return. instead of returning the result, save that result to the object. `memo[n] = finalResult`
+6. then modify the return to return the current saved memo result. `return memo[n]`
+
+```js
+function fib(n, memo = {}) {
+  if (n in memo) {
+    return memo[n]
+  }
+  if (n <= 2) {
+    return 1
+  }
+  memo[n] = fib(n - 1, memo) + fib(n - 2, memo)
+  return memo[n]
+}
+```
+
+### TORTISE AND HARE METHOD
+
+Use to detect if there is a cycle in a graph.
+
+0. Init a fast pointer which will step by 2, and a slow pointer which will step by 1
+1. if at some point the slow and fast pointer are equal. There is a cycle
+
+### LINKED LIST METHODS
+
+General method
+
+0. init cur and prev pointers
+1. while cur pointer in linked list exists
+2. set the next pointer within the while
+3. with 3 pointers, do operations
+4. increment prev and cur pointers
+
+### GRAPH METHODS
+
+General method
+
+- Adjacency list. A graph can be built if there is an adjacency list. Which is an object with keys of node values that is an array of nodes it is adjacent to. `{a:[b,c] , b:[c,d], c:[a,e]}`
+- use BFS or DFS methods
+
+- path size (also tree depth), visited
+
+0. init visited arr outside of dfs
+1. dfs base case. if we are at the end or have visited already, return` if cur === visited return 0`
+2. mark current as visited `push cur to visited`
+3. set each level to equal 1. `let size = 1`
+4. explore all neighbors. `for neighbors of graph ; size = size + dfs(graph,neighbors,visited)`
+5. return resulting size `return size`
+
+### RECURSION GENERAL
+
+- Think of problems like a tree of choices. Expand every choice/option and its result. Then solve the simplest cases. What do those simplest cases return? One step up from the simplest base cases, how do we want to use results from that. What does the root want as a result?
+
+### BINARY SEARCH
+
+Use when the data is sorted
+
+0. init L and R. `L = 0 ; R = n.length-1`
+1. continue until L meets R `while(L <= R)`
+2. within while, calc middle `M = Math.floor((R-L)/2)`
+3. if target is greater than M, we want the right side. so move L `L = M + 1`
+4. else if target is less than M, we want the left side. so move R `R = M -1`
+5. else if the target matches, we have found it. `return M`
+
+### BIG O
+
+- in recursion, expand recursion to be a tree of choices. count all the option choices at each level. determine the rate of the choices growing.
+
+...
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 30 oct 2023
 

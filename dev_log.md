@@ -65,7 +65,7 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Jul 06 2023: Crud repeat](#journal-06-jul-2023)  
 [Aug 07 2023: Optional Chain](#journal-08-aug-2023)  
 [Oct 17 2023: Leetcode I](#journal-17-oct-2023)  
-[Oct 30 2023: Leetcode II](#journal-30-oct-2023)
+[Oct 30 2023: Leetcode II](#journal-30-oct-2023)  
 [Nov 03 2023: Leetcode III](#journal-03-nov-2023)
 
 # 📖 ENTRIES

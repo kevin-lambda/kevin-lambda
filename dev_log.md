@@ -17,6 +17,7 @@ This is a journal of my projects, lessons learned and thoughts during my coding 
 1. [Cash Stack](#cash-stack)
 1. [Portfolio Version 3](#project-portfolio-v3)
 1. [Quality Chords](#quality-chords)
+1. [Lessons with Kevin](#guitar-lessons-business-website)
 
 ### Tech and skills used
 
@@ -35,7 +36,8 @@ May 01 2023 ; Java, intelliJ IDEA ; [May 01 2023: Mocha JAVA latte](#journal-01-
 May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)  
 Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)  
 Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)  
-Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator, npm package customize ; [Quality Chords](#quality-chords)
+Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator, npm package customize ; [Quality Chords](#quality-chords)  
+Nov 27 2023 ; Nextjs, Bulma, MUI, emailjs ; [Lessons with Kevin](#guitar-lessons-business-website)
 
 ### Articles Published
 
@@ -69,6 +71,170 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Nov 03 2023: Leetcode III](#journal-03-nov-2023)
 
 # 📖 ENTRIES
+
+## Guitar lessons business website
+
+**Date:** 11/27/2023  
+**Description:** Brochure website for guitar lessons business  
+**Link:** [https://learnguitarwithkevin.vercel.app/](https://learnguitarwithkevin.vercel.app/)  
+**Notable Technologies:** next.js, bulma css, vercel, emailjs, mui  
+**Learning focus:** Making a business website with contact forms
+
+Static pages with business story flow. Hero, pitch, about, method, pricing, faq, cta. Contact page with form and submit message successful pages.
+
+### Dev learnings ========================================================
+
+#### redirect after successful email send on user button click
+
+To redirect the page after a user clicks form submit AND after email is sent use...
+`window.location.href = "/submit-successful"`
+
+#### emailjs
+
+emailjs is a useful tool that attaches to an email service, like gmail. It can send emails using that service. Usually it takes in form data, then sends that email to a receiver. Usually to the same email account.
+
+STEPS
+
+1. Make an account with emailjs
+1. Select what email service you want to attach to (gmail)
+1. Make an email template, that can read certain variables.
+   The variables will be the **NAME property** in the form in the input tags. Make sure it matches
+1. Get these keys and make them .env variables.
+
+- service id is the key for the email account service. can be found in services
+- template id is the key for the specific template. can be found in templates
+- key is the id of whole the emailjs account. can be found in user profile
+
+```
+SERVICE_ID="service_d31xxxxx"
+TEMPLATE_ID="template_omzxxxx"
+KEY="PxvWxxxxxxxxxxx"
+```
+
+1. npm i @emailjs/browser
+1. import `import emailjs from "@emailjs/browser"`
+1. import `import {useRef} from "react"`
+1. use this pattern that uses useRef()
+1. \***\* the emailjs function that sends data is .sendForm. It is looking for a **form HTML element\*\*. Not an object. So that means we have to pass it html element. It seems to be able to handle basic and complicated forms. As long as the inputs are wrapped in a form tag with the useRef, it should work. Again make sure the name prop in the inputs matches the emailjs templates.
+
+```js
+export default function Contact() {
+  const form = useRef()
+
+    function handleSubmit(e) {
+    e.preventDefault()
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_SERVICE_ID,
+          process.env.NEXT_PUBLIC_TEMPLATE_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            console.log(result.text)
+            window.location.href = "/submit-successful"
+          },
+          (error) => {
+            console.log(error.text)
+          }
+        )
+  }
+
+  return (
+  <form ref={form}>
+    <input
+      className="input"
+      type="email"
+      placeholder="Email"
+      name="inputEmail"
+      onChange={handleInput}
+    />
+    <div className="field">
+        <label className="label">
+          How did you find me <span className="has-text-danger">*</span>
+        </label>
+        <div className="control">
+          <input
+            className="input"
+            type="find"
+            placeholder="Google, Yelp, word of mouth, etc."
+            name="inputFind"
+            onChange={handleInput}
+          />
+        </div>
+      </div>
+  </form>
+  )
+
+```
+
+#### mui accordion
+
+Material UI accordion is good for FAQ sections.
+
+- As in the docs, it requires both mui and emotion libraries. just do the same as the docs. It's pretty straight forward
+- Its probably best to make the accordion a component, and then map the data into accordion instances
+- Here's the Accordion component pulling in props data. Note the specific prop values that accordion summary is passed
+
+```js
+<Accordion>
+  <AccordionSummary
+    expandIcon={<ExpandMoreIcon />}
+    aria-controls={`panel${propIdNum}a-content`}
+    id={`panel${propIdNum}a-header`}
+  >
+    {propSummary}
+  </AccordionSummary>
+  <AccordionDetails>{propDetails}</AccordionDetails>
+</Accordion>
+```
+
+- Here's the mapping with data into the accordion, from a data array called faqData
+
+```js
+<div className="is-size-5">
+  {faqData.map((e, index) => {
+    return (
+      <AccordionParent
+        propSummary={e[0]}
+        propDetails={e[1]}
+        propIdNum={index + 1}
+        key={index + 1}
+      />
+    )
+  })}
+</div>
+```
+
+#### Passing Props
+
+I forgot the syntax to pass props for a second. The receiving component gets all the props as one object.
+
+`<ChildComponent prop1={123} prop2={456} prop3={"abc"}>`
+`export default function ChildComponent( props ){ {prop1, prop2, prop3} = props }`
+
+#### Bulma font family customize
+
+- This is the syntax to customize the font family in Bulma. Do not add other stuff like sans-serif after the name of the font in quotes.
+- Make sure the font has been imported somewhere.... probably main.css
+
+```
+@use "bulma"
+  with(
+    $family-primary: "Poppins"
+  );
+```
+
+#### Using local images
+
+Remember in nextjs, if trying to read a local file in public. src will automatically look in the public folder.
+
+`src="/hero1.jpg" === src="/public/hero1.jpg"`
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 03 nov 2023
 

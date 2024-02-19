@@ -153,15 +153,6 @@ EXCEL
 
 ### Basics
 
-#### Key methods:
-
-```py
-print(arg)  # print to console
-len(arg)    # get length
-input()     # wait for user command line input as a new line
-////////////////////////////
-```
-
 #### Data typing:
 
 - Usually you don't need to declare a data type or even if its a const

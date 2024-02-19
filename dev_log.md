@@ -37,7 +37,8 @@ May 17 2023 ; recharts, Bulk data analysis ; [Solari](#solari)
 Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)  
 Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)  
 Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator, npm package customize ; [Quality Chords](#quality-chords)  
-Nov 27 2023 ; Nextjs, Bulma, MUI, emailjs ; [Lessons with Kevin](#guitar-lessons-business-website)
+Nov 27 2023 ; Nextjs, Bulma, MUI, emailjs ; [Lessons with Kevin](#guitar-lessons-business-website)  
+Feb 19 2024 ; python openpyxl pip; [Feb 19 2024: Python I](#journal-19-feb-2024)
 
 ### Articles Published
 
@@ -68,9 +69,421 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Aug 07 2023: Optional Chain](#journal-08-aug-2023)  
 [Oct 17 2023: Leetcode I](#journal-17-oct-2023)  
 [Oct 30 2023: Leetcode II](#journal-30-oct-2023)  
-[Nov 03 2023: Leetcode III](#journal-03-nov-2023)
+[Nov 03 2023: Leetcode III](#journal-03-nov-2023)  
+[Feb 19 2024: Python I](#journal-19-feb-2024)
 
 # 📖 ENTRIES
+
+## Journal 19 feb 2024
+
+Pythonssssss
+
+I'm learning python, coming from javascript
+
+### From Javascript, quick start
+
+DATA AND STRUCTURE
+
+- array ==> list
+  - `["name", "age", "job"]`
+  - `list.push(thing)` ==> `list.append(thing)`
+  - `list.pop()` ==> `list.pop(indexOrEndDefault)`
+- object, hashmap ==> dictionary
+  - `{"name": "joe" , "age": 42}`
+  - object[keyToAccess]
+
+VARIABLES
+
+- `let x = value` ==> `x = value`
+- `int++` is not a thing. need to use `number += 1`
+
+METHODS
+
+- `x.length()` ==> `x.len()`
+- `console.log()` ==> `print()`
+
+LOOPS
+
+- `for(let i ; i < 5 ; i++){}` ==> `for i in range(1,5): action`
+  - In python tab spacing **matters** in loops and functions
+- `while(condition){action}` ==> `while condition: action`
+
+FUNCTIONS
+
+- `function nameOfFunction(a,b){return x}` ==> `def nameOfFunction(a,b): return x`
+
+CONTROL FLOW
+
+- `if(condition){action}` ==> `if condition: action`
+- `else{action}` ==> `else: action`
+- `else if(condition){action}` ==> `elif condition: action`
+
+MODULES
+
+- `import "module"` ==> `import module`
+- `import {method1, method2} from "module"` ==> `from module import method1, method2`
+
+FILES
+
+- ==> `open("file.ext", 'modeArg')` #Read ,Write ,Append , Xcreate
+- ==> `targetFile.read("file.ext")`
+- ==> `targetFile.close()`
+
+EXCEL
+
+- ==> `import openpyxl`
+- ==> `wb = openpyxl.Workbook("newWorkbook.xlsx)`
+- ==> `sheet = wb.active`
+- ==> `cell = sheet.cell(row=rowNum,col=colNum)`
+- ==> `getValue = cell.value`
+- ==> `cell = "write to cell"`
+- ==> `wb.save("saveToNewOrOverwriteWorkbook.xlsx")`
+
+### General thoughts:
+
+- It looks like there are a lot more built in methods to do common things than in javascript. Strings, lists, dictionaries have a lot more convinent methods. Just need to slowly learn that they exist.
+- A lot of methods don't return normal objects or lists. They often return a special object or class. You can't interact with these in the normal way. Becareful of these.
+
+### Dev Environment
+
+1. Install python (known as the interpreter, the thing that reads the code) from [https://www.python.org/](https://www.python.org/). It comes with a bunch of modules to access.
+1. For 3rd party modules you need `pip` which is the package manager. It should be part of the main python package already. It's like npm. (Windows) check if pip is installed with `pip --version`. You might need to configure the **User variables** in windows/system properties/advanced/environment variables/user variables/path/PYTHON_EXECUTABLE_FILE_LOCATION. The python executable might be in users/name/appdata/local/programs/python/python###
+1. User a code editor
+1. for powershell terminal use `py` to access the python terminal or run a python file. (`quit()` to exit)
+
+### Basics
+
+#### Key methods:
+
+```py
+print(arg)  # print to console
+len(arg)    # get length
+input()     # wait for user command line input as a new line
+////////////////////////////
+```
+
+#### Data typing:
+
+- Usually you don't need to declare a data type or even if its a const
+- You can coerce a value to a data type with
+
+  ```py
+  str(13)   ==> "13"
+  int("13") ==>  13
+  float("13.1314") ==> 13.1314
+  ```
+
+#### String:
+
+- string concat. just add it like normal `"part one" + string2`
+- strings char can accessed through an index (like a list).
+
+  ```py
+  s = "hello world"
+  #    012345678910
+
+  s[0] ==> h
+  s[4] ==> o
+  s[9] ==> l
+  ```
+
+- There are some methods which can return boolean and validate certain regex type stuff. Like checking for only alpha, alphanumberical, decimal. `"string".isalpha() "string123".isalnum()`
+- Combining list to string and Separating string to list
+
+  ```py
+  ", ".join([list])  => "item1,item2,item3"
+  "I am a string".split(" ") => ["I", "am", "a", "string"]
+  ```
+
+- f string, formatted string (aka template literal in js)
+  ```py
+  number = 13
+  item = "apples"
+  string = f"there are {number} of {item}"
+  ```
+- You can make multiline comments with multiline strings. usually only for the top part of a file. Use a wrapping triple double quotes.
+  ```py
+  """
+  I
+  Am
+  Multiline
+  Comment
+  """
+  ```
+
+#### Control flow:
+
+- Normal comparisons work like `== != <=`
+- Use `and or not`. Don't use `&& || !`
+- if, else, elif
+
+  ```py
+  if condition:
+      action
+
+  if age == 42:
+      print("yes")
+
+  if age == 42:
+      print("yes")
+  else:
+      print("no")
+
+  if age == 42:
+      print("yes")
+  elif age < 42:
+      print("less")
+  else:
+      print("no")
+  ```
+
+#### Functions:
+
+- like js but no curlies 😔
+
+  ```py
+  def nameOfFunction(arg1,arg2):
+      action
+      return
+
+  nameOfFunction() #invoke function
+  ```
+
+#### List:
+
+Lists are arrays. Access via indexes like normal.
+
+- You can use negative indexes 😺
+- Add to a list with concat or appen. `["blue", "red", "green"] + ["orange", "yellow"]` OR `list.append("purple")`
+- Remove from a list with a matching remove or pop. `listName.remove("this specific thing)` OR `list.pop(index)`. pop removes index or last element
+- Boolean check if in list with `"thing" in listName`
+
+#### Dictionary:
+
+Dictionaries are like js objects but different key value syntax. `thing = {"color": "blue", "shape":"round", "amount": 42}`
+
+- Access is **different** and a little weird. It uses brackets to access. `thing["color"]`
+
+- You can get keys, values in use with a loop. `thing.keys()` `thing.values()`
+- You can check for a key with `keyToCheckFor in thing.keys()`
+  - Or try to access the key value, but give a default if not found `thing.get("keyToCheckFor",defaultValue)`
+
+#### Importing:
+
+Similar to js importing
+
+```py
+import module1, module2, module3
+from module import method1, method2
+```
+
+#### Range:
+
+It returns a special range object, which is **NOT** a list. Usually just use it in a `for loop`. It is **NOT INCLUSIVE**. `range(0,4)` ==> 0,1,2,3. Also, you can just use a single argument (usually lsit) and range will know.
+
+Works well with a list (b/c it is zero indexed). like this
+
+```py
+for x in range(0,4):
+    action at each iteration
+
+for x in range(len(listName)):
+    action
+```
+
+#### For, while loop:
+
+- More like specifically an iterator for a certain thing vs other for loops.
+- `break` and `continue` exist
+
+  ```py
+  # x is the value at each STEP in the iteration
+  # sequence is the iteratable object. Anything with multiple things. string, list, range
+  for x in sequence:
+      action at each iteration
+
+  for x in range(0,4):
+      action at each iteration
+
+  for x in list:
+      action at each iteration
+
+  for x in [4,1,3,5]:
+      action at each iteration
+
+  while age<42:
+      print("lessthan42")
+      age += 1
+  ```
+
+### Files
+
+File paths are a little bit cumbersome to work with. Best practices use **Path objects** that can work across platforms instead of just regular strings.
+
+Path:
+
+- **Paths and files usually assume the current directory by default**
+
+But for specific paths
+
+- you might need a consistent path starting point. That can be done with `Path.home()` or `Path.cwd()`
+- Then add file names as needed with the special path concat operator `/`
+
+- Or maybe... just try to rely on **relative paths** `.\fileInCurrentRelativePath`
+
+  ```py
+  from pathlib import Path
+
+  # probably use this the most
+  p1 = Path.cwd() # this gets the current directory that the python file is in
+
+  # start from home
+  p = Path.home() # this gets the volume,user,name
+
+  # manually get to a directory
+  currentFolder = p / "Desktop" / "Projects" / "CurrentProject"
+  file1 = "targetFile1"
+  doWorkOn = currentFolder / file1
+  ```
+
+Read Write:
+
+- Open close and read files with `open("file.ext")` `file.close()` and `file.read()`
+
+  ```py
+  targetFile = open("aTextFile.txt")  # current directory
+  targetFile = open("./aTextFile.txt")  # current directory
+
+  print(targetFile.read()) # one big line
+  print(targetFile.readlines()) # separate lines
+
+  print(Path.cwd())   # current directory
+  print(Path.home())  # current volume,user,name
+  ```
+
+- Write files, give a second argument to open.
+  "r" - Read - Default value. Opens a file for reading, error if the file does not exist
+
+"a" - Append - ADDITIVE Opens a file for appending, creates the file if it does not exist
+
+"w" - Write - !OVERWRITES Opens a file for writing, creates the file if it does not exist
+
+"x" - Create - Creates the specified file, returns an error if the file exist
+
+```py
+targetFile = open("aTextFile.txt", 'w')  # current directory, create if not exist, overwrites if exist
+targetFile.write("string here")
+targetFIle.close()
+
+targetFile = open("aTextFile.txt", 'a')  # adds to file
+targetFile.write("added stuff")
+targetFIle.close()
+
+targetFile = open("aTextFile.txt", 'r')  # default is read mode
+content = targetFile.read()
+targetFIle.close()
+
+print(content)
+```
+
+Copy files and folders:
+use `shutil` (shell utility) to do stuff
+
+```py
+p = Path.cwd()
+
+# copy single file
+shutil.copy( p / 'fileToCopy.txt', p / 'destinationSubFolder' ) # copy
+shutil.copy( p / 'fileToCopy.txt', p / 'destinationSubFolder' / 'newFileName.txt' ) # copy and rename
+
+#copy folder
+shutil.copytree( p / 'aFolder', p / 'newToBeCreatedFolder' ) # copy folder to a new created folder
+```
+
+### Excel
+
+Install openpyxl
+`pip install openpyxl`
+
+Main steps:
+
+1. Import openpyxl `import openpyxl`
+1. Open existing or create workbook
+   ```py
+   wb = openpyxl.load_workbook("excelFileName.xlsx") # open an existing workbook
+   wb = openpyxl.Workbook("excelFileName.xlsx") # create new workbook
+   ```
+1. Choose specific sheet or just grab active sheet
+   ```py
+   sheet = wb["SheetName"] # get specific sheet
+   sheet = wb.active # get active sheet
+   wb.create_sheet(argIndex,argName) #create a sheet
+   ```
+1. Choose cells
+
+   ```py
+
+   # get cells. !note this returns a **cell object** it isn't just the value
+   cell = sheet.cell(row=rowNum,column=colNum)
+   cell = sheet["A1"]
+   cells = sheet["A1" : "A3"] # gets A1, A2, A3
+   cells = sheet["A1" : "B3"] # gets A1, A2, A3, B1, B2, B3
+
+
+   # cell helpers
+   maxRow = sheet.max_row
+   maxColumn = sheet.max_column
+
+   from openpyxl.utils import get_column_letter, column_index_from_string
+   getColLetter = get_column_letter(num)
+   getColNum = column_index_from_string("AA")
+   ```
+
+1. Do actions
+
+   ```py
+   # read value
+   getValue = cell.value # get value
+
+   # write
+   cell = "string" # write data to cell
+   cell.value = "string" # not best practice I think
+   sheet["A2"] = "other string" # write data to cell
+   sheet.cell(row=rowNum,col=colNum) = data # write data to cell
+
+   cell = '=SUM(B1:B5)' # write a formula to a cell
+   ```
+
+1. Save (to a new file or **OVERWRITE**) // `wb.save("updatedProduceSales.xlsx")`
+
+Charts:
+
+1. Make a reference object (set of cells)
+
+   ```py
+   refObj = openpyxl.chart.Reference(sheetName,min_col=1,min_row=1,max_col=4,max_row=10)
+   ```
+
+1. Make a (data) series object
+
+   ```py
+   openpyxl.chart.Series(refObj, title="data series 1", )
+   ```
+
+1. Make a chart object and append series to chart
+
+   ```py
+   chartObj = openpyxl.chart.BarChart()
+   chartObj.title = "new chart"
+   chartObj.append(seriesObj)
+   ```
+
+1. Add chart to worksheet
+
+   ```py
+   sheet.add_chart(chartObj,'C5')
+   wb.save("newChart.xlsx")
+   ```
 
 ## Guitar lessons business website
 

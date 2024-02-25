@@ -38,7 +38,8 @@ Jun 19 2023 ; Open AI chatgpt-3.5-turbo, NextJS, Bulma ; [Bit Bot](#bit-bot)
 Jun 29 2023 ; cheerio, jQuery, NextJS, Bulma, recharts; [Cash Stack](#cash-stack)  
 Jul 24 2023 ; Nextjs, Bulma, Prisma, react-chords svg generator, npm package customize ; [Quality Chords](#quality-chords)  
 Nov 27 2023 ; Nextjs, Bulma, MUI, emailjs ; [Lessons with Kevin](#guitar-lessons-business-website)  
-Feb 19 2024 ; python openpyxl pip; [Feb 19 2024: Python I](#journal-19-feb-2024)
+Feb 19 2024 ; python openpyxl pip; [Feb 19 2024: Python I](#journal-19-feb-2024)  
+Feb 25 2024 ; python csv json requests sys webbrowser beatifulsoup4; [Feb 25 2024: Python II](#journal-19-feb-2024)
 
 ### Articles Published
 
@@ -70,9 +71,201 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Oct 17 2023: Leetcode I](#journal-17-oct-2023)  
 [Oct 30 2023: Leetcode II](#journal-30-oct-2023)  
 [Nov 03 2023: Leetcode III](#journal-03-nov-2023)  
-[Feb 19 2024: Python I](#journal-19-feb-2024)
+[Feb 19 2024: Python I](#journal-19-feb-2024)  
+[Feb 25 2024: Python II](#journal-25-feb-2024)
 
 # 📖 ENTRIES
+
+## Journal 25 feb 2024
+
+Pythonss
+
+Learned cool stuff for this chunk. Working with excel, api fetching, json csv data, html web scraping
+
+### MAIN THINGS:
+
+- fetch = requests.get(URL)
+- batch file: can run multiple terminal commands. Useful to just double click a file and then have it run a bunch of terminal commands `.bat`
+- json string => python dictionary: json.loads(jsonString)
+- python dictionary => json string: json.dumps(pythonDict)
+- KEY CONCEPT: python objects, data types are not the same as javascript objects. They are special. That means we can't just grab attributes out of the python objects. Need to use their specific documentation attributes to inspect and work with it.
+
+### WEB SCRAPING
+
+#### General
+
+- opens a url in default webbrowser `webbrowser.open("url")`
+- `sys.argv` read cmd line args. it stores everything after the `py` command in a list
+
+#### list indexes
+
+- list[1:] # returns elements starting from idx 1 to the end
+
+#### pyperclip
+
+- `py -m pip install pyperclip`
+- `pyperclip.paste()` returns the most recent copied thing
+
+#### Requests = fetch
+
+- `pip install --user requests` from powershell
+- `res = requests.get(URL)`
+
+#### batch files
+
+This is pretty cool. just run it like a regular windows application
+
+- can conviniently execute a python file without having to use the command line. By writing a batchfile which has the location of the file and can run it.
+- the batch file, knows to use python, b/c we specified it.
+
+- the `%*` forwards arguments in it to the python file
+
+```bat
+py.exe C:\Users\Kevin\Desktop\DEV\z_test\learning-python\section-webscraping\mapit\main1.py %*
+pause
+```
+
+#### Ways to run a python file
+
+- open up powershell, navigate to directory, run `py fileName.py`
+- write batch file, double click
+- open cmd, have the full path to the python script. run `py c:\full\path\to\script.py`
+
+#### ways to install stuff
+
+- `pip install pyperclip` # this should work for most stuff
+- `pip install --user pyperclip` #specific for a user, if don't have admin permissions
+- `py -m pip install pyperclip`
+
+#### REFERENCE
+
+try: # Code that may raise an exception
+result = 10 / 0
+
+except ZeroDivisionError as e: # Code to handle the specific exception (in this case, a division by zero)
+print(f"Error: {e}")
+
+except Exception as e: # Code to handle other types of exceptions
+print(f"Unexpected error: {e}")
+
+else: # Code that will be executed if no exception is raised
+print("No errors occurred.")
+
+finally: # Code that will be executed no matter what, whether an exception occurred or not
+print("This will always be executed.")
+
+#### finding css selectors
+
+this will get the exact css selector
+
+- in a web page dev console
+- to go the element
+- right click > copy > copy selector
+
+#### using requests ,beatifulsoup4 to work with fetched html files
+
+1. IMPORT: `import bs4, requests, webbrowser, sys`
+1. TRY EXCEPT: `try: STUFF except Exception as e:`
+1. GET: `res = requests.get(URL)`
+1. PARSE: `soup = bs4.BeautifulSoup(rex.text,"html.parser")`
+1. SELECT: `linkElems = soup.select(".class-name")` Returns a list
+1. GET DATA: `urlToOpen = linkElems[0].get("href")`
+1. ACTION: `webbrowser.open(urlToOpen)`
+
+#### using beatifulsoup4 to work with local html files elements
+
+1. IMPORT: `import bs4`
+1. OPEN: `exampleFile = open('example.html')`
+1. PARSE: `exampleSoup = bs4.BeatifulSoup(exampleFile.read(), 'html.parser')`
+1. SELECT: `elems = exampleSoup.select("#author") , elems = exampleSoup.select('p')`
+1. GET DATA: `elems[0].getText(), elems[0].get('href')`
+
+### CSV
+
+#### csv read write
+
+1. IMPORT: `import csv`
+
+1. OPEN/WRITE FILE: `exampleFile = open('example.csv')` OR `outputFile = open("output2.csv",'w', newline='')`. When writing a csv file, you just need to have newline field for formatting reasons.
+1. CONVERT FILE TO READER/WRITER OBJECT: `exampleReader = csv.reader(exampleFile)` OR `outputWriter = csv.writer(outputFile,delimiter=",")`
+
+1. ACTIONS READ/WRITE: `exampleList = list(exampleReader)` OR `outputWriter.writerow(["item1","item2","item3"])`
+
+1. CLOSE: `outputFile.close()`
+
+#### csv read write dictionary - for csvs with headers
+
+1. IMPORT:
+1. OPEN/WRITE FILE:
+1. CONVERT FILE TO READER/WRITER OBJECT:
+   ! reader/writer objects become an ITERATABLE OBJECT. It is meant to be used with type of loop like a for loop.
+1. ACTIONS READ/WRITE:
+1. CLOSE:
+
+```py
+READ
+# for a csv with headers, csv.DictReader will automatically handle the top row and use it as keys
+exampleFile = open("exampleWithHeader.csv")
+exampleDictReader = csv.DictReader(exampleFile)
+for row in exampleDictReader:
+    print(row['Timestamp'], row['Fruit'], row['Quantity'])
+
+# you can use DictReader on csv without headers and just supply your own
+# can work on a file without headers too, supply headings to the reader obj
+exampleFile = open("example.csv")
+exampleDictReader = csv.DictReader(exampleFile, ['time','name','amount'])
+for row in exampleDictReader:
+    print(row['time'], row['name'], row['amount'])
+```
+
+```py
+WRITE
+outputFile = open('outputDict.csv', 'w', newline='')
+outputDictWrite = csv.DictWriter(outputFile,['Name','Pet','Phone'])
+
+# adds a header to the write object. it doesn't come automatically
+outputDictWrite.writeheader()
+
+# use object notation for the data... b/c it is an object(dict)
+outputDictWrite.writerow({"Name":"Alice", "Pet": "cat", "Phone": "123-4567" })
+outputDictWrite.writerow({"Name":"Bob", "Phone": "123-6789" })
+outputDictWrite.writerow({"Name":"Carl", "Pet": "dog",  })
+
+outputFile.close()
+
+```
+
+### JSON
+
+!!! python dictionarys are not the same data type as objects or json. it needs to be converted between each other. Not like javascript where they are read each other.
+
+- loads: json string => python ; `pythonDict = json.loads(jsonString)`
+- dumps: python => json string ; `jsonString = json.dumps(pythonDictionary)`
+
+#### FETCH JSON DATA:
+
+1. IMPORT: `import json, requests`
+1. REQUEST GET: `res = requests.get(URL)`
+1. TRY EXCEPT RAISE:
+
+```py
+try:
+    res = requests.get(URL)
+    res.raise_for_status
+except Exception as e:
+```
+
+1. CONVERT JSON STRING TO PYTHON: `fetchedData = json.loads(res.text)` Now can use the fetched data like a python dictionary
+1. DATA ACTIONS: `fetchedData[0]["name"]` etc...
+
+#### CREATE JSON DATA:
+
+1. HAVE PYTHON DICTIONARY: `pythonValue = {"name":"alan", "age": 42,"pet": "cat"}`
+1. CONVERT: `stringOfJsonData = json.dumps(pythonValue)`
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 19 feb 2024
 
@@ -475,6 +668,10 @@ Charts:
    sheet.add_chart(chartObj,'C5')
    wb.save("newChart.xlsx")
    ```
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Guitar lessons business website
 

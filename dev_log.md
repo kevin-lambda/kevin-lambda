@@ -73,8 +73,44 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Nov 03 2023: Leetcode III](#journal-03-nov-2023)  
 [Feb 19 2024: Python I](#journal-19-feb-2024)  
 [Feb 25 2024: Python II](#journal-25-feb-2024)
+[Jun 12 2025: Domain](#jounrnal-12-jun-2025)
 
 # 📖 ENTRIES
+
+## Journal 12 jun 2025
+
+Domain
+
+How to point a google workspace purchased (registrar), squarespace controlled (source), to an already hosted website.
+
+### Google workspace & Squarespace
+
+//// not sure about these things
+
+A domain (among other things) can be purchased from google workspace. It acts as the registrar. Where that domain listing is given and purchased.
+
+Squarespace actually has that domain.
+
+You can control the domain at squarespace. Although there is conflicting instructions from both sites about who is controlling what.
+
+### STEPS
+
+1. Make the website and host it
+2. Log into squarespace with the google workspace account
+3. Go to domain then DNS.
+4. !!!!!!!!!! Delete all existing default records. It won't work if you try add the new site without deleting these.
+5. Go to the hosted site and go to DNS
+6. Copy the records over to squarespace. It'll look like
+   Host Type Data
+
+- www CNAME string.com
+- @ A IP_ADDRESS
+
+7. Save. The hosting site should now update to the new domain pointer. It may take just a minute or two to update.
+
+[⬆️ Back To Contents](#-contents)
+
+<br><br>
 
 ## Journal 25 feb 2024
 

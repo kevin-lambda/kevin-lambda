@@ -72,7 +72,7 @@ Nov 02 2023 - [Medium: Jr Dev asks — How to study for Leetcode DSA technical i
 [Oct 30 2023: Leetcode II](#journal-30-oct-2023)  
 [Nov 03 2023: Leetcode III](#journal-03-nov-2023)  
 [Feb 19 2024: Python I](#journal-19-feb-2024)  
-[Feb 25 2024: Python II](#journal-25-feb-2024)
+[Feb 25 2024: Python II](#journal-25-feb-2024)  
 [Jun 12 2025: Domain](#jounrnal-12-jun-2025)
 
 # 📖 ENTRIES
